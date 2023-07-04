@@ -29,9 +29,6 @@ const GradientButton = ({buttonText, onPress, ...props}) => {
           <TextBold text={buttonText} fontSize={16} />
         </TouchableOpacity>
       </LinearGradient>
-      {Platform.OS === 'android' && (
-        <View style={[styles.shadow, shadowStyle]} />
-      )}
     </View>
   );
 };
@@ -57,7 +54,8 @@ const styles = StyleSheet.create({
     height: getSize(56),
   },
   button: {
-    flex: 1,
+    width: '100%',
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

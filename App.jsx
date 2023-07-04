@@ -6,31 +6,19 @@
  */
 
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import AccountSetupScreen from './src/screens/auth/AccountSetupScreen';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/es/integration/react';
+import MainNavigation from './src/stacks/MainNavigation';
+import store, {persistor} from './src/redux/store';
 
 function App() {
   return (
-    <View style={styles.sectionContainer}>
-      <AccountSetupScreen />
-    </View>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <MainNavigation />
+      </PersistGate>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {flex: 1, backgroundColor: '#17161F'},
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

@@ -4,10 +4,14 @@ import OptionItem from './OptionItem';
 import {Email, Google, Facebook, Apple} from '../../../styles/SvgIcons';
 import getSize from '../../../utils/helpers';
 import Headings from '../components/Headings';
+import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 
-const AuthOptionScreen = () => {
+const AuthOptionScreen = ({navigation}) => {
+  const navigateToEmailLogin = () => {
+    navigation.navigate('Login');
+  };
   return (
-    <View style={{paddingHorizontal: getSize(30)}}>
+    <AuthScreensSafeArea style={{paddingHorizontal: getSize(30)}}>
       <Headings
         h1={'Sign in, Start Investing, and Begin Earning'}
         h2={'Select how you want to procees'}
@@ -15,7 +19,7 @@ const AuthOptionScreen = () => {
       <OptionItem
         title={'Continue with Email'}
         prefix={<Email />}
-        onPress={() => {}}
+        onPress={navigateToEmailLogin}
       />
       <OptionItem
         title={'Continue with Google'}
@@ -32,7 +36,7 @@ const AuthOptionScreen = () => {
         prefix={<Apple />}
         onPress={() => {}}
       />
-    </View>
+    </AuthScreensSafeArea>
   );
 };
 

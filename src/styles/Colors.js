@@ -13,6 +13,9 @@ const Colors = {
   iconPurple: '#C0B0FF',
   textPurple: '#B09DFB',
   borderPurple: '#876CF9',
+  red: '#F4473E',
+  orange1: '#F9A39F',
+  gray1: '#423F5A',
   // Add more colors for the dark theme as needed
 };
 

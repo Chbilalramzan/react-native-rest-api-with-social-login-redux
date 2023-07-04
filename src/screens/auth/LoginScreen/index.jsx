@@ -9,15 +9,27 @@ import {EmailPurple, Eye, EyeCross, Key} from '../../../styles/SvgIcons';
 import Colors from '../../../styles/Colors';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
 import GradientButton from '../../../components/buttons/GradientButton';
+import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
 
   const clickPasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
+
+  const navigateToForgotPassword = () => {
+    navigation.navigate('ForgotPassword');
+  };
+  const navigateToSignup = () => {
+    navigation.navigate('Register');
+  };
+  const gotoConfirmationScreen = () => {
+    navigation.navigate('Confirmation');
+  };
+
   return (
-    <View style={styles.container}>
+    <AuthScreensSafeArea style={styles.container}>
       <Headings
         h1={'Sign in, Start Investing, and Begin Earning'}
         h2={'Get Started and enjoy the savings'}
@@ -47,7 +59,9 @@ const LoginScreen = () => {
         isSecure={isPasswordVisible}
         onSuffixPress={clickPasswordVisibility}
       />
-      <TouchableOpacity style={styles.forgetPassword}>
+      <TouchableOpacity
+        style={styles.forgetPassword}
+        onPress={navigateToForgotPassword}>
         <TextSemiBold
           text={'Forget Password?'}
           fontSize={14}
@@ -55,12 +69,19 @@ const LoginScreen = () => {
         />
       </TouchableOpacity>
       <View style={{marginTop: getSize(45), marginBottom: getSize(130)}}>
-        <GradientButton buttonText={'Sign In'} />
+        <GradientButton
+          buttonText={'Sign In'}
+          onPress={gotoConfirmationScreen}
+        />
       </View>
 
       <SocialAuth />
-      <BottomTextButton text1={'Don’t have an account? '} text2={'Sign Up'} />
-    </View>
+      <BottomTextButton
+        text1={'Don’t have an account? '}
+        text2={'Sign Up'}
+        onPress={navigateToSignup}
+      />
+    </AuthScreensSafeArea>
   );
 };
 

@@ -1,0 +1,55 @@
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import Headings from '../components/Headings';
+import getSize from '../../../utils/helpers';
+import GradientButton from '../../../components/buttons/GradientButton';
+import Send from './Send';
+import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
+
+const ConfirmationScreen = () => {
+  return (
+    <AuthScreensSafeArea style={styles.container}>
+      <View style={styles.center}>
+        <Send />
+        <Headings
+          h1={'You are ready to go.'}
+          h2={
+            'A Password reset link has been sent to your email, open your email and follow the instructions.'
+          }
+          extraStylesh1={styles.extraStylesh1h2}
+          extraStylesh2={styles.extraStylesh1h2}
+        />
+      </View>
+
+      <View style={styles.bottomButton}>
+        <GradientButton buttonText={"That's Great!"} />
+      </View>
+    </AuthScreensSafeArea>
+  );
+};
+
+export default ConfirmationScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: getSize(24),
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  extraStylesh1h2: {
+    textAlign: 'center',
+  },
+  bottomButton: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: getSize(45),
+    marginTop: getSize(11),
+    marginHorizontal: getSize(20),
+  },
+});

@@ -9,15 +9,24 @@ import {EmailPurple, Eye, EyeCross, Key, User} from '../../../styles/SvgIcons';
 import Colors from '../../../styles/Colors';
 import GradientButton from '../../../components/buttons/GradientButton';
 import TextStyles from '../../../styles/TextStyles';
+import AlertDialog from '../components/AlertDialog';
+import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 
-const AccountSetupScreen = () => {
+const AccountSetupScreen = ({navigation}) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
 
   const clickPasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
+
+  const navigateTologin = () => {
+    navigation.goBack();
+  };
+  const gotoConfirmationScreen = () => {
+    navigation.navigate('Confirmation');
+  };
   return (
-    <View style={styles.container}>
+    <AuthScreensSafeArea style={styles.container}>
       <Headings
         h1={'Sign up, Start Investing, and Begin Earning'}
         h2={'Get Started and enjoy the savings'}
@@ -47,7 +56,10 @@ const AccountSetupScreen = () => {
       />
 
       <View style={{marginTop: getSize(32), marginBottom: getSize(32)}}>
-        <GradientButton buttonText={'Sign In'} />
+        <GradientButton
+          buttonText={'Create Account'}
+          onPress={gotoConfirmationScreen}
+        />
       </View>
       <View style={{marginBottom: getSize(120)}}>
         <Text style={[TextStyles.style500, styles.textStyle]}>
@@ -62,8 +74,13 @@ const AccountSetupScreen = () => {
         </Text>
       </View>
       <SocialAuth />
-      <BottomTextButton text1={'Already have an account? '} text2={'Sign in'} />
-    </View>
+      <BottomTextButton
+        text1={'Already have an account? '}
+        text2={'Sign in'}
+        onPress={navigateTologin}
+      />
+      {/* <AlertDialog /> */}
+    </AuthScreensSafeArea>
   );
 };
 
