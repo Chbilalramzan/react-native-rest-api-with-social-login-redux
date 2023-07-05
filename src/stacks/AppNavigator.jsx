@@ -1,13 +1,19 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import NewsFeed from '../screens/home/NewsFeed';
+import EditProfileScreen from '../screens/Profile/EditProfileScreen';
+import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Dashboard">
-      <Stack.Screen name="Home" component={NewsFeed} />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={'Tabs'}>
+      <Stack.Screen name="Tabs" component={TabNavigator} />
+      <Stack.Screen name="EditProfile" component={EditProfileScreen} />
     </Stack.Navigator>
   );
 };

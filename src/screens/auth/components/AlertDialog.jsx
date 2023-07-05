@@ -6,6 +6,7 @@ import GradientButton from '../../../components/buttons/GradientButton';
 import getSize from '../../../utils/helpers';
 import Colors from '../../../styles/Colors';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
+import {Cross} from '../../../styles/SvgIcons';
 
 const AlertDialog = ({text, onPress, ...props}) => {
   const shadowStyle = Platform.select({
@@ -36,10 +37,8 @@ const AlertDialog = ({text, onPress, ...props}) => {
           ]}>
           <IconButton
             size={46}
-            iconSize={32}
-            iconColor={Colors.red}
+            icon={<Cross width={getSize(32)} height={getSize(32)} />}
             color={Colors.white}
-            iconName={'close'}
             onPress={() => {}}
             extraStyles={styles.alignSelf}
           />

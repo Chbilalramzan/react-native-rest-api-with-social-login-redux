@@ -9,6 +9,7 @@ const getSize = fontSize => {
   const heightFactor = windowHeight / figmaHeight;
   const factor = Math.min(widthFactor, heightFactor);
   return Math.round(factor * fontSize);
+  // return fontSize;
 };
 
 export default getSize;

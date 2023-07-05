@@ -5,7 +5,14 @@ import getSize from '../../utils/helpers';
 import Colors from '../../styles/Colors';
 import TextBold from '../Text/TextBold';
 
-const GradientButton = ({buttonText, onPress, ...props}) => {
+const GradientButton = ({
+  buttonText,
+  buttonHeight,
+  onPress,
+  fontSize,
+  extraTextStyle,
+  ...props
+}) => {
   const shadowStyle = Platform.select({
     ios: {
       shadowColor: 'rgba(20, 102, 204, 0.16)',
@@ -24,9 +31,16 @@ const GradientButton = ({buttonText, onPress, ...props}) => {
         colors={[Colors.gradientButton2, Colors.gradientButton1]}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
-        style={styles.gradient}>
+        style={[
+          styles.gradient,
+          {height: buttonHeight ? buttonHeight : getSize(56)},
+        ]}>
         <TouchableOpacity onPress={onPress} style={styles.button}>
-          <TextBold text={buttonText} fontSize={16} />
+          <TextBold
+            text={buttonText}
+            fontSize={fontSize ? fontSize : 16}
+            extraStyles={extraTextStyle}
+          />
         </TouchableOpacity>
       </LinearGradient>
     </View>
