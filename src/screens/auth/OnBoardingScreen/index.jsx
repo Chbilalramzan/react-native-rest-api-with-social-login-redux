@@ -6,6 +6,7 @@ import GradientButton from '../../../components/buttons/GradientButton';
 import Second from './Second';
 import Third from './Third';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
+import Colors from '../../../styles/Colors';
 
 const OnBoardingScreen = ({navigation}) => {
   const [index, setIndex] = React.useState(0);
@@ -24,7 +25,9 @@ const OnBoardingScreen = ({navigation}) => {
   };
 
   return (
-    <AuthScreensSafeArea style={styles.container}>
+    <AuthScreensSafeArea
+      backgroundColor={Colors.onBoardingBackground}
+      style={styles.container}>
       {showPage()}
       <View style={styles.bottomButton}>
         <GradientButton buttonText={'Next'} onPress={updatePage} />
@@ -36,7 +39,7 @@ const OnBoardingScreen = ({navigation}) => {
 export default OnBoardingScreen;
 
 const styles = StyleSheet.create({
-  container: {paddingHorizontal: getSize(16), flex: 1},
+  container: {paddingHorizontal: getSize(0), flex: 1},
   bottomButton: {
     position: 'absolute',
     left: 0,

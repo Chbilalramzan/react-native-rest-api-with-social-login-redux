@@ -1,10 +1,10 @@
-import {StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 import getSize from '../../../utils/helpers';
 import Headings from '../components/Headings';
 import TextMedium from '../../../components/Text/TextMedium';
 import Colors from '../../../styles/Colors';
-import {Mail, Message, Messenger} from '../../../styles/SvgIcons';
+import {Mail, Message, Messenger, OnBoard1} from '../../../styles/SvgIcons';
 import MessageItem from './MessageItem';
 
 const First = () => {
@@ -42,8 +42,11 @@ const First = () => {
         extraStylesh1={styles.extraStylesh1h2}
         extraStylesh2={styles.extraStylesh1h2}
       />
-
-      <View style={styles.card}>
+      <Image
+        source={require('../../../../assets/images/onboard1.png')}
+        style={styles.image}
+      />
+      {/* <View style={styles.card}>
         <TextMedium text={'Save money, connect with groups'} fontSize={13} />
 
         <View style={{marginTop: getSize(24)}}>
@@ -52,7 +55,7 @@ const First = () => {
           <MessageItem data={data[2]} />
           <MessageItem data={data[3]} />
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -61,6 +64,13 @@ export default First;
 const styles = StyleSheet.create({
   extraStyles: {
     marginTop: getSize(100),
+    marginHorizontal: 16,
+  },
+  image: {
+    height: getSize(500),
+    width: '100%',
+    resizeMode: 'contain',
+    borderRadius: getSize(20),
   },
   extraStylesh1h2: {
     textAlign: 'center',

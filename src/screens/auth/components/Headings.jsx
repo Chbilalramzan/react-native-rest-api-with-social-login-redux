@@ -42,5 +42,5 @@ const Headings = ({
 export default Headings;
 
 const styles = StyleSheet.create({
-  container: {marginTop: getSize(116), marginBottom: getSize(11)},
+  container: {marginTop: getSize(100)},
 });

@@ -16,6 +16,11 @@ const Second = () => {
         extraStylesh1={styles.extraStylesh1h2}
         extraStylesh2={styles.extraStylesh1h2}
       />
+
+      <Image
+        source={require('../../../../assets/images/onboard3.png')}
+        style={styles.image}
+      />
     </View>
   );
 };
@@ -26,6 +31,14 @@ const styles = StyleSheet.create({
   extraStylesh1h2: {
     textAlign: 'center',
   },
-  extraStyles: {marginHorizontal: getSize(16)},
-  image: {width: getSize(305), height: getSize(387), marginTop: getSize(50)},
+  extraStyles: {
+    marginTop: getSize(100),
+    marginHorizontal: 38,
+  },
+  image: {
+    width: '100%',
+    height: getSize(490),
+    resizeMode: 'contain',
+    // borderRadius: getSize(20),
+  },
 });

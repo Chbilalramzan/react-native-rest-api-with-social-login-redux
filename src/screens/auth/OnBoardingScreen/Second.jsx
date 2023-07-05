@@ -29,12 +29,14 @@ const Second = () => {
         extraStylesh2={styles.extraStylesh1h2}
       />
 
+      <Image
+        source={require('../../../../assets/images/onboard2.png')}
+        style={styles.image}
+        resizeMode="contain"
+      />
+      {/*
       <View style={styles.card}>
-        <Image
-          source={require('../../../../assets/images/onboard/person.png')}
-          style={styles.image}
-          resizeMode="contain"
-        />
+
         <View style={styles.pos}>
           <MessageItem
             data={data}
@@ -43,7 +45,7 @@ const Second = () => {
             messageSize={10}
           />
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -59,6 +61,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  extraStyles: {
+    marginTop: getSize(100),
+    marginHorizontal: 16,
+  },
   extraStylesh1h2: {
     textAlign: 'center',
   },
@@ -70,5 +76,10 @@ const styles = StyleSheet.create({
     bottom: -40,
   },
   card: {alignItems: 'center', justifyContent: 'center'},
-  image: {width: getSize(305), height: getSize(387), marginTop: getSize(50)},
+  image: {
+    width: '100%',
+    height: getSize(500),
+    resizeMode: 'contain',
+    borderRadius: getSize(20),
+  },
 });

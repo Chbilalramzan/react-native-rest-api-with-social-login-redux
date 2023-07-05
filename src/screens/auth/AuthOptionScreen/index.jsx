@@ -11,31 +11,33 @@ const AuthOptionScreen = ({navigation}) => {
     navigation.navigate('Login');
   };
   return (
-    <AuthScreensSafeArea style={{paddingHorizontal: getSize(30)}}>
-      <Headings
-        h1={'Sign in, Start Investing, and Begin Earning'}
-        h2={'Select how you want to procees'}
-      />
-      <OptionItem
-        title={'Continue with Email'}
-        prefix={<Email />}
-        onPress={navigateToEmailLogin}
-      />
-      <OptionItem
-        title={'Continue with Google'}
-        prefix={<Google />}
-        onPress={() => {}}
-      />
-      <OptionItem
-        title={'Continue with Facebook'}
-        prefix={<Facebook />}
-        onPress={() => {}}
-      />
-      <OptionItem
-        title={'Continue with Apple'}
-        prefix={<Apple />}
-        onPress={() => {}}
-      />
+    <AuthScreensSafeArea hasShadow top>
+      <View style={{paddingHorizontal: getSize(30)}}>
+        <Headings
+          h1={'Sign in, Start Investing, and Begin Earning'}
+          h2={'Select how you want to procees'}
+        />
+        <OptionItem
+          title={'Continue with Email'}
+          prefix={<Email />}
+          onPress={navigateToEmailLogin}
+        />
+        <OptionItem
+          title={'Continue with Google'}
+          prefix={<Google />}
+          onPress={() => {}}
+        />
+        <OptionItem
+          title={'Continue with Facebook'}
+          prefix={<Facebook />}
+          onPress={() => {}}
+        />
+        <OptionItem
+          title={'Continue with Apple'}
+          prefix={<Apple />}
+          onPress={() => {}}
+        />
+      </View>
     </AuthScreensSafeArea>
   );
 };

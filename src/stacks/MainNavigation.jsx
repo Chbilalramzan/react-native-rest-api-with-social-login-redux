@@ -11,7 +11,7 @@ const MainNavigation = () => {
 
   return (
     <NavigationContainer ref={NavigationRef}>
-      {!isAuthenticated ? <AppNavigator /> : <AuthNavigator />}
+      {isAuthenticated ? <AppNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };

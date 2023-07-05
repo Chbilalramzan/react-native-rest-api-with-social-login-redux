@@ -2,6 +2,7 @@
 
 const Colors = {
   background: '#17161F',
+  onBoardingBackground: '#21202D',
   authButton: '#2C2B3C',
   white: '#FFFFFF',
   headingText: '#E6E6E6',
