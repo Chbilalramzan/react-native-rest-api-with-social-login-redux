@@ -8,8 +8,9 @@ import Colors from '../../../styles/Colors';
 import GradientButton from '../../../components/buttons/GradientButton';
 import TextMedium from '../../../components/Text/TextMedium';
 import TopicItem from './TopicItem';
+import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 
-const TopicSelectionScreen = () => {
+const TopicSelectionScreen = ({navigation}) => {
   const data = [
     {
       id: 0,
@@ -52,35 +53,49 @@ const TopicSelectionScreen = () => {
   const renderItem = ({item, index}) => {
     return <TopicItem item={item} onItemSelect={onItemSelect} />;
   };
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={data}
-        ListHeaderComponent={
-          <Headings
-            extraStyles={{marginTop: getSize(90)}}
-            h1={'Which of these topics are you interested in!'}
-            h2={'Select how you wants to proceed'}
-          />
-        }
-        renderItem={renderItem}
-        style={styles.flatList}
-      />
 
-      <View style={styles.bottomButton}>
-        <GradientButton buttonText={'Next'} />
-        <TouchableOpacity style={styles.skip} activeOpacity={0.7}>
-          <TextMedium text={'Skip'} fontSize={16} />
-        </TouchableOpacity>
+  const gotoConfirmationScreen = () => {
+    navigation.navigate('Confirmation');
+  };
+  return (
+    <AuthScreensSafeArea hasShadow bottom>
+      <View style={styles.container}>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={data}
+          ListHeaderComponent={
+            <Headings
+              extraStyles={{marginTop: getSize(90)}}
+              h1={'Which of these topics are you interested in!'}
+              h2={'Select how you wants to proceed'}
+            />
+          }
+          renderItem={renderItem}
+          style={styles.flatList}
+        />
+
+        <View style={styles.bottomButton}>
+          <GradientButton
+            buttonText={'Next'}
+            onPress={gotoConfirmationScreen}
+          />
+          <TouchableOpacity style={styles.skip} activeOpacity={0.7}>
+            <TextMedium
+              text={'Skip'}
+              fontSize={16}
+              onPress={gotoConfirmationScreen}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </AuthScreensSafeArea>
   );
 };
 
 export default TopicSelectionScreen;
 
 const styles = StyleSheet.create({
-  container: {paddingHorizontal: getSize(24), flex: 1},
+  container: {paddingHorizontal: getSize(24)},
   flatList: {
     marginBottom: getSize(170),
   },
@@ -88,9 +103,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: getSize(30),
+    backgroundColor: 'Transparent',
   },
   bottomButton: {
-    backgroundColor: Colors.background,
+    // backgroundColor: Colors.background,
     position: 'absolute',
     left: 0,
     right: 0,

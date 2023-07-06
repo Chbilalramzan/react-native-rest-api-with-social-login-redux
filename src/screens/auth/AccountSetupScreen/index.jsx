@@ -14,6 +14,7 @@ import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafe
 
 const AccountSetupScreen = ({navigation}) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
+  const [alertVisiblity, setAlertVisiblity] = useState(true);
 
   const clickPasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -23,63 +24,70 @@ const AccountSetupScreen = ({navigation}) => {
     navigation.goBack();
   };
   const gotoConfirmationScreen = () => {
-    navigation.navigate('Confirmation');
+    navigation.navigate('TopicSelection');
+  };
+
+  const closeAlert = () => {
+    setAlertVisiblity(false);
   };
   return (
-    <AuthScreensSafeArea style={styles.container}>
-      <Headings
-        h1={'Sign up, Start Investing, and Begin Earning'}
-        h2={'Get Started and enjoy the savings'}
-      />
+    <AuthScreensSafeArea hasShadow>
+      <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
+        <Headings
+          h1={'Sign up, Start Investing, and Begin Earning'}
+          h2={'Get Started and enjoy the savings'}
+        />
 
-      <TextField
-        placeholder={'Username'}
-        prefixIcon={<User width={getSize(20)} height={getSize(20)} />}
-      />
-      <TextField
-        placeholder={'Email'}
-        validateInput="email"
-        prefixIcon={<EmailPurple width={getSize(20)} height={getSize(20)} />}
-      />
-      <TextField
-        placeholder={'Password'}
-        prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
-        suffixIcon={
-          isPasswordVisible ? (
-            <Eye width={getSize(20)} height={getSize(20)} />
-          ) : (
-            <EyeCross width={getSize(20)} height={getSize(20)} />
-          )
-        }
-        isSecure={isPasswordVisible}
-        onSuffixPress={clickPasswordVisibility}
-      />
+        <TextField
+          placeholder={'Username'}
+          prefixIcon={<User width={getSize(20)} height={getSize(20)} />}
+        />
+        <TextField
+          placeholder={'Email'}
+          validateInput="email"
+          prefixIcon={<EmailPurple width={getSize(20)} height={getSize(20)} />}
+        />
+        <TextField
+          placeholder={'Password'}
+          prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+          suffixIcon={
+            isPasswordVisible ? (
+              <Eye width={getSize(20)} height={getSize(20)} />
+            ) : (
+              <EyeCross width={getSize(20)} height={getSize(20)} />
+            )
+          }
+          isSecure={isPasswordVisible}
+          onSuffixPress={clickPasswordVisibility}
+        />
 
-      <View style={{marginTop: getSize(32), marginBottom: getSize(32)}}>
-        <GradientButton
-          buttonText={'Create Account'}
-          onPress={gotoConfirmationScreen}
+        <View style={{marginTop: getSize(32), marginBottom: getSize(32)}}>
+          <GradientButton
+            buttonText={'Create Account'}
+            onPress={gotoConfirmationScreen}
+          />
+        </View>
+        <View style={{marginBottom: getSize(120)}}>
+          <Text style={[TextStyles.style500, styles.textStyle]}>
+            {'By creating an account, you agree to our '}
+            <Text style={[TextStyles.style600, {color: Colors.textPurple}]}>
+              {'Terms and Conditions. '}
+            </Text>
+            <Text>{'Please read our '}</Text>
+            <Text style={[TextStyles.style600, {color: Colors.textPurple}]}>
+              {'Policies.'}
+            </Text>
+          </Text>
+        </View>
+        <SocialAuth />
+        <BottomTextButton
+          text1={'Already have an account? '}
+          text2={'Sign in'}
+          onPress={navigateTologin}
         />
       </View>
-      <View style={{marginBottom: getSize(120)}}>
-        <Text style={[TextStyles.style500, styles.textStyle]}>
-          {'By creating an account, you agree to our '}
-          <Text style={[TextStyles.style600, {color: Colors.textPurple}]}>
-            {'Terms and Conditions. '}
-          </Text>
-          <Text>{'Please read our '}</Text>
-          <Text style={[TextStyles.style600, {color: Colors.textPurple}]}>
-            {'Policies.'}
-          </Text>
-        </Text>
-      </View>
-      <SocialAuth />
-      <BottomTextButton
-        text1={'Already have an account? '}
-        text2={'Sign in'}
-        onPress={navigateTologin}
-      />
-      {/* <AlertDialog /> */}
+
+      <AlertDialog isVisible={alertVisiblity} onClose={closeAlert} />
     </AuthScreensSafeArea>
   );
 };

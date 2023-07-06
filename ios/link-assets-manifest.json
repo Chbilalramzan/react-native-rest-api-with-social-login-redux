@@ -1,0 +1,25 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/GeneralSans-Bold.ttf",
+      "sha1": "2dc5b9908d7f2465aff2bed5243cdff8907ad27d"
+    },
+    {
+      "path": "assets/fonts/GeneralSans-Light.ttf",
+      "sha1": "0d33b5acad2760055dc409f700d3d38b24a81505"
+    },
+    {
+      "path": "assets/fonts/GeneralSans-Medium.ttf",
+      "sha1": "76717a55871484c722d660428ea7100d1a8646da"
+    },
+    {
+      "path": "assets/fonts/GeneralSans-Regular.ttf",
+      "sha1": "8c7219592ebe79f7b0fd9b9a7bbda5ac208bf7b7"
+    },
+    {
+      "path": "assets/fonts/GeneralSans-Semibold.ttf",
+      "sha1": "3775300e113dff8ce95a71f38df6f5dd37c3de48"
+    }
+  ]
+}

@@ -13,12 +13,23 @@ const GradientButton = ({
   extraTextStyle,
   ...props
 }) => {
-  const shadowStyle = Platform.select({
+  const outerShadow = Platform.select({
     ios: {
-      shadowColor: 'rgba(20, 102, 204, 0.16)',
+      shadowOffset: {width: 0, height: 20},
+      shadowColor: Colors.gradientButtonOuterShadow,
+      shadowOpacity: 0.16,
+      shadowRadius: 12,
+    },
+    android: {
+      elevation: 30,
+    },
+  });
+  const innerShadow = Platform.select({
+    ios: {
       shadowOffset: {width: 0, height: 15},
-      shadowOpacity: 1,
-      shadowRadius: 30,
+      shadowColor: Colors.gradientButtonInnerShadow,
+      shadowOpacity: 0.15,
+      shadowRadius: 24,
     },
     android: {
       elevation: 10,
@@ -26,23 +37,25 @@ const GradientButton = ({
   });
 
   return (
-    <View style={styles.shadowContainer}>
-      <LinearGradient
-        colors={[Colors.gradientButton2, Colors.gradientButton1]}
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        style={[
-          styles.gradient,
-          {height: buttonHeight ? buttonHeight : getSize(56)},
-        ]}>
-        <TouchableOpacity onPress={onPress} style={styles.button}>
-          <TextBold
-            text={buttonText}
-            fontSize={fontSize ? fontSize : 16}
-            extraStyles={extraTextStyle}
-          />
-        </TouchableOpacity>
-      </LinearGradient>
+    <View style={outerShadow}>
+      <View style={innerShadow}>
+        <LinearGradient
+          colors={[Colors.gradientButton2, Colors.gradientButton1]}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          style={[
+            styles.gradient,
+            {height: buttonHeight ? buttonHeight : getSize(56)},
+          ]}>
+          <TouchableOpacity onPress={onPress} style={styles.button}>
+            <TextBold
+              text={buttonText}
+              fontSize={fontSize ? fontSize : 16}
+              extraStyles={extraTextStyle}
+            />
+          </TouchableOpacity>
+        </LinearGradient>
+      </View>
     </View>
   );
 };
@@ -50,17 +63,7 @@ const GradientButton = ({
 export default GradientButton;
 
 const styles = StyleSheet.create({
-  shadowContainer: {
-    ...Platform.select({
-      ios: {
-        backgroundColor: 'transparent',
-      },
-      android: {
-        backgroundColor: 'white', // Background color should match parent's background
-        borderRadius: getSize(16),
-      },
-    }),
-  },
+  shadowContainer: {},
   gradient: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    // flex: 1,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -1,21 +1,10 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 import Headings from '../components/Headings';
-import MessageItem from './MessageItem';
 import getSize from '../../../utils/helpers';
-import {Note} from '../../../styles/SvgIcons';
 import Colors from '../../../styles/Colors';
 
 const Second = () => {
-  const data = {
-    icon: (
-      <View style={styles.noteIcon}>
-        <Note width={getSize(20)} height={getSize(20)} />
-      </View>
-    ),
-    title: 'Learn how to Investment with us',
-    message: 'Be the one and learn the tricks for finance.',
-  };
   return (
     <View>
       <Headings
@@ -34,18 +23,6 @@ const Second = () => {
         style={styles.image}
         resizeMode="contain"
       />
-      {/*
-      <View style={styles.card}>
-
-        <View style={styles.pos}>
-          <MessageItem
-            data={data}
-            extraStyle={{backgroundColor: Colors.gray1}}
-            titleSize={14}
-            messageSize={10}
-          />
-        </View>
-      </View> */}
     </View>
   );
 };

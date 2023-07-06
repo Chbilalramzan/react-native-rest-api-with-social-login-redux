@@ -2,34 +2,32 @@ import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 import getSize from '../../../utils/helpers';
 import Headings from '../components/Headings';
-import TextMedium from '../../../components/Text/TextMedium';
 import Colors from '../../../styles/Colors';
-import {Mail, Message, Messenger, OnBoard1} from '../../../styles/SvgIcons';
-import MessageItem from './MessageItem';
+import {Mail, Message, Messenger} from '../../../styles/SvgIcons';
 
 const First = () => {
-  const data = [
-    {
-      icon: <Message width={getSize(28)} height={getSize(28)} />,
-      title: 'Mike Tyson',
-      message: 'Hi, I am Mike! Make your finance more growsome',
-    },
-    {
-      icon: <Mail width={getSize(28)} height={getSize(28)} />,
-      title: 'Robert K',
-      message: 'The best of the Platform at to save money',
-    },
-    {
-      icon: <Messenger width={getSize(28)} height={getSize(28)} />,
-      title: 'Anna Thompson',
-      message: 'It was a great experience and got a mentor',
-    },
-    {
-      icon: <Message width={getSize(28)} height={getSize(28)} />,
-      title: 'Jennifer Laura',
-      message: 'Investing and now i am flexible in money',
-    },
-  ];
+  // const data = [
+  //   {
+  //     icon: <Message width={getSize(28)} height={getSize(28)} />,
+  //     title: 'Mike Tyson',
+  //     message: 'Hi, I am Mike! Make your finance more growsome',
+  //   },
+  //   {
+  //     icon: <Mail width={getSize(28)} height={getSize(28)} />,
+  //     title: 'Robert K',
+  //     message: 'The best of the Platform at to save money',
+  //   },
+  //   {
+  //     icon: <Messenger width={getSize(28)} height={getSize(28)} />,
+  //     title: 'Anna Thompson',
+  //     message: 'It was a great experience and got a mentor',
+  //   },
+  //   {
+  //     icon: <Message width={getSize(28)} height={getSize(28)} />,
+  //     title: 'Jennifer Laura',
+  //     message: 'Investing and now i am flexible in money',
+  //   },
+  // ];
   return (
     <View>
       <Headings

@@ -2,15 +2,15 @@ import {StyleSheet} from 'react-native';
 
 const TextStyles = StyleSheet.create({
   style700: {
-    fontFamily: 'GeneralSans-Regular',
+    fontFamily: 'GeneralSans-Bold',
     fontWeight: '700',
   },
   style600: {
-    fontFamily: 'GeneralSans-Regular',
+    fontFamily: 'GeneralSans-Semibold',
     fontWeight: '600',
   },
   style500: {
-    fontFamily: 'GeneralSans-Regular',
+    fontFamily: 'GeneralSans-Medium',
     fontWeight: '500',
   },
   style400: {

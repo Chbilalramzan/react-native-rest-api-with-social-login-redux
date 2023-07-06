@@ -29,58 +29,60 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <AuthScreensSafeArea style={styles.container}>
-      <Headings
-        h1={'Sign in, Start Investing, and Begin Earning'}
-        h2={'Get Started and enjoy the savings'}
-      />
-
-      <TextField
-        placeholder={'Email'}
-        validateInput="email"
-        prefixIcon={
-          <EmailPurple
-            color={Colors.iconPurple}
-            width={getSize(20)}
-            height={getSize(20)}
-          />
-        }
-      />
-      <TextField
-        placeholder={'Password'}
-        prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
-        suffixIcon={
-          isPasswordVisible ? (
-            <Eye width={getSize(20)} height={getSize(20)} />
-          ) : (
-            <EyeCross width={getSize(20)} height={getSize(20)} />
-          )
-        }
-        isSecure={isPasswordVisible}
-        onSuffixPress={clickPasswordVisibility}
-      />
-      <TouchableOpacity
-        style={styles.forgetPassword}
-        onPress={navigateToForgotPassword}>
-        <TextSemiBold
-          text={'Forget Password?'}
-          fontSize={14}
-          extraStyles={styles.extraTextStyle}
+    <AuthScreensSafeArea hasShadow top>
+      <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
+        <Headings
+          h1={'Sign in, Start Investing, and Begin Earning'}
+          h2={'Get Started and enjoy the savings'}
         />
-      </TouchableOpacity>
-      <View style={{marginTop: getSize(45), marginBottom: getSize(130)}}>
-        <GradientButton
-          buttonText={'Sign In'}
-          onPress={gotoConfirmationScreen}
+
+        <TextField
+          placeholder={'Email'}
+          validateInput="email"
+          prefixIcon={
+            <EmailPurple
+              color={Colors.iconPurple}
+              width={getSize(20)}
+              height={getSize(20)}
+            />
+          }
+        />
+        <TextField
+          placeholder={'Password'}
+          prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+          suffixIcon={
+            isPasswordVisible ? (
+              <Eye width={getSize(20)} height={getSize(20)} />
+            ) : (
+              <EyeCross width={getSize(20)} height={getSize(20)} />
+            )
+          }
+          isSecure={isPasswordVisible}
+          onSuffixPress={clickPasswordVisibility}
+        />
+        <TouchableOpacity
+          style={styles.forgetPassword}
+          onPress={navigateToForgotPassword}>
+          <TextSemiBold
+            text={'Forget Password?'}
+            fontSize={14}
+            extraStyles={styles.extraTextStyle}
+          />
+        </TouchableOpacity>
+        <View style={{marginTop: getSize(45), marginBottom: getSize(130)}}>
+          <GradientButton
+            buttonText={'Sign In'}
+            onPress={gotoConfirmationScreen}
+          />
+        </View>
+
+        <SocialAuth />
+        <BottomTextButton
+          text1={'Don’t have an account? '}
+          text2={'Sign Up'}
+          onPress={navigateToSignup}
         />
       </View>
-
-      <SocialAuth />
-      <BottomTextButton
-        text1={'Don’t have an account? '}
-        text2={'Sign Up'}
-        onPress={navigateToSignup}
-      />
     </AuthScreensSafeArea>
   );
 };

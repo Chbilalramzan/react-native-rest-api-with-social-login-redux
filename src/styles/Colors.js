@@ -10,6 +10,8 @@ const Colors = {
   heading3Text: '#E2E1EA',
   gradientButton1: '#8743FF',
   gradientButton2: '#4136F1',
+  gradientButtonOuterShadow: '#633CF7',
+  gradientButtonInnerShadow: '#1466CC',
   unfocusedInputBackground: '#424059',
   focusedInputBackground: '#2C2A3C',
   iconPurple: '#C0B0FF',

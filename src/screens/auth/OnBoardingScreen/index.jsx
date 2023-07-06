@@ -1,5 +1,5 @@
-import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import {StyleSheet, View, Animated} from 'react-native';
+import React, {useRef, useState} from 'react';
 import getSize from '../../../utils/helpers';
 import First from './First';
 import GradientButton from '../../../components/buttons/GradientButton';
@@ -9,26 +9,49 @@ import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafe
 import Colors from '../../../styles/Colors';
 
 const OnBoardingScreen = ({navigation}) => {
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = useState(0);
+  const opacityValue = useRef(new Animated.Value(1)).current;
 
   const updatePage = () => {
     console.log('click');
     if (index >= 2) {
       navigation.navigate('AuthOptions');
     } else {
-      setIndex(index + 1);
+      Animated.timing(opacityValue, {
+        toValue: 0,
+        duration: 600,
+        useNativeDriver: true,
+      }).start(() => {
+        setIndex(index + 1);
+        Animated.timing(opacityValue, {
+          toValue: 1,
+          duration: 600,
+          useNativeDriver: true,
+        }).start();
+      });
     }
   };
 
-  const showPage = () => {
-    return index === 0 ? <First /> : index === 1 ? <Second /> : <Third />;
+  const renderPage = () => {
+    switch (index) {
+      case 0:
+        return <First />;
+      case 1:
+        return <Second />;
+      case 2:
+        return <Third />;
+      default:
+        return null;
+    }
   };
 
   return (
     <AuthScreensSafeArea
       backgroundColor={Colors.onBoardingBackground}
       style={styles.container}>
-      {showPage()}
+      <Animated.View style={[styles.pageContainer, {opacity: opacityValue}]}>
+        {renderPage()}
+      </Animated.View>
       <View style={styles.bottomButton}>
         <GradientButton buttonText={'Next'} onPress={updatePage} />
       </View>
@@ -40,6 +63,7 @@ export default OnBoardingScreen;
 
 const styles = StyleSheet.create({
   container: {paddingHorizontal: getSize(0), flex: 1},
+  pageContainer: {flex: 1},
   bottomButton: {
     position: 'absolute',
     left: 0,

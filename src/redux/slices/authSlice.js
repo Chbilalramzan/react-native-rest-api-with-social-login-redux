@@ -35,7 +35,7 @@ const apiThunks = Object.entries(apiConfig).reduce((thunks, [name, config]) => {
 
 const initialState = {
   token: null,
-  isAuthenticated: true,
+  isAuthenticated: false,
   loading: false,
   error: null,
 };

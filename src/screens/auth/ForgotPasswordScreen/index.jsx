@@ -10,31 +10,33 @@ import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafe
 
 const ForgotPasswordScreen = () => {
   return (
-    <AuthScreensSafeArea style={styles.container}>
-      <Headings
-        h1={"Forgotten your password? We're here to help!"}
-        h2={'Enter your Email to get the password reset link'}
-      />
+    <AuthScreensSafeArea hasShadow top>
+      <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
+        <Headings
+          h1={"Forgotten your password? We're here to help!"}
+          h2={'Enter your Email to get the password reset link'}
+        />
 
-      <TextField
-        placeholder={'Email'}
-        validateInput="email"
-        prefixIcon={
-          <EmailPurple
-            color={Colors.iconPurple}
-            width={getSize(20)}
-            height={getSize(20)}
-          />
-        }
-      />
+        <TextField
+          placeholder={'Email'}
+          validateInput="email"
+          prefixIcon={
+            <EmailPurple
+              color={Colors.iconPurple}
+              width={getSize(20)}
+              height={getSize(20)}
+            />
+          }
+        />
 
-      <View
-        style={{
-          marginTop: getSize(11),
-          marginBottom: getSize(130),
-          marginHorizontal: getSize(20),
-        }}>
-        <GradientButton buttonText={'Send Email'} />
+        <View
+          style={{
+            marginTop: getSize(11),
+            marginBottom: getSize(130),
+            marginHorizontal: getSize(20),
+          }}>
+          <GradientButton buttonText={'Send Email'} />
+        </View>
       </View>
     </AuthScreensSafeArea>
   );

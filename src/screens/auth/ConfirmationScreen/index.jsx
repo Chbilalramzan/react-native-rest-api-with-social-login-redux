@@ -8,21 +8,23 @@ import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafe
 
 const ConfirmationScreen = () => {
   return (
-    <AuthScreensSafeArea style={styles.container}>
-      <View style={styles.center}>
-        <Send />
-        <Headings
-          h1={'You are ready to go.'}
-          h2={
-            'A Password reset link has been sent to your email, open your email and follow the instructions.'
-          }
-          extraStylesh1={styles.extraStylesh1h2}
-          extraStylesh2={styles.extraStylesh1h2}
-        />
-      </View>
+    <AuthScreensSafeArea hasShadow top>
+      <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
+        <View style={styles.center}>
+          <Send />
+          <Headings
+            h1={'You are ready to go.'}
+            h2={
+              'A Password reset link has been sent to your email, open your email and follow the instructions.'
+            }
+            extraStylesh1={styles.extraStylesh1h2}
+            extraStylesh2={styles.extraStylesh1h2}
+          />
+        </View>
 
-      <View style={styles.bottomButton}>
-        <GradientButton buttonText={"That's Great!"} />
+        <View style={styles.bottomButton}>
+          <GradientButton buttonText={"That's Great!"} />
+        </View>
       </View>
     </AuthScreensSafeArea>
   );

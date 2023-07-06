@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import getSize from '../../../utils/helpers';
 import LinearGradient from 'react-native-linear-gradient';
@@ -6,8 +6,19 @@ import Colors from '../../../styles/Colors';
 import {SendIcon} from '../../../styles/SvgIcons';
 
 const Send = () => {
+  const outerShadow = Platform.select({
+    ios: {
+      shadowColor: '#4437F2',
+      shadowOffset: {width: 0, height: 4},
+      shadowOpacity: 0.17,
+      shadowRadius: 50,
+    },
+    android: {
+      elevation: 10,
+    },
+  });
   return (
-    <View style={styles.OuterContainer}>
+    <View style={[styles.OuterContainer, outerShadow]}>
       <View style={styles.middleContainer}>
         <LinearGradient
           colors={[Colors.gradientButton2, Colors.gradientButton1]}

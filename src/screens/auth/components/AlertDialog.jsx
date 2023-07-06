@@ -8,16 +8,16 @@ import Colors from '../../../styles/Colors';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
 import {Cross} from '../../../styles/SvgIcons';
 
-const AlertDialog = ({text, onPress, ...props}) => {
+const AlertDialog = ({text, onClose, isVisible, ...props}) => {
   const shadowStyle = Platform.select({
     ios: {
-      shadowColor: '#000',
+      shadowColor: '#000000',
       shadowOffset: {
         width: 0,
-        height: 15,
+        height: 4,
       },
-      shadowOpacity: 0.16,
-      shadowRadius: 30,
+      shadowOpacity: 1,
+      shadowRadius: 25,
     },
     android: {
       elevation: 10,
@@ -25,8 +25,19 @@ const AlertDialog = ({text, onPress, ...props}) => {
   });
 
   return (
-    <View style={{flex: 1}}>
-      <Modal isVisible={true}>
+    <View>
+      <Modal
+        animationIn={'fadeIn'}
+        animationInTiming={600}
+        backdropTransitionInTiming={400}
+        animationOutTiming={1000}
+        backdropTransitionOutTiming={400}
+        animationOut={'fadeOut'}
+        useNativeDriver={true}
+        useNativeDriverForBackdrop={true}
+        isVisible={isVisible}
+        backdropOpacity={0.5}
+        backdropColor="black">
         <View
           style={[
             styles.alertView,
@@ -39,7 +50,7 @@ const AlertDialog = ({text, onPress, ...props}) => {
             size={46}
             icon={<Cross width={getSize(32)} height={getSize(32)} />}
             color={Colors.white}
-            onPress={() => {}}
+            onPress={onClose}
             extraStyles={styles.alignSelf}
           />
           <TextSemiBold
@@ -52,7 +63,7 @@ const AlertDialog = ({text, onPress, ...props}) => {
             <GradientButton
               buttonText={'Try Again'}
               extraStyles={{width: getSize(248)}}
-              onPress={onPress}
+              onPress={onClose}
             />
           </View>
         </View>

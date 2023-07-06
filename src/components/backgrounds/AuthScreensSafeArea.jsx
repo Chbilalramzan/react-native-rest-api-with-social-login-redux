@@ -5,7 +5,7 @@ import Colors from '../../styles/Colors';
 const AuthScreensSafeArea = ({
   style,
   backgroundColor,
-  top,
+  bottom,
   hasShadow,
   children,
 }) => {
@@ -21,18 +21,22 @@ const AuthScreensSafeArea = ({
         // style,
       ]}>
       <StatusBar hidden />
-      {hasShadow && top ? (
-        <Image
-          source={require('../../../assets/images/shadowblurr.png')}
-          style={styles.image}
-          resizeMode="cover"
-        />
+      {hasShadow ? (
+        bottom ? (
+          <Image
+            source={require('../../../assets/images/shadowblurrbot.png')}
+            style={styles.imageBottom}
+            resizeMode="cover"
+          />
+        ) : (
+          <Image
+            source={require('../../../assets/images/shadowblurr.png')}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        )
       ) : (
-        <Image
-          source={require('../../../assets/images/shadowblurrbot.png')}
-          style={styles.imageBottom}
-          resizeMode="cover"
-        />
+        <View />
       )}
       {children}
     </View>

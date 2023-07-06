@@ -1,10 +1,7 @@
 module.exports = {
   project: {
-    ios: {
-      // sourceDir:
-      //   '/Users/bilalramzan/Work/aisoftwares/polnew/polprovider/ios/Podfile',
-    },
+    ios: {},
     android: {},
   },
-  assets: ['./assets/fonts/'],
+  assets: ['./assets/fonts'],
 };
