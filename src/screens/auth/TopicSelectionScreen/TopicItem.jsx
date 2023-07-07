@@ -1,7 +1,7 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import getSize from '../../../utils/helpers';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 import TextMedium from '../../../components/Text/TextMedium';
 
 const TopicItem = ({item, onPress, onItemSelect, ...props}) => {

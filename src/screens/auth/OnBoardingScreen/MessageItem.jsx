@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import getSize from '../../../utils/helpers';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
 import TextRegular from '../../../components/Text/TextRegular';
 

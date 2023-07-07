@@ -2,7 +2,7 @@ import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import getSize from '../../../utils/helpers';
 import TextBold from '../../../components/Text/TextBold';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 import TextMedium from '../../../components/Text/TextMedium';
 
 const Headings = ({

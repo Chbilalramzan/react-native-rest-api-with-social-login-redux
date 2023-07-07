@@ -6,7 +6,7 @@ import DiscoverScreen from '../screens/discover';
 import CommunityScreen from '../screens/community';
 import ConnectionsScreen from '../screens/connections';
 import ProfileScreen from '../screens/Profile';
-import Colors from '../styles/Colors';
+import Colors from '../styles/Colors.jsx';
 import TabBar from './TabBar';
 
 const Tab = createBottomTabNavigator();

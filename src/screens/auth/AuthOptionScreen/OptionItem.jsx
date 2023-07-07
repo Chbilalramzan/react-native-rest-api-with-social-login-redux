@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
 import getSize from '../../../utils/helpers';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 
 const OptionItem = ({title, height, width, prefix, onPress}) => {
   return (

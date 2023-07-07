@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, View} from 'react-native';
 import getSize from '../../../utils/helpers';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 import {Google, Facebook, Apple} from '../../../styles/SvgIcons';
 
 const SocialAuth = ({onPressGoogle, onPressFacebook, onPressApple}) => {

@@ -6,7 +6,7 @@ import SocialAuth from '../components/SocialAuth';
 import BottomTextButton from '../AuthOptionScreen/BottomTextButton';
 import TextField from '../../../components/TextField';
 import {EmailPurple, Eye, EyeCross, Key} from '../../../styles/SvgIcons';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
 import GradientButton from '../../../components/buttons/GradientButton';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';

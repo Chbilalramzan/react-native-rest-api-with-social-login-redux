@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 import IconButton from '../../../components/buttons/IconButton';
 import GradientButton from '../../../components/buttons/GradientButton';
 import getSize from '../../../utils/helpers';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
 import {Cross} from '../../../styles/SvgIcons';
 

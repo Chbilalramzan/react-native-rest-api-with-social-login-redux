@@ -2,7 +2,7 @@ import {Platform, StyleSheet, View} from 'react-native';
 import React from 'react';
 import getSize from '../../../utils/helpers';
 import LinearGradient from 'react-native-linear-gradient';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 
 const Send = ({icon, ...props}) => {
   const outerShadow = Platform.select({

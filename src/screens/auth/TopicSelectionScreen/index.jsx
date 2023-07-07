@@ -4,7 +4,7 @@ import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
 import TextField from '../../../components/TextField';
 import {EmailPurple} from '../../../styles/SvgIcons';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 import GradientButton from '../../../components/buttons/GradientButton';
 import TextMedium from '../../../components/Text/TextMedium';
 import TopicItem from './TopicItem';

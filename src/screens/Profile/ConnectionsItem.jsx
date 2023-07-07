@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import getSize from '../../utils/helpers';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/Colors.jsx';
 import IconButton from '../../components/buttons/IconButton';
 import {Plus} from '../../styles/SvgIcons';
 

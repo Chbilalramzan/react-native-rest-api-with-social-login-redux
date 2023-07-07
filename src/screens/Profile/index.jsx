@@ -13,7 +13,7 @@ import {Edit, Pencil, Settings, Star} from '../../styles/SvgIcons';
 import TextSemiBold from '../../components/Text/TextSemiBold';
 import TextRegular from '../../components/Text/TextRegular';
 import TextMedium from '../../components/Text/TextMedium';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/Colors.jsx';
 import FollowersStacked from './FollowersStacked';
 import IconButton from '../../components/buttons/IconButton';
 import TextBold from '../../components/Text/TextBold';

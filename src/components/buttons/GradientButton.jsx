@@ -2,7 +2,7 @@ import React from 'react';
 import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import getSize from '../../utils/helpers';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/Colors.jsx';
 import TextBold from '../Text/TextBold';
 
 const GradientButton = ({

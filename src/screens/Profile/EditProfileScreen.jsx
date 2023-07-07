@@ -12,7 +12,7 @@ import {
 } from '../../styles/SvgIcons';
 import TextSemiBold from '../../components/Text/TextSemiBold';
 import TextRegular from '../../components/Text/TextRegular';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/Colors.jsx';
 import IconButton from '../../components/buttons/IconButton';
 import TextBold from '../../components/Text/TextBold';
 import GradientButton from '../../components/buttons/GradientButton';

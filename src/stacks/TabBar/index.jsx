@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {TouchableOpacity, View, StyleSheet} from 'react-native';
 import getSize from '../../utils/helpers';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/Colors.jsx';
 import TabBarIcon from './TabBarIcon';
 import TabBarLabel from './TabBarLabel';
 

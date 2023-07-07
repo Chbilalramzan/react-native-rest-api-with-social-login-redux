@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 import getSize from '../../utils/helpers';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/Colors.jsx';
 import TextStyles from '../../styles/TextStyles';
 import {validateEmail} from '../../utils/PermissionsAndValidations';
 

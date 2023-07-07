@@ -1,6 +1,6 @@
 import * as React from 'react';
 import TextSemiBold from '../../components/Text/TextSemiBold';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/Colors.jsx';
 import TextRegular from '../../components/Text/TextRegular';
 
 const TabBarLabel = ({route, focused, color}) => {

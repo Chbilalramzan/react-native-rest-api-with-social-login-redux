@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, StatusBar, View, Image} from 'react-native';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/Colors.jsx';
 
 const AuthScreensSafeArea = ({
   style,

@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, StatusBar, View} from 'react-native';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/Colors.jsx';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const AppSafeArea = ({style, children}) => {

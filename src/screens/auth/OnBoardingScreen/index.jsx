@@ -6,7 +6,7 @@ import GradientButton from '../../../components/buttons/GradientButton';
 import Second from './Second';
 import Third from './Third';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 
 const OnBoardingScreen = ({navigation}) => {
   const [index, setIndex] = useState(0);

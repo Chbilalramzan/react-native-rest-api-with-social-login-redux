@@ -2,7 +2,7 @@ import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 import getSize from '../../../utils/helpers';
 import Headings from '../components/Headings';
-import Colors from '../../../styles/Colors';
+import Colors from '../../../styles/Colors.jsx';
 
 const First = () => {
   return (
