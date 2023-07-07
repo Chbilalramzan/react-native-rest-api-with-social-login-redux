@@ -1,11 +1,10 @@
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import React from 'react';
 import getSize from '../../../utils/helpers';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../styles/Colors';
-import {SendIcon} from '../../../styles/SvgIcons';
 
-const Send = () => {
+const Send = ({icon, ...props}) => {
   const outerShadow = Platform.select({
     ios: {
       shadowColor: '#4437F2',
@@ -25,7 +24,7 @@ const Send = () => {
           start={{x: 0, y: 0}}
           end={{x: 0, y: 1}}
           style={styles.innerContainer}>
-          <SendIcon />
+          {icon}
         </LinearGradient>
       </View>
     </View>

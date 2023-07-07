@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>294334576451-mmh005ghvpst48t4som6e6bapu2s6bq6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.294334576451-mmh005ghvpst48t4som6e6bapu2s6bq6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDHOaPs2RtpjGUrUSyF1-rI414DMKQaHuE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>294334576451</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>b.up.finance</string>
+	<key>PROJECT_ID</key>
+	<string>b-up-finance</string>
+	<key>STORAGE_BUCKET</key>
+	<string>b-up-finance.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:294334576451:ios:f3e1942b9db4d3d660e1f6</string>
+</dict>
+</plist>

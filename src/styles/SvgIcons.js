@@ -23,6 +23,7 @@ export {default as Industry} from '../../assets/icons/industry.svg';
 export {default as Account} from '../../assets/icons/account.svg';
 export {default as Tone} from '../../assets/icons/twotone.svg';
 export {default as Plus} from '../../assets/icons/plus.svg';
+export {default as Tick} from '../../assets/icons/tick.svg';
 
 //** */ onboarding screen images
 export {default as User1} from '../../assets/images/onboard/ellipse.svg';

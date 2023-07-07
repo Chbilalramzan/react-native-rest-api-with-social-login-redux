@@ -3,31 +3,8 @@ import React from 'react';
 import getSize from '../../../utils/helpers';
 import Headings from '../components/Headings';
 import Colors from '../../../styles/Colors';
-import {Mail, Message, Messenger} from '../../../styles/SvgIcons';
 
 const First = () => {
-  // const data = [
-  //   {
-  //     icon: <Message width={getSize(28)} height={getSize(28)} />,
-  //     title: 'Mike Tyson',
-  //     message: 'Hi, I am Mike! Make your finance more growsome',
-  //   },
-  //   {
-  //     icon: <Mail width={getSize(28)} height={getSize(28)} />,
-  //     title: 'Robert K',
-  //     message: 'The best of the Platform at to save money',
-  //   },
-  //   {
-  //     icon: <Messenger width={getSize(28)} height={getSize(28)} />,
-  //     title: 'Anna Thompson',
-  //     message: 'It was a great experience and got a mentor',
-  //   },
-  //   {
-  //     icon: <Message width={getSize(28)} height={getSize(28)} />,
-  //     title: 'Jennifer Laura',
-  //     message: 'Investing and now i am flexible in money',
-  //   },
-  // ];
   return (
     <View>
       <Headings
@@ -44,16 +21,6 @@ const First = () => {
         source={require('../../../../assets/images/onboard1.png')}
         style={styles.image}
       />
-      {/* <View style={styles.card}>
-        <TextMedium text={'Save money, connect with groups'} fontSize={13} />
-
-        <View style={{marginTop: getSize(24)}}>
-          <MessageItem data={data[0]} />
-          <MessageItem data={data[1]} />
-          <MessageItem data={data[2]} />
-          <MessageItem data={data[3]} />
-        </View>
-      </View> */}
     </View>
   );
 };

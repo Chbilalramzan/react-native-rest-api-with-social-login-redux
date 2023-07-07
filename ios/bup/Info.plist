@@ -20,6 +20,32 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+	 	<dict>
+    		<key>CFBundleTypeRole</key>
+    		<string>Editor</string>
+    		<key>CFBundleURLSchemes</key>
+    		<array>
+      			<string>fb227203443502512</string>
+    		</array>
+ 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.294334576451-mmh005ghvpst48t4som6e6bapu2s6bq6</string>
+			</array>
+		</dict>
+		<dict/>
+	</array>
+	<key>FacebookAppID</key>
+	<string>227203443502512</string>
+	<key>FacebookClientToken</key>
+	<string>e5549492b6b2b7077589af4f06a74eef</string>
+	<key>FacebookDisplayName</key>
+	<string>B.Up Finance</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -36,7 +62,15 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GeneralSans-Bold.ttf</string>
+		<string>GeneralSans-Light.ttf</string>
+		<string>GeneralSans-Medium.ttf</string>
+		<string>GeneralSans-Regular.ttf</string>
+		<string>GeneralSans-Semibold.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -55,13 +89,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>GeneralSans-Bold.ttf</string>
-		<string>GeneralSans-Light.ttf</string>
-		<string>GeneralSans-Medium.ttf</string>
-		<string>GeneralSans-Regular.ttf</string>
-		<string>GeneralSans-Semibold.ttf</string>
-	</array>
 </dict>
 </plist>

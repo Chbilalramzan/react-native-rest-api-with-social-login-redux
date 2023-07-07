@@ -1,4 +1,4 @@
-package com.bup;
+package com.b.up.finance;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

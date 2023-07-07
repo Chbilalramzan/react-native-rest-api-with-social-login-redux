@@ -3,20 +3,30 @@ import React from 'react';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
 import TextField from '../../../components/TextField';
-import {EmailPurple} from '../../../styles/SvgIcons';
-import Colors from '../../../styles/Colors';
 import GradientButton from '../../../components/buttons/GradientButton';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 import ConfirmationMessage from './ConfirmationMessage';
+import {Eye, EyeCross, Key} from '../../../styles/SvgIcons';
+import * as Navigation from '../../../stacks/Navigation';
 
-const ForgotPasswordScreen = ({navigation}) => {
+const PasswordResetScreen = ({navigation}) => {
   const [confirmationMessage, setConfirmationMessage] = React.useState(false);
+  const [isNewPasswordVisible, setIsNewPasswordVisible] = React.useState(true);
+  const [isConfirmNewPasswordVisible, setIsConfirmNewPasswordVisible] =
+    React.useState(true);
+
+  const clickNewPasswordVisibility = () => {
+    setIsNewPasswordVisible(!isNewPasswordVisible);
+  };
+  const clickConfirmPasswordVisibility = () => {
+    setIsConfirmNewPasswordVisible(!isConfirmNewPasswordVisible);
+  };
+
   const opacityValue = React.useRef(new Animated.Value(1)).current;
 
   const onPressSendOTP = () => {
-    // setConfirmationMessage(true);
     if (confirmationMessage) {
-      navigation.navigate('OtpVerify');
+      Navigation.reset('Login', 2, {});
     } else {
       Animated.timing(opacityValue, {
         toValue: 0,
@@ -42,31 +52,45 @@ const ForgotPasswordScreen = ({navigation}) => {
         ]}>
         {confirmationMessage ? (
           <ConfirmationMessage
-            h1={'Reset password OTP send successfully.'}
+            h1={'Your password has been changed.'}
             h2={
-              'We have successfully forwarded you the 4 digit reset password OTP to your email.'
+              'Your password has been changed successfully, you can use new password to sign in.'
             }
-            Email={'email'}
-            buttonText={'Next'}
+            buttonText={'Take me to Sign in'}
             onPress={onPressSendOTP}
           />
         ) : (
           <View>
             <Headings
-              h1={"Forgotten your password? We're here to help!"}
-              h2={'Enter your Email to get the password reset link'}
+              h1={'Create your New password.'}
+              h2={'Get Started and enter your password.'}
             />
 
             <TextField
-              placeholder={'Email'}
-              validateInput="email"
-              prefixIcon={
-                <EmailPurple
-                  color={Colors.iconPurple}
-                  width={getSize(20)}
-                  height={getSize(20)}
-                />
+              placeholder={'New Password'}
+              prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+              suffixIcon={
+                isNewPasswordVisible ? (
+                  <Eye width={getSize(20)} height={getSize(20)} />
+                ) : (
+                  <EyeCross width={getSize(20)} height={getSize(20)} />
+                )
               }
+              isSecure={isNewPasswordVisible}
+              onSuffixPress={clickNewPasswordVisibility}
+            />
+            <TextField
+              placeholder={'Confirm New Password'}
+              prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+              suffixIcon={
+                isConfirmNewPasswordVisible ? (
+                  <Eye width={getSize(20)} height={getSize(20)} />
+                ) : (
+                  <EyeCross width={getSize(20)} height={getSize(20)} />
+                )
+              }
+              isSecure={isConfirmNewPasswordVisible}
+              onSuffixPress={clickConfirmPasswordVisibility}
             />
 
             <View
@@ -76,7 +100,7 @@ const ForgotPasswordScreen = ({navigation}) => {
                 marginHorizontal: getSize(20),
               }}>
               <GradientButton
-                buttonText={'Send Email'}
+                buttonText={'Create Password'}
                 onPress={onPressSendOTP}
               />
             </View>
@@ -87,7 +111,7 @@ const ForgotPasswordScreen = ({navigation}) => {
   );
 };
 
-export default ForgotPasswordScreen;
+export default PasswordResetScreen;
 
 const styles = StyleSheet.create({
   container: {paddingHorizontal: getSize(24), flex: 1},

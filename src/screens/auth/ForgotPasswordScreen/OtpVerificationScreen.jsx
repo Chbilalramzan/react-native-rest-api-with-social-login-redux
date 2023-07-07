@@ -9,14 +9,14 @@ import GradientButton from '../../../components/buttons/GradientButton';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 import ConfirmationMessage from './ConfirmationMessage';
 
-const ForgotPasswordScreen = ({navigation}) => {
+const OtpVerificationScreen = ({navigation}) => {
   const [confirmationMessage, setConfirmationMessage] = React.useState(false);
   const opacityValue = React.useRef(new Animated.Value(1)).current;
 
   const onPressSendOTP = () => {
     // setConfirmationMessage(true);
     if (confirmationMessage) {
-      navigation.navigate('OtpVerify');
+      navigation.navigate('PasswordReset');
     } else {
       Animated.timing(opacityValue, {
         toValue: 0,
@@ -42,32 +42,21 @@ const ForgotPasswordScreen = ({navigation}) => {
         ]}>
         {confirmationMessage ? (
           <ConfirmationMessage
-            h1={'Reset password OTP send successfully.'}
+            h1={'OTP verification successful'}
             h2={
-              'We have successfully forwarded you the 4 digit reset password OTP to your email.'
+              'Your verification has been done successfully, please proceed and change your password.'
             }
-            Email={'email'}
             buttonText={'Next'}
             onPress={onPressSendOTP}
           />
         ) : (
           <View>
             <Headings
-              h1={"Forgotten your password? We're here to help!"}
-              h2={'Enter your Email to get the password reset link'}
+              h1={'Enter your OTP from your email.'}
+              h2={'Enter your 4 digit code from your email.'}
             />
 
-            <TextField
-              placeholder={'Email'}
-              validateInput="email"
-              prefixIcon={
-                <EmailPurple
-                  color={Colors.iconPurple}
-                  width={getSize(20)}
-                  height={getSize(20)}
-                />
-              }
-            />
+            <TextField placeholder={'OTP'} validateInput="otp" />
 
             <View
               style={{
@@ -75,10 +64,7 @@ const ForgotPasswordScreen = ({navigation}) => {
                 marginBottom: getSize(130),
                 marginHorizontal: getSize(20),
               }}>
-              <GradientButton
-                buttonText={'Send Email'}
-                onPress={onPressSendOTP}
-              />
+              <GradientButton buttonText={'Verify'} onPress={onPressSendOTP} />
             </View>
           </View>
         )}
@@ -87,7 +73,7 @@ const ForgotPasswordScreen = ({navigation}) => {
   );
 };
 
-export default ForgotPasswordScreen;
+export default OtpVerificationScreen;
 
 const styles = StyleSheet.create({
   container: {paddingHorizontal: getSize(24), flex: 1},

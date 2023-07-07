@@ -3,15 +3,16 @@ import {StyleSheet, View} from 'react-native';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
 import GradientButton from '../../../components/buttons/GradientButton';
-import Send from './Send';
+import Send from '../components/Send';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
+import {SendIcon} from '../../../styles/SvgIcons';
 
 const ConfirmationScreen = () => {
   return (
     <AuthScreensSafeArea hasShadow top>
       <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
         <View style={styles.center}>
-          <Send />
+          <Send icon={<SendIcon />} />
           <Headings
             h1={'You are ready to go.'}
             h2={

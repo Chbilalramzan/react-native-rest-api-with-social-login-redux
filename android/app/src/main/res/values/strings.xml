@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">bup</string>
+    <string name="app_name">B.Up Finance</string>
+    <string name="facebook_app_id">227203443502512</string>
+    <string name="facebook_client_token">e5549492b6b2b7077589af4f06a74eef</string> 
 </resources>

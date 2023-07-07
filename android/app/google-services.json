@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "294334576451",
+    "project_id": "b-up-finance",
+    "storage_bucket": "b-up-finance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294334576451:android:d050284e48cc0e3d60e1f6",
+        "android_client_info": {
+          "package_name": "com.b.up.finance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294334576451-0rqmduamhc4jjtsou5q0t6a9ibtavo9o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.b.up.finance",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "294334576451-07b52aog2u37mtts8sns5dktbme2oosi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9pfCZxxGGDycYk2RAiWuXmZnYAycQJYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294334576451-07b52aog2u37mtts8sns5dktbme2oosi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "294334576451-mmh005ghvpst48t4som6e6bapu2s6bq6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "b.up.finance"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

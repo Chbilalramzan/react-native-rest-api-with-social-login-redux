@@ -1,4 +1,5 @@
 import React from 'react';
+import {StackActions, NavigationActions} from '@react-navigation/native';
 
 // Create a ref to hold the navigation container reference
 export const navigationRef = React.createRef();
@@ -17,9 +18,9 @@ export function goBack() {
   navigationRef.current?.goBack();
 }
 
-export function reset(routeName, params) {
+export function reset(routeName, index, params) {
   navigationRef.current?.reset({
-    index: 0,
+    index: index,
     routes: [{name: routeName, params}],
   });
 }
