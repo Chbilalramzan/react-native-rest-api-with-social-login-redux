@@ -1,5 +1,4 @@
 import React from 'react';
-import {StackActions, NavigationActions} from '@react-navigation/native';
 
 // Create a ref to hold the navigation container reference
 export const navigationRef = React.createRef();
