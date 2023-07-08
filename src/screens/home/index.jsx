@@ -1,6 +1,5 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import Colors from '../../styles/Colors';
+import React from 'react';
 import AppSafeArea from '../../components/backgrounds/AppSafeArea';
 import Header from '../../components/Header';
 import InterestItem from './components/InterestItem';
