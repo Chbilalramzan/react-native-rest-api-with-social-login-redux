@@ -3,25 +3,30 @@ import {TouchableOpacity, StyleSheet, View} from 'react-native';
 import getSize from '../../../utils/helpers';
 import Colors from '../../../styles/Colors.jsx';
 import {Google, Facebook, Apple} from '../../../styles/SvgIcons';
+import {
+  handleAppleSignIn,
+  handleFacebookSignin,
+  handleGoogleSignIn,
+} from '../../../utils/SocialAuth';
 
-const SocialAuth = ({onPressGoogle, onPressFacebook, onPressApple}) => {
+const SocialAuth = ({...props}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         activeOpacity={0.6}
-        onPress={onPressGoogle}
+        onPress={handleGoogleSignIn}
         style={[styles.button]}>
         <Google width={getSize(48)} height={getSize(48)} />
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.6}
-        onPress={onPressGoogle}
+        onPress={handleFacebookSignin}
         style={[styles.button]}>
         <Facebook width={getSize(48)} height={getSize(48)} />
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.6}
-        onPress={onPressGoogle}
+        onPress={handleAppleSignIn}
         style={[styles.button]}>
         <Apple width={getSize(48)} height={getSize(48)} />
       </TouchableOpacity>

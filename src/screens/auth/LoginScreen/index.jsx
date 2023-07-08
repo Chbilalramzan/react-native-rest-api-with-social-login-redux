@@ -30,8 +30,7 @@ const LoginScreen = ({navigation}) => {
     setIsPasswordVisible(!isPasswordVisible);
   };
   const navigateToForgotPassword = () => {
-    // navigation.navigate('ForgotPassword');
-    navigation.navigate('TopicSelection');
+    navigation.navigate('ForgotPassword');
   };
   const navigateToSignup = () => {
     navigation.navigate('Register');

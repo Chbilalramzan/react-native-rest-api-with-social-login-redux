@@ -32,9 +32,6 @@ const AccountSetupScreen = ({navigation}) => {
   const navigateTologin = () => {
     navigation.goBack();
   };
-  const gotoConfirmationScreen = () => {
-    navigation.navigate('TopicSelection');
-  };
 
   const closeAlert = () => {
     dispatch(resetError());
@@ -51,8 +48,6 @@ const AccountSetupScreen = ({navigation}) => {
       return;
     } else {
       dispatch(registerThunk({username, email, password1}));
-      // console.log(email, password);
-      // navigation.navigate('Confirmation');
     }
   };
 
