@@ -18,10 +18,16 @@ import FollowersStacked from './FollowersStacked';
 import IconButton from '../../components/buttons/IconButton';
 import TextBold from '../../components/Text/TextBold';
 import GradientButton from '../../components/buttons/GradientButton';
+import {useDispatch} from 'react-redux';
+import {logout} from '../../redux/slices/authSlice';
 
 const ProfileScreen = ({navigation}) => {
+  const dispatch = useDispatch();
   const gotoEditProfile = () => {
     navigation.navigate('EditProfile');
+  };
+  const logoutUser = () => {
+    dispatch(logout());
   };
   return (
     <AppSafeArea style={{paddingTop: getSize(0)}}>
@@ -111,7 +117,7 @@ const ProfileScreen = ({navigation}) => {
                 icon={<Pencil width={getSize(20)} height={getSize(20)} />}
                 size={getSize(40)}
                 color={Colors.gray2}
-                onPress={() => {}}
+                onPress={gotoEditProfile}
                 extraStyles={{marginEnd: getSize(10)}}
               />
               <IconButton
@@ -152,7 +158,6 @@ const ProfileScreen = ({navigation}) => {
             <View style={styles.activity2}>
               <IconButton
                 icon={<Edit width={getSize(35)} height={getSize(35)} />}
-                onPress={gotoEditProfile}
                 size={getSize(102)}
                 color={Colors.gray3}
                 extraStyles={{
@@ -178,7 +183,7 @@ const ProfileScreen = ({navigation}) => {
                 buttonHeight={getSize(45)}
                 buttonText={'Create a new Post'}
                 fontSize={12.9}
-                onPress={gotoEditProfile}
+                onPress={logoutUser}
               />
             </View>
           </View>

@@ -4,8 +4,14 @@ const validateEmail = email => {
 };
 
 const validatePassword = password => {
-  // Perform password validation logic
+  const regex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return regex.test(password);
   // Return true if the password is valid, false otherwise
 };
 
-export {validateEmail, validatePassword};
+const isEmpty = value => {
+  return value.trim() === '' || value === null;
+};
+
+export {validateEmail, validatePassword, isEmpty};

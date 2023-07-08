@@ -8,7 +8,7 @@ import Colors from '../../../styles/Colors.jsx';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
 import {Cross} from '../../../styles/SvgIcons';
 
-const AlertDialog = ({text, onClose, isVisible, ...props}) => {
+const AlertDialog = ({text, onClose, isVisible, message, ...props}) => {
   const shadowStyle = Platform.select({
     ios: {
       shadowColor: '#000000',
@@ -54,7 +54,7 @@ const AlertDialog = ({text, onClose, isVisible, ...props}) => {
             extraStyles={styles.alignSelf}
           />
           <TextSemiBold
-            text={'Ooopss, You are entering wrong username'}
+            text={message}
             color={Colors.orange1}
             fontSize={15}
             extraStyles={{alignSelf: 'center'}}

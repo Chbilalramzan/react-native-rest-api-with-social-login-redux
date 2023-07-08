@@ -10,22 +10,49 @@ import Colors from '../../../styles/Colors.jsx';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
 import GradientButton from '../../../components/buttons/GradientButton';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
+import {isEmpty} from '../../../utils/PermissionsAndValidations';
+import AlertDialog from '../components/AlertDialog';
+import {useDispatch, useSelector} from 'react-redux';
+import {loginThunk, resetError} from '../../../redux/slices/authSlice';
 
 const LoginScreen = ({navigation}) => {
+  const dispatch = useDispatch();
+  const {loading, isFailed, error} = useSelector(state => state.auth);
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
+  const [emailEmpty, setEmailEmpty] = useState(true);
+  const [passwordEmpty, setPasswordEmpty] = useState(true);
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const clickPasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
-
   const navigateToForgotPassword = () => {
     navigation.navigate('ForgotPassword');
   };
   const navigateToSignup = () => {
     navigation.navigate('Register');
   };
-  const gotoConfirmationScreen = () => {
-    navigation.navigate('Confirmation');
+
+  const closeAlert = () => {
+    dispatch(resetError());
+  };
+
+  const signIn = () => {
+    if (isEmpty(username)) {
+      setEmailEmpty(true);
+      return;
+    }
+    if (isEmpty(password)) {
+      setPasswordEmpty(true);
+      return;
+    } else {
+      dispatch(loginThunk({username, password}));
+      // console.log(email, password);
+      // navigation.navigate('Confirmation');
+    }
   };
 
   return (
@@ -37,8 +64,9 @@ const LoginScreen = ({navigation}) => {
         />
 
         <TextField
-          placeholder={'Email'}
-          validateInput="email"
+          placeholder={'Username'}
+          isEmpty={emailEmpty}
+          onChangeText={setUsername}
           prefixIcon={
             <EmailPurple
               color={Colors.iconPurple}
@@ -49,6 +77,9 @@ const LoginScreen = ({navigation}) => {
         />
         <TextField
           placeholder={'Password'}
+          validateInput={'password'}
+          isEmpty={passwordEmpty}
+          onChangeText={setPassword}
           prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
           suffixIcon={
             isPasswordVisible ? (
@@ -71,8 +102,9 @@ const LoginScreen = ({navigation}) => {
         </TouchableOpacity>
         <View style={{marginTop: getSize(45), marginBottom: getSize(130)}}>
           <GradientButton
+            disable={loading}
             buttonText={'Sign In'}
-            onPress={gotoConfirmationScreen}
+            onPress={signIn}
           />
         </View>
 
@@ -83,6 +115,7 @@ const LoginScreen = ({navigation}) => {
           onPress={navigateToSignup}
         />
       </View>
+      <AlertDialog isVisible={isFailed} onClose={closeAlert} message={error} />
     </AuthScreensSafeArea>
   );
 };

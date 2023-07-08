@@ -6,8 +6,16 @@ import GradientButton from '../../../components/buttons/GradientButton';
 import Send from '../components/Send';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 import {SendIcon} from '../../../styles/SvgIcons';
+import {useDispatch} from 'react-redux';
+import {isAuthenticated} from '../../../redux/slices/authSlice';
 
 const ConfirmationScreen = () => {
+  const dispatch = useDispatch();
+
+  const gotoHomeScreen = () => {
+    dispatch(isAuthenticated(true));
+  };
+
   return (
     <AuthScreensSafeArea hasShadow top>
       <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
@@ -24,7 +32,10 @@ const ConfirmationScreen = () => {
         </View>
 
         <View style={styles.bottomButton}>
-          <GradientButton buttonText={"That's Great!"} />
+          <GradientButton
+            buttonText={"That's Great!"}
+            onPress={gotoHomeScreen}
+          />
         </View>
       </View>
     </AuthScreensSafeArea>

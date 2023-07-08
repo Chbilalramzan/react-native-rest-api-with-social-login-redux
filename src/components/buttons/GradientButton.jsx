@@ -4,14 +4,15 @@ import LinearGradient from 'react-native-linear-gradient';
 import getSize from '../../utils/helpers';
 import Colors from '../../styles/Colors.jsx';
 import TextBold from '../Text/TextBold';
+import NativeActivityIndicator from '../ActivityIndicator';
 
 const GradientButton = ({
+  disable = false,
   buttonText,
-  buttonHeight,
+  buttonHeight = getSize(56),
   onPress,
-  fontSize,
+  fontSize = getSize(16),
   extraTextStyle,
-  ...props
 }) => {
   const outerShadow = Platform.select({
     ios: {
@@ -43,16 +44,20 @@ const GradientButton = ({
           colors={[Colors.gradientButton2, Colors.gradientButton1]}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
-          style={[
-            styles.gradient,
-            {height: buttonHeight ? buttonHeight : getSize(56)},
-          ]}>
-          <TouchableOpacity onPress={onPress} style={styles.button}>
-            <TextBold
-              text={buttonText}
-              fontSize={fontSize ? fontSize : 16}
-              extraStyles={extraTextStyle}
-            />
+          style={[styles.gradient, {height: buttonHeight}]}>
+          <TouchableOpacity
+            disabled={disable}
+            onPress={onPress}
+            style={styles.button}>
+            {disable ? (
+              <NativeActivityIndicator />
+            ) : (
+              <TextBold
+                text={buttonText}
+                fontSize={fontSize}
+                extraStyles={extraTextStyle}
+              />
+            )}
           </TouchableOpacity>
         </LinearGradient>
       </View>

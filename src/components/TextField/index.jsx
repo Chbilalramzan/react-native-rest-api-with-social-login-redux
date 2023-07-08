@@ -3,7 +3,10 @@ import {View, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 import getSize from '../../utils/helpers';
 import Colors from '../../styles/Colors.jsx';
 import TextStyles from '../../styles/TextStyles';
-import {validateEmail} from '../../utils/PermissionsAndValidations';
+import {
+  validateEmail,
+  validatePassword,
+} from '../../utils/PermissionsAndValidations';
 
 const TextField = ({
   placeholder,
@@ -11,7 +14,10 @@ const TextField = ({
   suffixIcon,
   onSuffixPress,
   validateInput,
+  onChangeText,
   isSecure,
+  isEmpty,
+  autoCapitalize = 'none',
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -23,15 +29,24 @@ const TextField = ({
 
   const handleBlur = () => {
     setIsFocused(false);
+    setIsValid(true);
   };
 
   const handleTextChange = inputText => {
     setText(inputText);
+    onChangeText(inputText);
+
+    if (isEmpty) {
+      setIsValid(isEmpty);
+    }
     // Perform validation logic here
     if (validateInput === 'email') {
-      const isValidEmail = validateEmail(inputText);
-      setIsValid(isValidEmail);
+      setIsValid(validateEmail(inputText));
     }
+    if (validateInput === 'password') {
+      setIsValid(validatePassword(inputText));
+    }
+
     // Placeholder validation logic, replace with your own logic
   };
 
@@ -52,6 +67,7 @@ const TextField = ({
         placeholder={placeholder}
         placeholderTextColor="gray"
         secureTextEntry={isSecure}
+        autoCapitalize={autoCapitalize}
       />
       {suffixIcon && (
         <TouchableOpacity

@@ -11,10 +11,19 @@ import GradientButton from '../../../components/buttons/GradientButton';
 import TextStyles from '../../../styles/TextStyles';
 import AlertDialog from '../components/AlertDialog';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
+import {useDispatch, useSelector} from 'react-redux';
+import {isEmpty} from '../../../utils/PermissionsAndValidations';
+import {registerThunk, resetError} from '../../../redux/slices/authSlice';
 
 const AccountSetupScreen = ({navigation}) => {
+  const dispatch = useDispatch();
+  const {loading, isFailed, error} = useSelector(state => state.auth);
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
-  const [alertVisiblity, setAlertVisiblity] = useState(true);
+
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password1, setPassword1] = useState('');
 
   const clickPasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -28,8 +37,25 @@ const AccountSetupScreen = ({navigation}) => {
   };
 
   const closeAlert = () => {
-    setAlertVisiblity(false);
+    dispatch(resetError());
   };
+
+  const register = () => {
+    if (isEmpty(username)) {
+      return;
+    }
+    if (isEmpty(email)) {
+      return;
+    }
+    if (isEmpty(password1)) {
+      return;
+    } else {
+      dispatch(registerThunk({username, email, password1}));
+      // console.log(email, password);
+      // navigation.navigate('Confirmation');
+    }
+  };
+
   return (
     <AuthScreensSafeArea hasShadow>
       <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
@@ -40,15 +66,19 @@ const AccountSetupScreen = ({navigation}) => {
 
         <TextField
           placeholder={'Username'}
+          onChangeText={setUsername}
           prefixIcon={<User width={getSize(20)} height={getSize(20)} />}
         />
         <TextField
           placeholder={'Email'}
           validateInput="email"
+          onChangeText={setEmail}
           prefixIcon={<EmailPurple width={getSize(20)} height={getSize(20)} />}
         />
         <TextField
           placeholder={'Password'}
+          validateInput={'password'}
+          onChangeText={setPassword1}
           prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
           suffixIcon={
             isPasswordVisible ? (
@@ -63,8 +93,9 @@ const AccountSetupScreen = ({navigation}) => {
 
         <View style={{marginTop: getSize(32), marginBottom: getSize(32)}}>
           <GradientButton
+            disable={loading}
             buttonText={'Create Account'}
-            onPress={gotoConfirmationScreen}
+            onPress={register}
           />
         </View>
         <View style={{marginBottom: getSize(120)}}>
@@ -87,7 +118,7 @@ const AccountSetupScreen = ({navigation}) => {
         />
       </View>
 
-      <AlertDialog isVisible={alertVisiblity} onClose={closeAlert} />
+      <AlertDialog isVisible={isFailed} onClose={closeAlert} message={error} />
     </AuthScreensSafeArea>
   );
 };
