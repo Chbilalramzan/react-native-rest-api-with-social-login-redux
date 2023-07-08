@@ -1,5 +1,5 @@
 import {Animated, StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
 import TextField from '../../../components/TextField';
@@ -8,29 +8,46 @@ import Colors from '../../../styles/Colors.jsx';
 import GradientButton from '../../../components/buttons/GradientButton';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 import ConfirmationMessage from './ConfirmationMessage';
+import {isEmpty} from '../../../utils/PermissionsAndValidations';
+import {postRequest} from '../../../services/Requests';
+import {EndPoint} from '../../../constants/APIEndpoints';
 
 const ForgotPasswordScreen = ({navigation}) => {
-  const [confirmationMessage, setConfirmationMessage] = React.useState(false);
-  const opacityValue = React.useRef(new Animated.Value(1)).current;
+  const [confirmationMessage, setConfirmationMessage] = useState(false);
+  const opacityValue = useRef(new Animated.Value(1)).current;
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
 
-  const onPressSendOTP = () => {
-    // setConfirmationMessage(true);
+  const onPressSendOtpToEmail = async () => {
     if (confirmationMessage) {
       navigation.navigate('OtpVerify');
     } else {
+      if (isEmpty(email)) {
+        return;
+      } else {
+        setLoading(true);
+        let response = await postRequest(EndPoint.password_reset, {email});
+        if (response.detail) {
+          setLoading(false);
+          updateView();
+        }
+      }
+    }
+  };
+
+  const updateView = () => {
+    Animated.timing(opacityValue, {
+      toValue: 0,
+      duration: 600,
+      useNativeDriver: true,
+    }).start(() => {
+      setConfirmationMessage(true);
       Animated.timing(opacityValue, {
-        toValue: 0,
+        toValue: 1,
         duration: 600,
         useNativeDriver: true,
-      }).start(() => {
-        setConfirmationMessage(true);
-        Animated.timing(opacityValue, {
-          toValue: 1,
-          duration: 600,
-          useNativeDriver: true,
-        }).start();
-      });
-    }
+      }).start();
+    });
   };
 
   return (
@@ -48,7 +65,7 @@ const ForgotPasswordScreen = ({navigation}) => {
             }
             Email={'email'}
             buttonText={'Next'}
-            onPress={onPressSendOTP}
+            onPress={onPressSendOtpToEmail}
           />
         ) : (
           <View>
@@ -56,10 +73,10 @@ const ForgotPasswordScreen = ({navigation}) => {
               h1={"Forgotten your password? We're here to help!"}
               h2={'Enter your Email to get the password reset link'}
             />
-
             <TextField
               placeholder={'Email'}
               validateInput="email"
+              onChangeText={setEmail}
               prefixIcon={
                 <EmailPurple
                   color={Colors.iconPurple}
@@ -68,7 +85,6 @@ const ForgotPasswordScreen = ({navigation}) => {
                 />
               }
             />
-
             <View
               style={{
                 marginTop: getSize(11),
@@ -76,8 +92,9 @@ const ForgotPasswordScreen = ({navigation}) => {
                 marginHorizontal: getSize(20),
               }}>
               <GradientButton
+                disable={loading}
                 buttonText={'Send Email'}
-                onPress={onPressSendOTP}
+                onPress={onPressSendOtpToEmail}
               />
             </View>
           </View>

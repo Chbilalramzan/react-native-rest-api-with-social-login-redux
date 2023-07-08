@@ -8,12 +8,19 @@ import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafe
 import ConfirmationMessage from './ConfirmationMessage';
 import {Eye, EyeCross, Key} from '../../../styles/SvgIcons';
 import * as Navigation from '../../../stacks/Navigation';
+import {isEmpty} from '../../../utils/PermissionsAndValidations';
+import {postRequest} from '../../../services/Requests';
+import {EndPoint} from '../../../constants/APIEndpoints';
 
-const PasswordResetScreen = ({navigation}) => {
+const PasswordResetScreen = ({navigation, route}) => {
+  const {otp} = route.params;
   const [confirmationMessage, setConfirmationMessage] = React.useState(false);
   const [isNewPasswordVisible, setIsNewPasswordVisible] = React.useState(true);
   const [isConfirmNewPasswordVisible, setIsConfirmNewPasswordVisible] =
     React.useState(true);
+  const [newPassword, setNewPassword] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
   const clickNewPasswordVisibility = () => {
     setIsNewPasswordVisible(!isNewPasswordVisible);
@@ -28,19 +35,45 @@ const PasswordResetScreen = ({navigation}) => {
     if (confirmationMessage) {
       Navigation.reset('Login', 2, {});
     } else {
+      console.log(otp);
+      if (isEmpty(newPassword)) {
+        return;
+      }
+      if (isEmpty(confirmPassword)) {
+        return;
+      }
+      if (confirmPassword !== newPassword) {
+        // show alert here
+        return;
+      } else {
+        setLoading(true);
+        let data = {
+          otp: otp,
+          new_password1: newPassword,
+          new_password2: confirmPassword,
+        };
+        let response = postRequest(EndPoint.new_password, data);
+        if (response.detail) {
+          setLoading(false);
+          updateView;
+        }
+      }
+    }
+  };
+
+  const updateView = () => {
+    Animated.timing(opacityValue, {
+      toValue: 0,
+      duration: 600,
+      useNativeDriver: true,
+    }).start(() => {
+      setConfirmationMessage(true);
       Animated.timing(opacityValue, {
-        toValue: 0,
+        toValue: 1,
         duration: 600,
         useNativeDriver: true,
-      }).start(() => {
-        setConfirmationMessage(true);
-        Animated.timing(opacityValue, {
-          toValue: 1,
-          duration: 600,
-          useNativeDriver: true,
-        }).start();
-      });
-    }
+      }).start();
+    });
   };
 
   return (
@@ -69,6 +102,7 @@ const PasswordResetScreen = ({navigation}) => {
             <TextField
               placeholder={'New Password'}
               prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+              onChangeText={setNewPassword}
               suffixIcon={
                 isNewPasswordVisible ? (
                   <Eye width={getSize(20)} height={getSize(20)} />
@@ -82,6 +116,7 @@ const PasswordResetScreen = ({navigation}) => {
             <TextField
               placeholder={'Confirm New Password'}
               prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+              onChangeText={setConfirmPassword}
               suffixIcon={
                 isConfirmNewPasswordVisible ? (
                   <Eye width={getSize(20)} height={getSize(20)} />
@@ -100,6 +135,7 @@ const PasswordResetScreen = ({navigation}) => {
                 marginHorizontal: getSize(20),
               }}>
               <GradientButton
+                disable={loading}
                 buttonText={'Create Password'}
                 onPress={onPressSendOTP}
               />
