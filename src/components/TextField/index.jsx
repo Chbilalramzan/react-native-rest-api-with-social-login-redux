@@ -57,7 +57,7 @@ const TextField = ({
         isFocused && styles.focusedContainer,
         !isValid && styles.invalidContainer,
       ]}>
-      <View style={styles.prefixContainer}>{prefixIcon}</View>
+      {prefixIcon && <View style={styles.prefixContainer}>{prefixIcon}</View>}
       <TextInput
         style={[styles.input, TextStyles.style500]}
         value={text}

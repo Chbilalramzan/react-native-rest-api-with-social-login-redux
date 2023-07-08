@@ -24,6 +24,9 @@ export {default as Account} from '../../assets/icons/account.svg';
 export {default as Tone} from '../../assets/icons/twotone.svg';
 export {default as Plus} from '../../assets/icons/plus.svg';
 export {default as Tick} from '../../assets/icons/tick.svg';
+export {default as Menu} from '../../assets/icons/menu.svg';
+export {default as Notification} from '../../assets/icons/notification.svg';
+export {default as Post} from '../../assets/icons/post.svg';
 
 //** */ onboarding screen images
 export {default as User1} from '../../assets/images/onboard/ellipse.svg';

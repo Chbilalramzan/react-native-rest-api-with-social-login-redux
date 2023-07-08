@@ -1,9 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
+  Dimensions,
   Image,
   ImageBackground,
+  Platform,
   ScrollView,
+  StatusBar,
   StyleSheet,
   View,
 } from 'react-native';
@@ -20,8 +23,12 @@ import TextBold from '../../components/Text/TextBold';
 import GradientButton from '../../components/buttons/GradientButton';
 import {useDispatch} from 'react-redux';
 import {logout} from '../../redux/slices/authSlice';
+import Header from '../../components/Header';
+import * as constants from '../../constants/constants';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const ProfileScreen = ({navigation}) => {
+  const insets = useSafeAreaInsets();
   const dispatch = useDispatch();
   const gotoEditProfile = () => {
     navigation.navigate('EditProfile');
@@ -30,11 +37,20 @@ const ProfileScreen = ({navigation}) => {
     dispatch(logout());
   };
   return (
-    <AppSafeArea style={{paddingTop: getSize(0)}}>
+    <AppSafeArea style={{paddingTop: 0}}>
       <ScrollView contentContainerStyle={{paddingBottom: getSize(36)}}>
         <ImageBackground
           source={require('../../../assets/images/profileBackground.png')}
           style={styles.imageBackground}>
+          <View
+            style={{
+              position: 'absolute',
+              right: 0,
+              left: 0,
+              top: constants.statusBarHeight(44),
+            }}>
+            <Header showMenu />
+          </View>
           <Image
             source={require('../../../assets/images/person2b.png')}
             style={styles.imageProfileb}
@@ -207,6 +223,11 @@ const styles = StyleSheet.create({
     borderRadius: getSize(90),
     position: 'absolute',
     top: getSize(170),
+  },
+  imageContainer: {
+    position: 'absolute',
+    top: getSize(170),
+    alignItems: 'center',
   },
   imageProfileb: {
     height: getSize(130),

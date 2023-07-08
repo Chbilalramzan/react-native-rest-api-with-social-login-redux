@@ -1,20 +1,14 @@
 import React from 'react';
 import {StyleSheet, StatusBar, View} from 'react-native';
 import Colors from '../../styles/Colors.jsx';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import * as constants from '../../constants/constants.jsx';
 
 const AppSafeArea = ({style, children}) => {
-  const insets = useSafeAreaInsets();
-  const [statusBarHeight, setStatusBarHeight] = React.useState(0);
-
-  React.useEffect(() => {
-    StatusBar.currentHeight && setStatusBarHeight(StatusBar.currentHeight);
-  }, []);
   return (
     <View
       style={[
         styles.container,
-        {paddingTop: statusBarHeight + insets.top},
+        {paddingTop: constants.statusBarHeight(48)},
         style,
       ]}>
       <StatusBar hidden />
@@ -26,7 +20,7 @@ const AppSafeArea = ({style, children}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.tabScreenBackgorund,
   },
 });
 
