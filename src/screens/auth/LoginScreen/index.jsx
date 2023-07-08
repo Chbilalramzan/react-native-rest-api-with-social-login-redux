@@ -30,7 +30,8 @@ const LoginScreen = ({navigation}) => {
     setIsPasswordVisible(!isPasswordVisible);
   };
   const navigateToForgotPassword = () => {
-    navigation.navigate('ForgotPassword');
+    // navigation.navigate('ForgotPassword');
+    navigation.navigate('TopicSelection');
   };
   const navigateToSignup = () => {
     navigation.navigate('Register');
@@ -50,8 +51,6 @@ const LoginScreen = ({navigation}) => {
       return;
     } else {
       dispatch(loginThunk({username, password}));
-      // console.log(email, password);
-      // navigation.navigate('Confirmation');
     }
   };
 

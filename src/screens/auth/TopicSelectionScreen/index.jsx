@@ -1,58 +1,94 @@
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
-import TextField from '../../../components/TextField';
-import {EmailPurple} from '../../../styles/SvgIcons';
-import Colors from '../../../styles/Colors.jsx';
 import GradientButton from '../../../components/buttons/GradientButton';
 import TextMedium from '../../../components/Text/TextMedium';
 import TopicItem from './TopicItem';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
+import {optionsRequest} from '../../../services/Requests';
+import {EndPoint} from '../../../constants/APIEndpoints';
 
 const TopicSelectionScreen = ({navigation}) => {
+  // const [data, setData] = useState([]);
+  // useEffect(() => {
+  //   getInterests();
+  // }, []);
+
+  // const getInterests = () => {
+  //   let response = optionsRequest(EndPoint.interests);
+  //   if (response) {
+  //     setData(response);
+  //   }
+  // };
+  const [selectedInterests, setSelectedInterests] = useState([]);
+
   const data = [
     {
       id: 0,
-      text: 'Investments',
+      name: 'Investments',
     },
     {
       id: 1,
-      text: 'Digital Market',
+      name: 'Digital Market',
     },
     {
       id: 2,
-      text: 'Capital Market',
+      name: 'Capital Market',
     },
     {
       id: 3,
-      text: 'Shares',
+      name: 'Shares',
     },
     {
       id: 4,
-      text: 'Real Estates',
+      name: 'Real Estates',
     },
     {
       id: 5,
-      text: 'Intial Investments',
+      name: 'Intial Investments',
     },
     {
       id: 6,
-      text: 'Crypto and NFT',
+      name: 'Crypto and NFT',
     },
     {
       id: 7,
-      text: 'I am new to this field',
+      name: 'I am new to this field',
     },
   ];
 
-  const onItemSelect = item => {
-    console.log(item.text);
-  };
+  const onItemSelect = useCallback(
+    item => {
+      setSelectedInterests(prevInterests => {
+        // Check if the item is already selected
+        const isSelected = prevInterests.some(
+          selectedItem => selectedItem.id === item.id,
+        );
+        // If the item is already selected, remove it from the interests array
+        if (isSelected) {
+          return prevInterests.filter(
+            selectedItem => selectedItem.id !== item.id,
+          );
+        }
+        // If the item is not selected, add it to the interests array
+        return [...prevInterests, item];
+      });
+    },
+    [setSelectedInterests],
+  );
 
-  const renderItem = ({item, index}) => {
-    return <TopicItem item={item} onItemSelect={onItemSelect} />;
-  };
+  const renderItem = useCallback(
+    ({item, index}) => (
+      <TopicItem
+        item={item}
+        selectedInterests={selectedInterests}
+        index={index}
+        onItemSelect={onItemSelect}
+      />
+    ),
+    [selectedInterests, onItemSelect],
+  );
 
   const gotoConfirmationScreen = () => {
     navigation.navigate('Confirmation');

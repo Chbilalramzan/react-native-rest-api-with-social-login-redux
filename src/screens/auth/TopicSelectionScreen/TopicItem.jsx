@@ -4,7 +4,17 @@ import getSize from '../../../utils/helpers';
 import Colors from '../../../styles/Colors.jsx';
 import TextMedium from '../../../components/Text/TextMedium';
 
-const TopicItem = ({item, onPress, onItemSelect, ...props}) => {
+const TopicItem = ({
+  item,
+  onPress,
+  selectedInterests,
+  onItemSelect,
+  index,
+  ...props
+}) => {
+  function isSelected() {
+    return selectedInterests.some(selectedItem => selectedItem.id === item.id);
+  }
   const onPressItem = () => {
     onItemSelect(item);
   };
@@ -14,16 +24,20 @@ const TopicItem = ({item, onPress, onItemSelect, ...props}) => {
       style={[
         styles.itemContainer,
         {
-          backgroundColor: Colors.authButton,
+          backgroundColor: isSelected() ? Colors.white : Colors.authButton,
         },
       ]}
       onPress={onPressItem}>
-      <TextMedium text={item.text} fontSize={14} />
+      <TextMedium
+        text={item.name}
+        fontSize={14}
+        color={isSelected() && 'black'}
+      />
     </TouchableOpacity>
   );
 };
 
-export default TopicItem;
+export default React.memo(TopicItem);
 
 const styles = StyleSheet.create({
   itemContainer: {

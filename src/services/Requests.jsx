@@ -79,3 +79,16 @@ export const postOTP = (endPoint, data) => {
 
   return fetchWithInterceptor(`${endPoint}`, options);
 };
+export const optionsRequest = (endPoint, data) => {
+  const options = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+  };
+
+  console.log('================Sent====================');
+  console.log(endPoint);
+  console.log(data);
+  console.log('====================================');
+
+  return fetchWithInterceptor(`${endPoint}`, options);
+};
