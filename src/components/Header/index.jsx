@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Platform} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import {Menu, Notification} from '../../styles/SvgIcons';
 import getSize from '../../utils/helpers';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -8,6 +7,8 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Colors from '../../styles/Colors';
 import TextSemiBold from '../Text/TextSemiBold';
 import TextField from '../TextField';
+import * as Navigation from '../../stacks/Navigation';
+import TextMedium from '../Text/TextMedium';
 
 const Header = ({
   showMenu,
@@ -16,17 +17,16 @@ const Header = ({
   title,
   showRightButton,
 }) => {
-  const navigation = useNavigation();
-
   const handleMenuPress = () => {
     // Handle left-side drawer icon press
     // Implement the logic for opening the drawer
+    Navigation.navigate('CreatePost');
   };
 
   const handleBackPress = () => {
     // Handle back icon press
     // Implement the logic for navigating back
-    navigation.goBack();
+    Navigation.goBack();
   };
 
   const handleNotificationPress = () => {
@@ -60,9 +60,8 @@ const Header = ({
         ) : null}
       </View>
       <View style={styles.middleContainer}>
-        {/* <Text style={styles.title}>{title}</Text> */}
         {title ? (
-          <TextSemiBold text={title} size={20} />
+          <TextSemiBold text={title} fontSize={20} extraStyles={styles.title} />
         ) : (
           <View style={{width: '100%'}}>
             <TextField
@@ -95,8 +94,11 @@ const Header = ({
               <Notification width={getSize(24)} height={getSize(24)} />
             </TouchableOpacity>
           ) : (
-            <TouchableOpacity onPress={() => console.log('Button pressed')}>
-              <Text style={styles.buttonText}>Button</Text>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.rightButton}
+              onPress={() => console.log('Button pressed')}>
+              <TextMedium text={'Post'} fontSize={16} />
             </TouchableOpacity>
           )}
         </View>
@@ -127,11 +129,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'black',
-  },
+  title: {textAlign: 'left', alignSelf: 'flex-start'},
   buttonText: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -153,6 +151,14 @@ const styles = StyleSheet.create({
     borderRadius: getSize(28),
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  rightButton: {
+    paddingVertical: getSize(9),
+    paddingHorizontal: getSize(15),
+    borderRadius: getSize(10),
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.purple1,
   },
 });
 

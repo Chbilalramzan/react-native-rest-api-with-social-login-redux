@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import EditProfileScreen from '../screens/Profile/EditProfileScreen';
 import TabNavigator from './TabNavigator';
 import {Animated, Easing, StyleSheet} from 'react-native';
+import CreatePostScreen from '../screens/home/CreatePostScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ const AppNavigator = () => {
         }}
         initialRouteName={'Tabs'}>
         <Stack.Screen name="Tabs" component={TabNavigator} />
+        <Stack.Screen name="CreatePost" component={CreatePostScreen} />
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       </Stack.Navigator>
     </Animated.View>
