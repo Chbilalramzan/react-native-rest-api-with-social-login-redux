@@ -6286,6 +6286,11 @@ react-native-device-info@^10.7.0:
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-10.7.0.tgz#f97f6f0da5d5a8775191566a667437c6ffc60417"
   integrity sha512-8PiuGwKFB/56mjl5uVuCFoBLZJonerJRS/CTPAsT1rbyrc9vDGAj93FmzYW9GBroKUtQwF2gSP2scQzMHB/rVg==
 
+react-native-fast-image@^8.6.3:
+  version "8.6.3"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.6.3.tgz#6edc3f9190092a909d636d93eecbcc54a8822255"
+  integrity sha512-Sdw4ESidXCXOmQ9EcYguNY2swyoWmx53kym2zRsvi+VeFCHEdkO+WG1DK+6W81juot40bbfLNhkc63QnWtesNg==
+
 react-native-fbsdk-next@^11.2.1:
   version "11.2.1"
   resolved "https://registry.yarnpkg.com/react-native-fbsdk-next/-/react-native-fbsdk-next-11.2.1.tgz#624b16c245c505887ad1dd17265ddaefb6c71e02"
@@ -6303,6 +6308,11 @@ react-native-gesture-handler@^2.12.0:
     invariant "^2.2.4"
     lodash "^4.17.21"
     prop-types "^15.7.2"
+
+react-native-image-crop-picker@^0.40.0:
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.40.0.tgz#cf378a4cbdb64b9b6ff94399b8515ff3bdccbf9c"
+  integrity sha512-FpqiCS4CiPQp8qIorlELWKbpi1d9lyhJki9spZr4LShv9hk65GWo6tYJupfTV19o5XcRwJn8d4MHIUoyWMJRTQ==
 
 react-native-linear-gradient@^2.7.3:
   version "2.7.3"

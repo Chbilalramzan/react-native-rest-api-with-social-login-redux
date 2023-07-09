@@ -15,10 +15,12 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import ProfileItem from '../CreatePostScreen/ProfileItem';
 import PostTextInput from '../../../components/TextField/PostTextInput';
 import AnimatedViewItem from './AnimatedViewItem';
+import * as Navigation from '../../../stacks/Navigation';
 
 const CreatePostButton = ({onPress}) => {
-  const [containerHeight, setContainerHeight] = useState(new Animated.Value(0));
+  const [containerHeight] = useState(new Animated.Value(0));
   const [isContainerOpen, setIsContainerOpen] = useState(false);
+  const [text, setText] = useState('');
 
   const handlePress = () => {
     if (isContainerOpen) {
@@ -37,6 +39,13 @@ const CreatePostButton = ({onPress}) => {
     }
 
     setIsContainerOpen(!isContainerOpen);
+  };
+
+  const gotoCreatePostScreen = () => {
+    Navigation.navigate('CreatePost', {text, openPicker: true});
+    setTimeout(() => {
+      handlePress();
+    }, 2000);
   };
 
   const animatedContainerOpacity = containerHeight.interpolate({
@@ -62,7 +71,7 @@ const CreatePostButton = ({onPress}) => {
             <TextBold
               text={'Create A New POST'}
               fontSize={16}
-              extraStyles={styles.extraTextStyle}
+              // extraStyles={styles.extraTextStyle}
             />
           </View>
           <Entypo
@@ -96,17 +105,13 @@ const CreatePostButton = ({onPress}) => {
           ]}>
           <View>
             <ProfileItem />
-            <PostTextInput />
+            <PostTextInput value={text} handleChangeText={setText} />
           </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-              marginHorizontal: 16,
-            }}>
+          <View style={styles.bottomButton}>
             <AnimatedViewItem
               itemTitle={'Add Photo/ Video'}
               itemIcon={<ImageIcon width={getSize(22)} height={getSize(22)} />}
+              onPress={gotoCreatePostScreen}
             />
             <AnimatedViewItem
               itemTitle={'Add People in the post'}
@@ -160,5 +165,10 @@ const styles = StyleSheet.create({
     borderRadius: getSize(15),
     overflow: 'hidden',
     backgroundColor: Colors.authButton,
+  },
+  bottomButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginHorizontal: 16,
   },
 });

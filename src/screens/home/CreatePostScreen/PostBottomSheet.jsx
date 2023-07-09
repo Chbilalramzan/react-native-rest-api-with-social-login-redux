@@ -8,6 +8,7 @@ import {NativeViewGestureHandler} from 'react-native-gesture-handler';
 import Colors from '../../../styles/Colors';
 import getSize from '../../../utils/helpers';
 import BottomSheetItem from './BottomSheetItem';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const PostBottomSheet = (
   {
@@ -18,6 +19,7 @@ const PostBottomSheet = (
     setSnapIndex,
     itemList,
     bottomSheetBackdrop,
+    isOpenImagePicker,
     ...props
   },
   bottomSheetRef,
@@ -30,11 +32,40 @@ const PostBottomSheet = (
     stiffness: 500,
   });
 
+  React.useEffect(() => {
+    if (isOpenImagePicker) {
+      chooseFromGallery();
+    }
+  }, [isOpenImagePicker, chooseFromGallery]);
+
+  const chooseFromGallery = React.useCallback(() => {
+    ImagePicker.openPicker({
+      compressImageQuality: 1,
+    }).then(image => {
+      props.setImagePath(image.path);
+      setSnapIndex(1);
+    });
+  }, [props, setSnapIndex]);
+
+  const onPressItem = index => {
+    switch (index) {
+      case 0:
+        chooseFromGallery();
+        break;
+      case 1:
+        break;
+      default:
+        break;
+    }
+  };
+
   const renderItem = ({item, index}) => (
     <BottomSheetItem
       itemTitle={item.title}
       itemIcon={item.icon}
+      index={index}
       iconBackgroundColor={item.iconBackgroundColor}
+      onPress={onPressItem}
     />
   );
 

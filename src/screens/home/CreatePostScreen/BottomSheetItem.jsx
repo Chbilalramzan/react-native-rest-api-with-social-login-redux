@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from '@gorhom/bottom-sheet';
 import getSize from '../../../utils/helpers';
@@ -8,14 +8,18 @@ import Colors from '../../../styles/Colors';
 const BottomSheetItem = ({
   itemTitle,
   itemIcon,
+  index,
   iconBackgroundColor,
   onPress,
   ...props
 }) => {
+  const onPressItem = () => {
+    onPress(index);
+  };
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={onPress}
+      onPress={onPressItem}
       style={styles.touch}>
       <View
         style={[styles.iconContainer, {backgroundColor: iconBackgroundColor}]}>

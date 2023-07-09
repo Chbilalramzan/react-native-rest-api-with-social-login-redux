@@ -1,21 +1,19 @@
-import {StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import AppSafeArea from '../../../components/backgrounds/AppSafeArea';
 import Header from '../../../components/Header';
 import Colors from '../../../styles/Colors';
 import BottomSheet from '@gorhom/bottom-sheet';
 import PostBottomSheet from './PostBottomSheet';
-import {CommunityRed, ImageIcon, UserMention} from '../../../styles/SvgIcons';
-import getSize from '../../../utils/helpers';
-import RoundImage from '../../../components/images/RoundImage';
-import TextSemiBold from '../../../components/Text/TextSemiBold';
-import TextMedium from '../../../components/Text/TextMedium';
-import TextStyles from '../../../styles/TextStyles';
+import {ImageIcon, UserMention} from '../../../styles/SvgIcons';
 import ProfileItem from './ProfileItem';
 import PostTextInput from '../../../components/TextField/PostTextInput';
+import BoxImage from '../../../components/images/BoxImage';
+import getSize from '../../../utils/helpers';
 
 const CreatePostScreen = ({navigation, route}) => {
-  const [text, setText] = React.useState('');
+  const [text, setText] = React.useState(route.params.text);
+  const [imagePath, setImagePath] = React.useState(null);
   const [snapIndex, setSnapIndex] = React.useState(1);
   // ref
   const bottomSheetRef = React.useRef < BottomSheet > null;
@@ -55,9 +53,22 @@ const CreatePostScreen = ({navigation, route}) => {
           setSnapIndex={setSnapIndex}
           itemList={bottomSheetItemList}
           bottomSheetBackdrop={null}
+          setImagePath={setImagePath}
+          isOpenImagePicker={route.params.openPicker}
         />
         <ProfileItem roleBackgroundColor={Colors.authButton} />
         <PostTextInput value={text} handleChangeText={handleChangeText} />
+        <View style={{marginHorizontal: getSize(24)}}>
+          {imagePath !== null && (
+            <BoxImage
+              path={{uri: imagePath}}
+              height={234}
+              width={'100%'}
+              radius={0}
+              resizeMode={'cover'}
+            />
+          )}
+        </View>
       </View>
     </AppSafeArea>
   );
