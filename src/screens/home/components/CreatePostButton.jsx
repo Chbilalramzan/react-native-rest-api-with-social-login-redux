@@ -11,7 +11,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import getSize from '../../../utils/helpers';
 import Colors from '../../../styles/Colors';
 import TextBold from '../../../components/Text/TextBold';
-import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ProfileItem from '../CreatePostScreen/ProfileItem';
 import PostTextInput from '../../../components/TextField/PostTextInput';
 import AnimatedViewItem from './AnimatedViewItem';
@@ -74,8 +74,8 @@ const CreatePostButton = ({onPress}) => {
               // extraStyles={styles.extraTextStyle}
             />
           </View>
-          <Entypo
-            name={isContainerOpen ? 'chevron-up' : 'chevron-down'}
+          <MaterialIcons
+            name={isContainerOpen ? 'expand-less' : 'expand-more'}
             size={getSize(24)}
             color={'white'}
           />
