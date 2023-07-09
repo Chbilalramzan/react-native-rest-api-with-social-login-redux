@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from '@gorhom/bottom-sheet';
-import getSize from '../../../utils/helpers';
-import TextMedium from '../../../components/Text/TextMedium';
-import Colors from '../../../styles/Colors';
+import getSize from '../../../../utils/helpers';
+import TextMedium from '../../../../components/Text/TextMedium';
+import Colors from '../../../../styles/Colors';
 
 const AnimatedViewItem = ({itemTitle, itemIcon, onPress, ...props}) => {
   return (

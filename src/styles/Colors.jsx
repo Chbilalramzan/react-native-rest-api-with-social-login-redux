@@ -29,6 +29,7 @@ const Colors = {
   gray3: '#414059',
   tabBarInActiveIconColor: '#A8A6BF',
   tabBarColor: '#0B0A10',
+  postBackgroundColor: '#282244',
   // Add more colors for the dark theme as needed
 };
 

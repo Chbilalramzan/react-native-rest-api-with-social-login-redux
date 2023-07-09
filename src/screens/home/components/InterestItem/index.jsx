@@ -1,9 +1,9 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import getSize from '../../../utils/helpers';
-import Colors from '../../../styles/Colors.jsx';
-import TextMedium from '../../../components/Text/TextMedium';
-import TextSemiBold from '../../../components/Text/TextSemiBold';
+import getSize from '../../../../utils/helpers';
+import Colors from '../../../../styles/Colors.jsx';
+import TextMedium from '../../../../components/Text/TextMedium';
+import TextSemiBold from '../../../../components/Text/TextSemiBold';
 
 const InterestItem = ({item, onPress, onItemSelect, index, ...props}) => {
   const {id, name, isSelected} = item;

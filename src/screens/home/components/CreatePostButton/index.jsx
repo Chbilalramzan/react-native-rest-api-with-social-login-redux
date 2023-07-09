@@ -6,16 +6,16 @@ import {
   Animated,
   Platform,
 } from 'react-native';
-import {ImageIcon, Post, UserMention} from '../../../styles/SvgIcons';
+import {ImageIcon, Post, UserMention} from '../../../../styles/SvgIcons';
 import LinearGradient from 'react-native-linear-gradient';
-import getSize from '../../../utils/helpers';
-import Colors from '../../../styles/Colors';
-import TextBold from '../../../components/Text/TextBold';
+import getSize from '../../../../utils/helpers';
+import Colors from '../../../../styles/Colors';
+import TextBold from '../../../../components/Text/TextBold';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import ProfileItem from '../CreatePostScreen/ProfileItem';
-import PostTextInput from '../../../components/TextField/PostTextInput';
+import ProfileItem from '../../CreatePostScreen/ProfileItem';
+import PostTextInput from '../../../../components/TextField/PostTextInput';
 import AnimatedViewItem from './AnimatedViewItem';
-import * as Navigation from '../../../stacks/Navigation';
+import * as Navigation from '../../../../stacks/Navigation';
 
 const CreatePostButton = ({onPress}) => {
   const [containerHeight] = useState(new Animated.Value(0));
@@ -83,6 +83,7 @@ const CreatePostButton = ({onPress}) => {
       </LinearGradient>
       <View
         style={{
+          marginBottom: isContainerOpen ? getSize(24) : 0,
           ...Platform.select({
             ios: {
               shadowColor: '#000000',

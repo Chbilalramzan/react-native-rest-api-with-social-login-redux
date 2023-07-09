@@ -1,10 +1,11 @@
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import AppSafeArea from '../../components/backgrounds/AppSafeArea';
 import Header from '../../components/Header';
-import InterestItem from './components/InterestItem';
 import getSize from '../../utils/helpers';
 import CreatePostButton from './components/CreatePostButton';
+import NewsFeed from './NewsFeed';
+import InterestItem from './components/InterestItem';
 
 const HomeScreen = ({navigation}) => {
   const [data] = React.useState([
@@ -44,19 +45,22 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <AppSafeArea>
-      <Header showMenu showNotification showRightButton />
-      <View>
-        <FlatList
-          contentContainerStyle={styles.contentContainer}
-          horizontal
-          data={data}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({item, index}) => (
-            <InterestItem item={item} onItemSelect={onItemSelect} />
-          )}
-        />
-      </View>
-      <CreatePostButton />
+      <ScrollView style={{flex: 1}}>
+        <Header showMenu showNotification showRightButton />
+        <View>
+          <FlatList
+            contentContainerStyle={styles.contentContainer}
+            horizontal
+            data={data}
+            keyExtractor={item => item.id.toString()}
+            renderItem={({item, index}) => (
+              <InterestItem item={item} onItemSelect={onItemSelect} />
+            )}
+          />
+        </View>
+        <CreatePostButton />
+        <NewsFeed />
+      </ScrollView>
     </AppSafeArea>
   );
 };

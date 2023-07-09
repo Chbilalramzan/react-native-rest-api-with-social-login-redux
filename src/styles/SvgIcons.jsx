@@ -30,6 +30,9 @@ export {default as Post} from '../../assets/icons/post.svg';
 export {default as ImageIcon} from '../../assets/icons/imageicon.svg';
 export {default as UserMention} from '../../assets/icons/usermention.svg';
 export {default as CommunityRed} from '../../assets/icons/communityRed.svg';
+export {default as Share} from '../../assets/icons/share.svg';
+export {default as Comment} from '../../assets/icons/comment.svg';
+export {default as UserGroup} from '../../assets/icons/usergroup.svg';
 
 //** */ onboarding screen images
 export {default as User1} from '../../assets/images/onboard/ellipse.svg';
