@@ -29,6 +29,7 @@ export {default as Notification} from '../../assets/icons/notification.svg';
 export {default as Post} from '../../assets/icons/post.svg';
 export {default as ImageIcon} from '../../assets/icons/imageicon.svg';
 export {default as UserMention} from '../../assets/icons/usermention.svg';
+export {default as CommunityRed} from '../../assets/icons/communityRed.svg';
 
 //** */ onboarding screen images
 export {default as User1} from '../../assets/images/onboard/ellipse.svg';

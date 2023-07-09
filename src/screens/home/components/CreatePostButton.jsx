@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -5,13 +6,15 @@ import {
   Animated,
   Platform,
 } from 'react-native';
-import React, {useState} from 'react';
-import {Post} from '../../../styles/SvgIcons';
+import {ImageIcon, Post, UserMention} from '../../../styles/SvgIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import getSize from '../../../utils/helpers';
 import Colors from '../../../styles/Colors';
 import TextBold from '../../../components/Text/TextBold';
 import Entypo from 'react-native-vector-icons/Entypo';
+import ProfileItem from '../CreatePostScreen/ProfileItem';
+import PostTextInput from '../../../components/TextField/PostTextInput';
+import AnimatedViewItem from './AnimatedViewItem';
 
 const CreatePostButton = ({onPress}) => {
   const [containerHeight, setContainerHeight] = useState(new Animated.Value(0));
@@ -35,6 +38,11 @@ const CreatePostButton = ({onPress}) => {
 
     setIsContainerOpen(!isContainerOpen);
   };
+
+  const animatedContainerOpacity = containerHeight.interpolate({
+    inputRange: [0, 220],
+    outputRange: [0, 1],
+  });
 
   return (
     <View style={{marginHorizontal: getSize(24)}}>
@@ -64,10 +72,51 @@ const CreatePostButton = ({onPress}) => {
           />
         </TouchableOpacity>
       </LinearGradient>
-      <Animated.View
-        style={[styles.animatedContainer, {height: containerHeight}]}>
-        {/* Content of the sliding container */}
-      </Animated.View>
+      <View
+        style={{
+          ...Platform.select({
+            ios: {
+              shadowColor: '#000000',
+              shadowOffset: {
+                width: 0,
+                height: -1,
+              },
+              shadowOpacity: 1,
+              shadowRadius: 16,
+            },
+            android: {
+              elevation: 8,
+            },
+          }),
+        }}>
+        <Animated.View
+          style={[
+            styles.animatedContainer,
+            {height: containerHeight, opacity: animatedContainerOpacity},
+          ]}>
+          <View>
+            <ProfileItem />
+            <PostTextInput />
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              marginHorizontal: 16,
+            }}>
+            <AnimatedViewItem
+              itemTitle={'Add Photo/ Video'}
+              itemIcon={<ImageIcon width={getSize(22)} height={getSize(22)} />}
+            />
+            <AnimatedViewItem
+              itemTitle={'Add People in the post'}
+              itemIcon={
+                <UserMention width={getSize(22)} height={getSize(22)} />
+              }
+            />
+          </View>
+        </Animated.View>
+      </View>
     </View>
   );
 };
@@ -109,21 +158,7 @@ const styles = StyleSheet.create({
   animatedContainer: {
     marginTop: getSize(14),
     borderRadius: getSize(15),
-    // overflow: 'hidden',
+    overflow: 'hidden',
     backgroundColor: Colors.authButton,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000000',
-        shadowOffset: {
-          width: 0,
-          height: -1,
-        },
-        shadowOpacity: 1,
-        shadowRadius: 16,
-      },
-      android: {
-        elevation: 8,
-      },
-    }),
   },
 });
