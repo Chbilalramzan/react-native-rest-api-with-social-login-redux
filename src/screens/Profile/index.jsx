@@ -1,12 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  Dimensions,
   Image,
   ImageBackground,
-  Platform,
   ScrollView,
-  StatusBar,
   StyleSheet,
   View,
 } from 'react-native';
@@ -25,16 +22,19 @@ import {useDispatch} from 'react-redux';
 import {logout} from '../../redux/slices/authSlice';
 import Header from '../../components/Header';
 import * as constants from '../../constants/constants';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const ProfileScreen = ({navigation}) => {
-  const insets = useSafeAreaInsets();
   const dispatch = useDispatch();
   const gotoEditProfile = () => {
     navigation.navigate('EditProfile');
   };
+
   const logoutUser = () => {
     dispatch(logout());
+  };
+
+  const gotoCreateAPost = () => {
+    navigation.navigate('CreatePost', {text: '', openPicker: false});
   };
   return (
     <AppSafeArea style={{paddingTop: 0}}>
@@ -180,6 +180,7 @@ const ProfileScreen = ({navigation}) => {
                   marginTop: getSize(28),
                   marginBottom: getSize(14),
                 }}
+                onPress={gotoCreateAPost}
               />
               <TextSemiBold
                 fontSize={18}
@@ -199,7 +200,7 @@ const ProfileScreen = ({navigation}) => {
                 buttonHeight={getSize(45)}
                 buttonText={'Create a new Post'}
                 fontSize={12.9}
-                onPress={logoutUser}
+                onPress={gotoCreateAPost}
               />
             </View>
           </View>

@@ -44,18 +44,6 @@ const BoxImage = ({
   );
 };
 
-//   return (
-//     <Image
-//       source={path}
-//       resizeMode={resizeMode}
-//       style={{
-//         width: width,
-//         height: getSize(height),
-//         borderRadius: getSize(radius),
-//       }}
-//     />
-//   );
-
 export default BoxImage;
 
 const styles = StyleSheet.create({
@@ -69,8 +57,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-// export default BoxImage;
-
-// const styles = StyleSheet.create({
-//   image: {},
-// });

@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import React from 'react';
 import AppSafeArea from '../../components/backgrounds/AppSafeArea';
 import Header from '../../components/Header';
@@ -7,7 +7,7 @@ import getSize from '../../utils/helpers';
 import CreatePostButton from './components/CreatePostButton';
 
 const HomeScreen = ({navigation}) => {
-  const [data, setData] = React.useState([
+  const [data] = React.useState([
     {
       id: 0,
       name: 'New',

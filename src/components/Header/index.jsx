@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Platform} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Platform} from 'react-native';
 import {Menu, Notification} from '../../styles/SvgIcons';
 import getSize from '../../utils/helpers';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -20,7 +20,6 @@ const Header = ({
   const handleMenuPress = () => {
     // Handle left-side drawer icon press
     // Implement the logic for opening the drawer
-    Navigation.navigate('CreatePost');
   };
 
   const handleBackPress = () => {
