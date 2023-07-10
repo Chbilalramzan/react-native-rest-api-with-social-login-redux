@@ -32,7 +32,7 @@ const CreatePostButton = ({onPress}) => {
     } else {
       Animated.spring(containerHeight, {
         toValue: 220,
-        speed: 4,
+        speed: 2,
         bounciness: 5,
         useNativeDriver: false,
       }).start();

@@ -5,6 +5,7 @@ import TopGroups from '../components/TopGroups';
 import TopMentors from '../components/TopMentors';
 import GroupsToFollow from '../components/GroupsToFollow';
 import TopBlogs from '../components/TopBlogs';
+import TopMentorsItem from '../components/TopMentors/TopMentorsItem';
 
 const NewsFeed = () => {
   return (

@@ -1,10 +1,37 @@
-import {StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import React from 'react';
 import getSize from '../../../../utils/helpers';
 import TextSemiBold from '../../../../components/Text/TextSemiBold';
 import Colors from '../../../../styles/Colors';
+import TopMentorsItem from './TopMentorsItem';
 
 const TopMentors = () => {
+  const data = [
+    {
+      id: 0,
+      image: require('../../../../../assets/images/TG1.png'),
+      name: 'Andrew Russell',
+      role: 'Financial Expert',
+      rating: '5',
+      company: 'Tuchman Company, CEO',
+    },
+    {
+      id: 1,
+      image: require('../../../../../assets/images/TG1.png'),
+      name: 'Waleed Khan',
+      role: 'UI/UX Designer',
+      rating: '5',
+      company: 'Tuchman Company, CEO',
+    },
+    {
+      id: 2,
+      image: require('../../../../../assets/images/TG1.png'),
+      name: 'Bill',
+      role: 'Financial Expert',
+      rating: '5',
+      company: 'Tuchman Company, CEO',
+    },
+  ];
   return (
     <View
       style={{
@@ -24,6 +51,13 @@ const TopMentors = () => {
           color={Colors.heading2Text}
         />
       </View>
+      <FlatList
+        horizontal
+        data={data}
+        style={styles.flatList}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item, index}) => <TopMentorsItem item={item} />}
+      />
     </View>
   );
 };
@@ -37,5 +71,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingEnd: getSize(24),
     marginBottom: getSize(8),
+  },
+  flatList: {
+    paddingTop: 50,
   },
 });
