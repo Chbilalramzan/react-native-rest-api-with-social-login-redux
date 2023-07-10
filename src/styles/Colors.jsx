@@ -10,6 +10,8 @@ const Colors = {
   headingText: '#E6E6E6',
   heading2Text: '#C5C4D4',
   heading3Text: '#E2E1EA',
+  heading4Text: '#B3ABD3',
+  heading5Text: '#E1DEED',
   gradientButton1: '#8743FF',
   gradientButton2: '#4136F1',
   gradientButtonOuterShadow: '#633CF7',

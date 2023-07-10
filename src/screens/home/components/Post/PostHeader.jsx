@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     padding: 10,
   },
-  type: {flexDirection: 'row', alignItems: 'center'},
+  type: {flexDirection: 'row', alignItems: 'center', marginTop: getSize(3)},
   extraStyles: {lineHeight: getSize(18)},
 });

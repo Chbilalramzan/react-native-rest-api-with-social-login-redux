@@ -12,31 +12,18 @@ const TopGroupsItem = ({item, index}) => {
   const {image, title, people} = item;
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={image}
-        style={{
-          height: getSize(186),
-          width: '100%',
-          borderRadius: getSize(15),
-        }}>
-        <Image
-          style={{
-            width: '100%',
-            height: '120%',
-            resizeMode: 'contain',
-            bottom: 0,
-          }}
-          source={require('../../../../../assets/images/filter/bluefilter.png')}
-        />
-      </ImageBackground>
-      {/* <BoxImage
-        path={image}
-        height={186}
-        width={'100%'}
-        radius={15}
-        resizeMode="cover"> */}
-
-      {/* </BoxImage> */}
+      <View style={styles.imageContainer}>
+        <ImageBackground
+          source={image}
+          style={styles.imageBackground}
+          resizeMode="cover">
+          <Image
+            source={require('../../../../../assets/images/filter/bluefilter.png')}
+            style={styles.filterImage}
+            resizeMode="cover"
+          />
+        </ImageBackground>
+      </View>
       <View style={styles.container2}>
         <View>
           <TextSemiBold text={title} fontSize={16} />
@@ -62,6 +49,20 @@ const TopGroupsItem = ({item, index}) => {
 export default TopGroupsItem;
 
 const styles = StyleSheet.create({
+  imageContainer: {
+    flex: 1,
+    borderRadius: getSize(15),
+    overflow: 'hidden',
+  },
+  imageBackground: {
+    flex: 1,
+    width: '100%',
+  },
+  filterImage: {
+    flex: 1,
+    width: '100%',
+    resizeMode: 'cover',
+  },
   container: {
     width: getSize(352),
     height: getSize(186),

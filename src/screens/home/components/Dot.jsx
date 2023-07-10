@@ -6,7 +6,7 @@ const Dot = ({
   size,
   marginHorizontal = 0,
   marginVertical = 0,
-  color,
+  color = '#AF9DFB',
   ...props
 }) => {
   return (

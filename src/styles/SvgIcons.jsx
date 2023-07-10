@@ -33,6 +33,8 @@ export {default as CommunityRed} from '../../assets/icons/communityRed.svg';
 export {default as Share} from '../../assets/icons/share.svg';
 export {default as Comment} from '../../assets/icons/comment.svg';
 export {default as UserGroup} from '../../assets/icons/usergroup.svg';
+export {default as UserWhite} from '../../assets/icons/userwhite.svg';
+export {default as AddUser} from '../../assets/icons/adduser.svg';
 
 //** */ onboarding screen images
 export {default as User1} from '../../assets/images/onboard/ellipse.svg';

@@ -1,12 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import AppSafeArea from '../../components/backgrounds/AppSafeArea';
 
 const DiscoverScreen = () => {
-  return (
-    <View>
-      <Text>DiscoverScreen</Text>
-    </View>
-  );
+  return <AppSafeArea />;
 };
 
 export default DiscoverScreen;

@@ -43,6 +43,7 @@ const TopGroups = () => {
       <FlatList
         horizontal
         data={data}
+        showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => <TopGroupsItem item={item} />}
       />
     </View>
