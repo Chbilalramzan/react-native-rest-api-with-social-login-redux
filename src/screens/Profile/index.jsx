@@ -140,7 +140,7 @@ const ProfileScreen = ({navigation}) => {
                 icon={<Settings width={getSize(20)} height={getSize(20)} />}
                 size={getSize(40)}
                 color={Colors.gray2}
-                onPress={() => {}}
+                onPress={logoutUser}
               />
             </View>
           </View>

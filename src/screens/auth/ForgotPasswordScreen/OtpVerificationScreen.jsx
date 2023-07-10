@@ -24,11 +24,11 @@ const OtpVerificationScreen = ({navigation}) => {
         return;
       } else {
         setLoading(true);
-        // let response = await postOTP(EndPoint.otp_verify, {otp});
-        // if (response.detail) {
-        //   setLoading(false);
-        updateView();
-        setLoading(false);
+        let response = await postOTP(EndPoint.otp_verify, {otp});
+        if (response.success) {
+          setLoading(false);
+          updateView();
+        }
       }
     }
   };

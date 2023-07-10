@@ -53,7 +53,7 @@ const PasswordResetScreen = ({navigation, route}) => {
           new_password2: confirmPassword,
         };
         let response = postRequest(EndPoint.new_password, data);
-        if (response.detail) {
+        if (response.success) {
           setLoading(false);
           updateView;
         }

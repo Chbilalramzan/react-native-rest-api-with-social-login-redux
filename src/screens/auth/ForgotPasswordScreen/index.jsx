@@ -11,12 +11,14 @@ import ConfirmationMessage from './ConfirmationMessage';
 import {isEmpty} from '../../../utils/PermissionsAndValidations';
 import {postRequest} from '../../../services/Requests';
 import {EndPoint} from '../../../constants/APIEndpoints';
+import AlertDialog from '../components/AlertDialog';
 
 const ForgotPasswordScreen = ({navigation}) => {
   const [confirmationMessage, setConfirmationMessage] = useState(false);
   const opacityValue = useRef(new Animated.Value(1)).current;
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
+  const [alert, setAlert] = useState(false);
 
   const onPressSendOtpToEmail = async () => {
     if (confirmationMessage) {
@@ -27,9 +29,12 @@ const ForgotPasswordScreen = ({navigation}) => {
       } else {
         setLoading(true);
         let response = await postRequest(EndPoint.password_reset, {email});
-        if (response.detail) {
+        if (response.success) {
           setLoading(false);
           updateView();
+        } else {
+          setAlert(true);
+          setLoading(false);
         }
       }
     }
@@ -100,6 +105,11 @@ const ForgotPasswordScreen = ({navigation}) => {
           </View>
         )}
       </Animated.View>
+      <AlertDialog
+        text={'Email Does not Exist. Please try different email.'}
+        isVisible={alert}
+        onClose={setAlert}
+      />
     </AuthScreensSafeArea>
   );
 };

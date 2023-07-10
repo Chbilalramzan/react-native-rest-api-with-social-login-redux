@@ -18,9 +18,8 @@ export const loginThunk = createAsyncThunk(
         },
         body: JSON.stringify(payload),
       }).then(response => response.json());
-
-      if (res.key) {
-        AsyncStorage.setItem('userToken', res.key);
+      if (res.success) {
+        AsyncStorage.setItem('userToken', res.data.Token);
         Navigation.navigate('Confirmation');
       }
       return res;
@@ -47,10 +46,12 @@ export const registerThunk = createAsyncThunk(
         },
         body: JSON.stringify(payload),
       }).then(response => response.json());
-      res;
 
       console.log(res);
-      Navigation.navigate('TopicSelection');
+      if (res.success) {
+        Navigation.navigate('TopicSelection');
+      }
+
       // if (data.stausCode === 200) {
       //   AsyncStorage.setItem('userToken', data.key);
       // }
@@ -117,10 +118,9 @@ const authSlice = createSlice({
       })
       .addCase(loginThunk.fulfilled, (state, {payload}) => {
         state.loading = false;
-        console.log(payload.statusCode);
         // Update state based on the specific API call
-        if (payload.key) {
-          state.token = payload.key;
+        if (payload.success) {
+          state.token = payload.data.Token;
           // state.isAuthenticated = true;
         } else {
           state.error = payload.non_field_errors;
@@ -142,8 +142,18 @@ const authSlice = createSlice({
       .addCase(registerThunk.fulfilled, (state, {payload}) => {
         state.loading = false;
         state.error = null;
-        if (payload.key) {
-          state.token = payload.key;
+        if (payload.success) {
+          state.token = ''; //token here
+        } else {
+          let concatenatedString = '';
+          Object.keys(payload).forEach(key => {
+            if (payload.hasOwnProperty(key)) {
+              concatenatedString += payload[key].join(' ');
+            }
+          });
+          state.error = concatenatedString;
+          state.token = null;
+          state.isFailed = true;
         }
       })
       .addCase(registerThunk.rejected, (state, {payload}) => {
