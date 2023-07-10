@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "294334576451-oejnn9qtn35ajup95pg8mj7pupsd9qp2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.b.up.finance",
+            "certificate_hash": "237553f2cb4486f9710165fb36e351eac5f66457"
+          }
+        },
+        {
           "client_id": "294334576451-07b52aog2u37mtts8sns5dktbme2oosi.apps.googleusercontent.com",
           "client_type": 3
         }

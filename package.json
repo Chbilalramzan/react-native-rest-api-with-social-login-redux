@@ -5,6 +5,9 @@
   "scripts": {
     "android": "npx react-native run-android",
     "ios": "npx react-native run-ios --simulator \"iPhone 14 Pro Max\"",
+    "release": "npx react-native run-android --mode=release",
+    "apk": "cd android && ./gradlew assembleRelease",
+    "aab": "cd android && ./gradlew bundleRelease",
     "lint": "eslint .",
     "start": "npx react-native start",
     "test": "jest",

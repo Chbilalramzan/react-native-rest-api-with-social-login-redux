@@ -51,9 +51,24 @@ react {
     // hermesFlags = ["-O", "-output-source-map"]
 }
 
-project.ext.vectoricons = [
-    iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ] // Name of the font files you want to copy
-]
+// project.ext.vectoricons = [
+//     iconFontNames: [		
+//         'AntDesign.ttf',
+// 		'Entypo.ttf',
+// 		'EvilIcons.ttf',
+// 		'Feather.ttf',
+// 		'FontAwesome.ttf',
+// 		'FontAwesome5_Brands.ttf',
+// 		'FontAwesome5_Regular.ttf',
+// 		'FontAwesome5_Solid.ttf',
+// 		'Fontisto.ttf',
+// 		'Foundation.ttf',
+// 		'Ionicons.ttf',
+// 		'MaterialIcons.ttf',
+// 		'MaterialCommunityIcons.ttf',
+// 		'SimpleLineIcons.ttf',
+// 		'Octicons.ttf', ] // Name of the font files you want to copy
+// ]
 
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
@@ -74,6 +89,20 @@ def enableProguardInReleaseBuilds = false
 def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
+        // Add this block to define a new task for bundling and asset cleaning
+    task bundleAndCleanAssetsRelease(type: Exec) {
+        workingDir '../../' // Set the working directory to the root of your project
+        commandLine 'npx', 'react-native', 'bundle',
+                '--platform', 'android',
+                '--dev', 'false',
+                '--entry-file', 'index.js',
+                '--bundle-output', 'android/app/src/main/assets/index.android.bundle',
+                '--assets-dest', 'android/app/build/intermediates/res/merged/release/'
+    }
+
+    // Configure the task to execute before the build
+    preBuild.dependsOn(bundleAndCleanAssetsRelease)
+
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -93,6 +122,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('RELEASE_STORE_FILE')) {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        }
     }
     buildTypes {
         debug {
@@ -101,7 +138,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
