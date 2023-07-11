@@ -5,9 +5,13 @@ import getSize from '../../utils/helpers';
 
 const TextBold = ({text, color, extraStyles, fontSize, ...props}) => {
   const textStyle = [
-    TextStyles.style700,
     extraStyles,
-    {fontSize: getSize(fontSize), color: color ? color : '#ffffff'},
+    {
+      fontSize: getSize(fontSize),
+      color: color ? color : '#ffffff',
+      fontFamily: 'GeneralSans-Bold',
+      ...TextStyles.style700,
+    },
   ];
 
   return (

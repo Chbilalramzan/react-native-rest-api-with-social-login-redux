@@ -55,11 +55,6 @@
 		B727ECF1245740048E4AD08D /* GeneralSans-Semibold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "GeneralSans-Semibold.ttf"; path = "../assets/fonts/GeneralSans-Semibold.ttf"; sourceTree = "<group>"; };
 		E602D7794E848BC264776E6F /* libPods-bup.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bup.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F3B407942A533C9C00633DA4 /* GeneralSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Semibold.ttf"; sourceTree = "<group>"; };
-		F3B407952A533C9D00633DA4 /* GeneralSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Regular.ttf"; sourceTree = "<group>"; };
-		F3B407962A533C9D00633DA4 /* GeneralSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Medium.ttf"; sourceTree = "<group>"; };
-		F3B407972A533C9D00633DA4 /* GeneralSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Light.ttf"; sourceTree = "<group>"; };
-		F3B407982A533C9D00633DA4 /* GeneralSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Bold.ttf"; sourceTree = "<group>"; };
 		F3E736782A5756DD0099114E /* bup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = bup.entitlements; path = bup/bup.entitlements; sourceTree = "<group>"; };
 		F3E7367C2A576E510099114E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3E7367E2A5770630099114E /* libGoogleSignIn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGoogleSignIn.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,11 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				F3E7367C2A576E510099114E /* GoogleService-Info.plist */,
-				F3B407982A533C9D00633DA4 /* GeneralSans-Bold.ttf */,
-				F3B407972A533C9D00633DA4 /* GeneralSans-Light.ttf */,
-				F3B407962A533C9D00633DA4 /* GeneralSans-Medium.ttf */,
-				F3B407952A533C9D00633DA4 /* GeneralSans-Regular.ttf */,
-				F3B407942A533C9C00633DA4 /* GeneralSans-Semibold.ttf */,
 				13B07FAE1A68108700A75B9A /* bup */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* bupTests */,
