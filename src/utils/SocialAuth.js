@@ -14,7 +14,12 @@ export const initializeSocialAuthHelpers = () => {
   // Configure Google Sign-In
   GoogleSignin.configure({
     scopes: ['email'],
-    webClientId: 'YOUR_WEB_CLIENT_ID',
+    androidClientId:
+      '294334576451-oejnn9qtn35ajup95pg8mj7pupsd9qp2.apps.googleusercontent.com',
+    iosClientId:
+      '294334576451-mmh005ghvpst48t4som6e6bapu2s6bq6.apps.googleusercontent.com',
+    webClientId:
+      '294334576451-tduamj75cvd3r8pbv5p023vmg23o3lnt.apps.googleusercontent.com',
     offlineAccess: true,
     forceCodeForRefreshToken: true,
   });
@@ -22,37 +27,53 @@ export const initializeSocialAuthHelpers = () => {
 
 //  Google Sign-In
 export const handleGoogleSignIn = async () => {
-  try {
-    await GoogleSignin.hasPlayServices();
-    const userInfo = await GoogleSignin.signIn();
+  initializeSocialAuthHelpers();
 
-    // Obtain the user's information
-    const {idToken, user} = userInfo;
-    const {email, givenName, familyName} = user;
+  await GoogleSignin.hasPlayServices()
+    .then(hasPlayService => {
+      if (hasPlayService) {
+        GoogleSignin.signIn().then(userInfo => {
+          // Obtain the user's information
+          const {idToken, user} = userInfo;
+          const {email, givenName, familyName} = user;
 
-    console.log(idToken, email, givenName, familyName);
-    if (userInfo) {
-      Navigation.navigate('TopicSelection');
-      return {success: true, data: userInfo};
-    }
+          console.log(idToken, email, givenName, familyName);
+          if (userInfo) {
+            Navigation.navigate('TopicSelection');
+            return {success: true, data: userInfo};
+          }
+        });
+      }
+    })
+    .catch(error => {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // User canceled the sign-in process
+        console.log('Google Sign-In canceled');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // Another sign-in process is already in progress
+        console.log('Another sign-in is in progress');
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // Play Services is not available on the device
+        console.log('Play Services not available');
+      } else {
+        // Other error occurred during sign-in
+        console.log('Google Sign-In error:', error.message);
+      }
+      return {success: false, error};
+    });
+  // const userInfo = await GoogleSignin.signIn();
 
-    // Make a POST request to your REST login API and include the user information
-  } catch (error) {
-    if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-      // User canceled the sign-in process
-      console.log('Google Sign-In canceled');
-    } else if (error.code === statusCodes.IN_PROGRESS) {
-      // Another sign-in process is already in progress
-      console.log('Another sign-in is in progress');
-    } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-      // Play Services is not available on the device
-      console.log('Play Services not available');
-    } else {
-      // Other error occurred during sign-in
-      console.log('Google Sign-In error:', error.message);
-    }
-    return {success: false, error};
-  }
+  // // Obtain the user's information
+  // const {idToken, user} = userInfo;
+  // const {email, givenName, familyName} = user;
+
+  // console.log(idToken, email, givenName, familyName);
+  // if (userInfo) {
+  //   Navigation.navigate('TopicSelection');
+  //   return {success: true, data: userInfo};
+  // }
+
+  // Make a POST request to your REST login API and include the user information
 };
 
 // Helper function for Facebook Login

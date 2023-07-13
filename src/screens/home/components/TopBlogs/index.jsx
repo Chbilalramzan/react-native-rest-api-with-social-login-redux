@@ -61,12 +61,12 @@ const TopBlogs = () => {
               radius={getSize(12)}
               resizeMode="cover"
             />
-            <View style={{marginStart: getSize(9)}}>
+            <View style={{flex: 1, marginStart: getSize(9)}}>
               <TextSemiBold
                 text={'Hidden Perks of Investments'}
                 fontSize={14}
               />
-              <View style={{width: getSize(270), marginTop: getSize(4)}}>
+              <View style={{marginTop: getSize(4)}}>
                 <TextRegular
                   text={
                     'Now a days its simple and very fast to buy NFT’s, its more of a investment on your assets. view more'
@@ -90,12 +90,12 @@ const TopBlogs = () => {
               radius={getSize(12)}
               resizeMode="cover"
             />
-            <View style={{marginStart: getSize(9)}}>
+            <View style={{flex: 1, marginStart: getSize(9)}}>
               <TextSemiBold
                 text={'How companies manage to get Big'}
                 fontSize={14}
               />
-              <View style={{width: getSize(270), marginTop: getSize(4)}}>
+              <View style={{marginTop: getSize(4)}}>
                 <TextRegular
                   text={
                     'Now a days its simple and very fast to buy NFT’s, its more of a investment on your assets. view more'
@@ -119,12 +119,12 @@ const TopBlogs = () => {
               radius={getSize(12)}
               resizeMode="cover"
             />
-            <View style={{marginStart: getSize(9)}}>
+            <View style={{flex: 1, marginStart: getSize(9)}}>
               <TextSemiBold
                 text={'The Hard life of investments'}
                 fontSize={14}
               />
-              <View style={{width: getSize(270), marginTop: getSize(4)}}>
+              <View style={{marginTop: getSize(4)}}>
                 <TextRegular
                   text={
                     'Now a days its simple and very fast to buy NFT’s, its more of a investment on your assets. view more'
