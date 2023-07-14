@@ -67,7 +67,12 @@ react {
 // 		'MaterialIcons.ttf',
 // 		'MaterialCommunityIcons.ttf',
 // 		'SimpleLineIcons.ttf',
-// 		'Octicons.ttf', ] // Name of the font files you want to copy
+// 		'Octicons.ttf',
+//         'GeneralSans-Bold.ttf',
+//         'GeneralSans-Light.ttf',
+//         'GeneralSans-Medium.ttf',
+//         'GeneralSans-Regular.ttf',
+//         'GeneralSans-SemiBold.ttf' ] // Name of the font files you want to copy
 // ]
 
 /**
