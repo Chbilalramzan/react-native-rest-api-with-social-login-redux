@@ -22,14 +22,14 @@
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-	 	<dict>
-    		<key>CFBundleTypeRole</key>
-    		<string>Editor</string>
-    		<key>CFBundleURLSchemes</key>
-    		<array>
-      			<string>fb227203443502512</string>
-    		</array>
- 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb227203443502512</string>
+			</array>
+		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
@@ -95,11 +95,11 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Octicons.ttf</string>
 		<string>Zocial.ttf</string>
-		<string>GeneralSans-Bold.ttf</string>
-		<string>GeneralSans-Light.ttf</string>
-		<string>GeneralSans-Medium.ttf</string>
-		<string>GeneralSans-Regular.ttf</string>
-		<string>GeneralSans-Semibold.ttf</string>
+		<string>GeneralSans-Bold.otf</string>
+		<string>GeneralSans-Light.otf</string>
+		<string>GeneralSans-Medium.otf</string>
+		<string>GeneralSans-Regular.otf</string>
+		<string>GeneralSans-Semibold.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
