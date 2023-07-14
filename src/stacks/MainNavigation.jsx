@@ -5,12 +5,15 @@ import AuthNavigator from './AuthNavigator';
 import {useSelector} from 'react-redux';
 import {NavigationRef} from './Navigation';
 import SplashScreen from 'react-native-splash-screen';
+import {Platform} from 'react-native';
 
 const MainNavigation = () => {
   const {isAuthenticated} = useSelector(state => state.auth);
 
   React.useEffect(() => {
-    SplashScreen.hide();
+    if (Platform.OS === 'android') {
+      SplashScreen.hide();
+    }
   }, []);
 
   return (
