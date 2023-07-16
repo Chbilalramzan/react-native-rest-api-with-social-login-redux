@@ -58,6 +58,7 @@ const LoginScreen = ({navigation}) => {
       <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
         <Headings
           h1={'Sign in, Start Investing, and Begin Earning'}
+          fontSizeh1={32}
           h2={'Get Started and enjoy the savings'}
         />
 

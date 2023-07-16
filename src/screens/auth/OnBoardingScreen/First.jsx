@@ -14,7 +14,7 @@ const First = () => {
           'Welcome to B.UP! Start your financial journey and connect with mentors to achieve your goals.'
         }
         extraStyles={styles.extraStyles}
-        extraStylesh1={styles.extraStylesh1h2}
+        extraStylesh1={[styles.extraStylesh1h2, {lineHeight: getSize(31.6)}]}
         extraStylesh2={styles.extraStylesh1h2}
       />
       <Image

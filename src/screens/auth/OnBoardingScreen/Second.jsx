@@ -14,7 +14,7 @@ const Second = () => {
           'Discover the power of financial community. Join \nB.UP, connect, learn, and rise through the ranks'
         }
         extraStyles={styles.extraStyles}
-        extraStylesh1={styles.extraStylesh1h2}
+        extraStylesh1={[styles.extraStylesh1h2, {lineHeight: getSize(31.6)}]}
         extraStylesh2={styles.extraStylesh1h2}
       />
 

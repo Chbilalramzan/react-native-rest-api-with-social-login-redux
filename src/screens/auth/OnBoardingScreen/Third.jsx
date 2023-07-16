@@ -13,7 +13,7 @@ const Second = () => {
           'Get ready to elevate your finances! B.UP connects you with mentors and rewards your progress with rankings and titles'
         }
         extraStyles={styles.extraStyles}
-        extraStylesh1={styles.extraStylesh1h2}
+        extraStylesh1={[styles.extraStylesh1h2, {lineHeight: getSize(31.6)}]}
         extraStylesh2={styles.extraStylesh1h2}
       />
 

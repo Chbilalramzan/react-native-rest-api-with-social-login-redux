@@ -1,4 +1,4 @@
-import {Platform, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import React from 'react';
 import OptionItem from './OptionItem';
 import {Email, Google, Facebook, Apple} from '../../../styles/SvgIcons';
@@ -23,7 +23,7 @@ const AuthOptionScreen = ({navigation}) => {
 
   return (
     <AuthScreensSafeArea hasShadow top>
-      <View style={{paddingHorizontal: getSize(30)}}>
+      <View style={{paddingHorizontal: getSize(29)}}>
         <Headings
           h1={'Sign in, Start Investing, and Begin Earning'}
           h2={'Select how you want to procees'}
@@ -56,3 +56,7 @@ const AuthOptionScreen = ({navigation}) => {
 };
 
 export default AuthOptionScreen;
+
+const styles = StyleSheet.create({
+  extraStylesh1: {lineHeight: 41.6},
+});
