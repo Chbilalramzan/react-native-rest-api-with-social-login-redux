@@ -36,9 +36,10 @@ const SocialAuth = ({...props}) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: getSize(51),
+    marginHorizontal: getSize(48),
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: 32,
   },
   button: {
     height: getSize(80),

@@ -1,4 +1,4 @@
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import TextBold from '../../../components/Text/TextBold';
 import TextRegular from '../../../components/Text/TextRegular';
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    bottom: getSize(28),
+    bottom: Platform.OS === 'ios' ? getSize(28) : 8,
     left: 0,
     right: 0,
   },

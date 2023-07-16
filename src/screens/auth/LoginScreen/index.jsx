@@ -1,5 +1,12 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
 import SocialAuth from '../components/SocialAuth';
@@ -55,65 +62,73 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <AuthScreensSafeArea hasShadow top>
-      <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
-        <Headings
-          h1={'Sign in, Start Investing, and Begin Earning'}
-          fontSizeh1={32}
-          h2={'Get Started and enjoy the savings'}
-        />
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContainer}
+          keyboardShouldPersistTaps="always">
+          <Headings
+            h1={'Sign in, Start Investing, and Begin Earning'}
+            fontSizeh1={32}
+            h2={'Get Started and enjoy the savings'}
+          />
 
-        <TextField
-          placeholder={'Username'}
-          isEmpty={emailEmpty}
-          onChangeText={setUsername}
-          prefixIcon={
-            <EmailPurple
-              color={Colors.iconPurple}
-              width={getSize(20)}
-              height={getSize(20)}
+          <TextField
+            placeholder={'Username'}
+            isEmpty={emailEmpty}
+            onChangeText={setUsername}
+            prefixIcon={
+              <EmailPurple
+                color={Colors.iconPurple}
+                width={getSize(20)}
+                height={getSize(20)}
+              />
+            }
+          />
+          <TextField
+            placeholder={'Password'}
+            validateInput={'password'}
+            isEmpty={passwordEmpty}
+            onChangeText={setPassword}
+            prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+            suffixIcon={
+              isPasswordVisible ? (
+                <Eye width={getSize(20)} height={getSize(20)} />
+              ) : (
+                <EyeCross width={getSize(20)} height={getSize(20)} />
+              )
+            }
+            isSecure={isPasswordVisible}
+            onSuffixPress={clickPasswordVisibility}
+          />
+          <TouchableOpacity
+            style={styles.forgetPassword}
+            onPress={navigateToForgotPassword}>
+            <TextSemiBold
+              text={'Forget Password?'}
+              fontSize={14}
+              extraStyles={styles.extraTextStyle}
             />
-          }
-        />
-        <TextField
-          placeholder={'Password'}
-          validateInput={'password'}
-          isEmpty={passwordEmpty}
-          onChangeText={setPassword}
-          prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
-          suffixIcon={
-            isPasswordVisible ? (
-              <Eye width={getSize(20)} height={getSize(20)} />
-            ) : (
-              <EyeCross width={getSize(20)} height={getSize(20)} />
-            )
-          }
-          isSecure={isPasswordVisible}
-          onSuffixPress={clickPasswordVisibility}
-        />
-        <TouchableOpacity
-          style={styles.forgetPassword}
-          onPress={navigateToForgotPassword}>
-          <TextSemiBold
-            text={'Forget Password?'}
-            fontSize={14}
-            extraStyles={styles.extraTextStyle}
-          />
-        </TouchableOpacity>
-        <View style={{marginTop: getSize(45), marginBottom: getSize(130)}}>
-          <GradientButton
-            disable={loading}
-            buttonText={'Sign In'}
-            onPress={signIn}
-          />
-        </View>
+          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <GradientButton
+              disable={loading}
+              buttonText={'Sign In'}
+              onPress={signIn}
+            />
+          </View>
 
-        <SocialAuth />
-        <BottomTextButton
-          text1={'Don’t have an account? '}
-          text2={'Sign Up'}
-          onPress={navigateToSignup}
-        />
-      </View>
+          <SocialAuth />
+          <BottomTextButton
+            text1={'Don’t have an account? '}
+            text2={'Sign Up'}
+            onPress={navigateToSignup}
+          />
+        </ScrollView>
+      </KeyboardAvoidingView>
+
       <AlertDialog isVisible={isFailed} onClose={closeAlert} message={error} />
     </AuthScreensSafeArea>
   );
@@ -122,7 +137,21 @@ const LoginScreen = ({navigation}) => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: {paddingHorizontal: getSize(24), flex: 1},
-  forgetPassword: {alignSelf: 'flex-end'},
-  extraTextStyle: {textDecorationLine: 'underline'},
+  container: {
+    flex: 1,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    padding: getSize(24),
+  },
+  forgetPassword: {
+    alignSelf: 'flex-end',
+  },
+  extraTextStyle: {
+    textDecorationLine: 'underline',
+  },
+  buttonContainer: {
+    marginTop: getSize(45),
+    marginBottom: getSize(130),
+  },
 });
