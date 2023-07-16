@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    bottom: Platform.OS === 'ios' ? getSize(28) : 8,
+    bottom: getSize(28),
     left: 0,
     right: 0,
   },

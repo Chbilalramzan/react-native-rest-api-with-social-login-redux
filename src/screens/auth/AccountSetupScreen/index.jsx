@@ -1,5 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+} from 'react-native';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
 import SocialAuth from '../components/SocialAuth';
@@ -53,65 +60,76 @@ const AccountSetupScreen = ({navigation}) => {
 
   return (
     <AuthScreensSafeArea hasShadow>
-      <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
-        <Headings
-          h1={'Sign up, Start Investing, and Begin Earning'}
-          h2={'Get Started and enjoy the savings'}
-        />
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+          <View style={styles.innerContainer}>
+            <Headings
+              h1={'Sign up, Start Investing, and Begin Earning'}
+              h2={'Get Started and enjoy the savings'}
+            />
 
-        <TextField
-          placeholder={'Username'}
-          onChangeText={setUsername}
-          prefixIcon={<User width={getSize(20)} height={getSize(20)} />}
-        />
-        <TextField
-          placeholder={'Email'}
-          validateInput="email"
-          onChangeText={setEmail}
-          prefixIcon={<EmailPurple width={getSize(20)} height={getSize(20)} />}
-        />
-        <TextField
-          placeholder={'Password'}
-          validateInput={'password'}
-          onChangeText={setPassword1}
-          prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
-          suffixIcon={
-            isPasswordVisible ? (
-              <Eye width={getSize(20)} height={getSize(20)} />
-            ) : (
-              <EyeCross width={getSize(20)} height={getSize(20)} />
-            )
-          }
-          isSecure={isPasswordVisible}
-          onSuffixPress={clickPasswordVisibility}
-        />
+            <TextField
+              placeholder={'Username'}
+              onChangeText={setUsername}
+              prefixIcon={<User width={getSize(20)} height={getSize(20)} />}
+            />
+            <TextField
+              placeholder={'Email'}
+              validateInput="email"
+              onChangeText={setEmail}
+              prefixIcon={
+                <EmailPurple width={getSize(20)} height={getSize(20)} />
+              }
+            />
+            <TextField
+              placeholder={'Password'}
+              validateInput={'password'}
+              onChangeText={setPassword1}
+              prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+              suffixIcon={
+                isPasswordVisible ? (
+                  <Eye width={getSize(20)} height={getSize(20)} />
+                ) : (
+                  <EyeCross width={getSize(20)} height={getSize(20)} />
+                )
+              }
+              isSecure={isPasswordVisible}
+              onSuffixPress={clickPasswordVisibility}
+            />
 
-        <View style={{marginTop: getSize(32), marginBottom: getSize(32)}}>
-          <GradientButton
-            disable={loading}
-            buttonText={'Create Account'}
-            onPress={register}
-          />
-        </View>
-        <View style={{marginBottom: getSize(120)}}>
-          <Text style={[TextStyles.style500, styles.textStyle]}>
-            {'By creating an account, you agree to our '}
-            <Text style={[TextStyles.style600, {color: Colors.textPurple}]}>
-              {'Terms and Conditions. '}
-            </Text>
-            <Text>{'Please read our '}</Text>
-            <Text style={[TextStyles.style600, {color: Colors.textPurple}]}>
-              {'Policies.'}
-            </Text>
-          </Text>
-        </View>
-        <SocialAuth />
-        <BottomTextButton
-          text1={'Already have an account? '}
-          text2={'Sign in'}
-          onPress={navigateTologin}
-        />
-      </View>
+            <View style={styles.buttonContainer}>
+              <GradientButton
+                disable={loading}
+                buttonText={'Create Account'}
+                onPress={register}
+              />
+            </View>
+
+            <View style={styles.textContainer}>
+              <Text style={styles.textStyle}>
+                By creating an account, you agree to our{' '}
+                <Text style={[TextStyles.style600, {color: Colors.textPurple}]}>
+                  Terms and Conditions.{' '}
+                </Text>
+                Please read our{' '}
+                <Text style={[TextStyles.style600, {color: Colors.textPurple}]}>
+                  Policies.
+                </Text>
+              </Text>
+            </View>
+
+            <SocialAuth />
+
+            <BottomTextButton
+              text1={'Already have an account? '}
+              text2={'Sign in'}
+              onPress={navigateTologin}
+            />
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
 
       <AlertDialog isVisible={isFailed} onClose={closeAlert} message={error} />
     </AuthScreensSafeArea>
@@ -121,9 +139,25 @@ const AccountSetupScreen = ({navigation}) => {
 export default AccountSetupScreen;
 
 const styles = StyleSheet.create({
-  container: {paddingHorizontal: getSize(24), flex: 1},
-  forgetPassword: {alignSelf: 'flex-end'},
-  extraTextStyle: {textDecorationLine: 'underline'},
+  container: {
+    flex: 1,
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+  },
+  innerContainer: {
+    paddingHorizontal: getSize(24),
+    paddingBottom: getSize(120),
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    marginTop: getSize(32),
+    marginBottom: getSize(32),
+  },
+  textContainer: {
+    marginBottom: 40,
+  },
   textStyle: {
     color: Colors.white,
     fontSize: getSize(14),

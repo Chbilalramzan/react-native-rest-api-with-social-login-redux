@@ -64,68 +64,67 @@ const LoginScreen = ({navigation}) => {
     <AuthScreensSafeArea hasShadow top>
       <KeyboardAvoidingView
         style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
-        <ScrollView
-          contentContainerStyle={styles.scrollContainer}
-          keyboardShouldPersistTaps="always">
-          <Headings
-            h1={'Sign in, Start Investing, and Begin Earning'}
-            fontSizeh1={32}
-            h2={'Get Started and enjoy the savings'}
-          />
-
-          <TextField
-            placeholder={'Username'}
-            isEmpty={emailEmpty}
-            onChangeText={setUsername}
-            prefixIcon={
-              <EmailPurple
-                color={Colors.iconPurple}
-                width={getSize(20)}
-                height={getSize(20)}
-              />
-            }
-          />
-          <TextField
-            placeholder={'Password'}
-            validateInput={'password'}
-            isEmpty={passwordEmpty}
-            onChangeText={setPassword}
-            prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
-            suffixIcon={
-              isPasswordVisible ? (
-                <Eye width={getSize(20)} height={getSize(20)} />
-              ) : (
-                <EyeCross width={getSize(20)} height={getSize(20)} />
-              )
-            }
-            isSecure={isPasswordVisible}
-            onSuffixPress={clickPasswordVisibility}
-          />
-          <TouchableOpacity
-            style={styles.forgetPassword}
-            onPress={navigateToForgotPassword}>
-            <TextSemiBold
-              text={'Forget Password?'}
-              fontSize={14}
-              extraStyles={styles.extraTextStyle}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.innerContainer}>
+            <Headings
+              h1={'Sign in, Start Investing, and Begin Earning'}
+              fontSizeh1={32}
+              h2={'Get Started and enjoy the savings'}
             />
-          </TouchableOpacity>
-          <View style={styles.buttonContainer}>
-            <GradientButton
-              disable={loading}
-              buttonText={'Sign In'}
-              onPress={signIn}
+
+            <TextField
+              placeholder={'Username'}
+              isEmpty={emailEmpty}
+              onChangeText={setUsername}
+              prefixIcon={
+                <EmailPurple
+                  color={Colors.iconPurple}
+                  width={getSize(20)}
+                  height={getSize(20)}
+                />
+              }
+            />
+            <TextField
+              placeholder={'Password'}
+              validateInput={'password'}
+              isEmpty={passwordEmpty}
+              onChangeText={setPassword}
+              prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+              suffixIcon={
+                isPasswordVisible ? (
+                  <Eye width={getSize(20)} height={getSize(20)} />
+                ) : (
+                  <EyeCross width={getSize(20)} height={getSize(20)} />
+                )
+              }
+              isSecure={isPasswordVisible}
+              onSuffixPress={clickPasswordVisibility}
+            />
+            <TouchableOpacity
+              style={styles.forgetPassword}
+              onPress={navigateToForgotPassword}>
+              <TextSemiBold
+                text={'Forget Password?'}
+                fontSize={14}
+                extraStyles={styles.extraTextStyle}
+              />
+            </TouchableOpacity>
+            <View style={styles.buttonContainer}>
+              <GradientButton
+                disable={loading}
+                buttonText={'Sign In'}
+                onPress={signIn}
+              />
+            </View>
+
+            <SocialAuth />
+            <BottomTextButton
+              text1={'Don’t have an account? '}
+              text2={'Sign Up'}
+              onPress={navigateToSignup}
             />
           </View>
-
-          <SocialAuth />
-          <BottomTextButton
-            text1={'Don’t have an account? '}
-            text2={'Sign Up'}
-            onPress={navigateToSignup}
-          />
         </ScrollView>
       </KeyboardAvoidingView>
 
@@ -142,7 +141,12 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexGrow: 1,
-    padding: getSize(24),
+  },
+  innerContainer: {
+    paddingHorizontal: getSize(24),
+    paddingBottom: getSize(120),
+    flexGrow: 1,
+    justifyContent: 'center',
   },
   forgetPassword: {
     alignSelf: 'flex-end',
@@ -152,6 +156,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: getSize(45),
-    marginBottom: getSize(130),
+    marginBottom: getSize(80),
   },
 });
