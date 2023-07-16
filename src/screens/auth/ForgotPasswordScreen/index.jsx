@@ -23,6 +23,7 @@ const ForgotPasswordScreen = ({navigation}) => {
   const onPressSendOtpToEmail = async () => {
     if (confirmationMessage) {
       navigation.navigate('OtpVerify');
+      setConfirmationMessage(!confirmationMessage);
     } else {
       if (isEmpty(email)) {
         return;
@@ -55,60 +56,62 @@ const ForgotPasswordScreen = ({navigation}) => {
     });
   };
 
-  return (
+  const closeAlert = () => {
+    setAlert(!alert);
+  };
+
+  return confirmationMessage ? (
+    <ConfirmationMessage
+      h1={'Reset password OTP send successfully.'}
+      h2={
+        'We have successfully forwarded you the 4 digit reset password OTP to your email.'
+      }
+      Email={'email'}
+      buttonText={'Next'}
+      onPress={onPressSendOtpToEmail}
+    />
+  ) : (
     <AuthScreensSafeArea hasShadow top>
       <Animated.View
         style={[
           styles.container,
           {paddingHorizontal: getSize(24), opacity: opacityValue},
         ]}>
-        {confirmationMessage ? (
-          <ConfirmationMessage
-            h1={'Reset password OTP send successfully.'}
-            h2={
-              'We have successfully forwarded you the 4 digit reset password OTP to your email.'
-            }
-            Email={'email'}
-            buttonText={'Next'}
-            onPress={onPressSendOtpToEmail}
+        <View>
+          <Headings
+            h1={"Forgotten your password? We're here to help!"}
+            h2={'Enter your Email to get the password reset link'}
           />
-        ) : (
-          <View>
-            <Headings
-              h1={"Forgotten your password? We're here to help!"}
-              h2={'Enter your Email to get the password reset link'}
-            />
-            <TextField
-              placeholder={'Email'}
-              validateInput="email"
-              onChangeText={setEmail}
-              prefixIcon={
-                <EmailPurple
-                  color={Colors.iconPurple}
-                  width={getSize(20)}
-                  height={getSize(20)}
-                />
-              }
-            />
-            <View
-              style={{
-                marginTop: getSize(11),
-                marginBottom: getSize(130),
-                marginHorizontal: getSize(20),
-              }}>
-              <GradientButton
-                disable={loading}
-                buttonText={'Send Email'}
-                onPress={onPressSendOtpToEmail}
+          <TextField
+            placeholder={'Email'}
+            validateInput="email"
+            onChangeText={setEmail}
+            prefixIcon={
+              <EmailPurple
+                color={Colors.iconPurple}
+                width={getSize(20)}
+                height={getSize(20)}
               />
-            </View>
+            }
+          />
+          <View
+            style={{
+              marginTop: getSize(11),
+              marginBottom: getSize(130),
+              marginHorizontal: getSize(20),
+            }}>
+            <GradientButton
+              disable={loading}
+              buttonText={'Send Email'}
+              onPress={onPressSendOtpToEmail}
+            />
           </View>
-        )}
+        </View>
       </Animated.View>
       <AlertDialog
-        text={'Email Does not Exist. Please try different email.'}
+        message={'Email Does not Exist. Please try different email.'}
         isVisible={alert}
-        onClose={setAlert}
+        onClose={closeAlert}
       />
     </AuthScreensSafeArea>
   );

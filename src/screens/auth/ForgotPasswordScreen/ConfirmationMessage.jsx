@@ -2,28 +2,34 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import Send from '../components/Send';
 import Headings from '../components/Headings';
-import GradientButton from '../../../components/buttons/GradientButton';
 import getSize from '../../../utils/helpers';
 import {Tick} from '../../../styles/SvgIcons';
+import Button from '../../../components/buttons/Button';
+import GradientSafeArea from '../../../components/backgrounds/GradienSafeArea';
 
 const ConfirmationMessage = ({h1, h2, buttonText, onPress, ...props}) => {
   return (
-    <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
+    <GradientSafeArea hasShadow top>
       <View style={styles.center}>
         <Send icon={<Tick />} />
         <Headings
           h1={h1}
           h2={h2}
           extraStyles={styles.extraStyles}
-          extraStylesh1={styles.extraStylesh1h2}
-          extraStylesh2={styles.extraStylesh1h2}
+          extraStylesh1={[
+            styles.extraStylesh1h2,
+            {letterSpacing: -0.5, marginHorizontal: 35},
+          ]}
+          extraStylesh2={[
+            styles.extraStylesh1h2,
+            {letterSpacing: 0.2, marginHorizontal: 29},
+          ]}
         />
       </View>
-
       <View style={styles.bottomButton}>
-        <GradientButton buttonText={buttonText} onPress={onPress} />
+        <Button buttonText={buttonText} onPress={onPress} />
       </View>
-    </View>
+    </GradientSafeArea>
   );
 };
 
@@ -37,6 +43,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: getSize(24),
   },
   center: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

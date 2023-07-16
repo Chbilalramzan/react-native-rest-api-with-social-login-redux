@@ -9,16 +9,20 @@ import ConfirmationMessage from './ConfirmationMessage';
 import {postOTP, postRequest} from '../../../services/Requests';
 import {EndPoint} from '../../../constants/APIEndpoints';
 import {isEmpty} from '../../../utils/PermissionsAndValidations';
+import OtpField from '../../../components/TextField/OtpField';
+import AlertDialog from '../components/AlertDialog';
 
 const OtpVerificationScreen = ({navigation}) => {
   const [confirmationMessage, setConfirmationMessage] = React.useState(false);
   const opacityValue = React.useRef(new Animated.Value(1)).current;
   const [loading, setLoading] = React.useState(false);
   const [otp, setOtp] = React.useState('');
+  const [alert, setAlert] = React.useState(false);
 
   const onPressSendOTP = async () => {
     if (confirmationMessage) {
       navigation.navigate('PasswordReset', {otp});
+      setConfirmationMessage(!confirmationMessage);
     } else {
       if (isEmpty(otp)) {
         return;
@@ -28,11 +32,16 @@ const OtpVerificationScreen = ({navigation}) => {
         if (response.success) {
           setLoading(false);
           updateView();
+        } else {
+          setLoading(false);
+          setAlert(true);
         }
       }
     }
   };
-
+  const closeAlert = () => {
+    setAlert(!alert);
+  };
   const updateView = () => {
     Animated.timing(opacityValue, {
       toValue: 0,
@@ -48,50 +57,53 @@ const OtpVerificationScreen = ({navigation}) => {
     });
   };
 
-  return (
+  return confirmationMessage ? (
+    <ConfirmationMessage
+      h1={'OTP verification successful'}
+      h2={
+        'Your verification has been done successfully, please proceed and change your password.'
+      }
+      buttonText={'Next'}
+      onPress={onPressSendOTP}
+    />
+  ) : (
     <AuthScreensSafeArea hasShadow top>
       <Animated.View
         style={[
           styles.container,
           {paddingHorizontal: getSize(24), opacity: opacityValue},
         ]}>
-        {confirmationMessage ? (
-          <ConfirmationMessage
-            h1={'OTP verification successful'}
-            h2={
-              'Your verification has been done successfully, please proceed and change your password.'
-            }
-            buttonText={'Next'}
-            onPress={onPressSendOTP}
+        <View>
+          <Headings
+            h1={'Enter your OTP from your email.'}
+            h2={'Enter your 6 digit code from your email.'}
           />
-        ) : (
-          <View>
-            <Headings
-              h1={'Enter your OTP from your email.'}
-              h2={'Enter your 6 digit code from your email.'}
-            />
 
-            <TextField
-              placeholder={'OTP'}
-              validateInput="otp"
-              onChangeText={setOtp}
-            />
+          <OtpField
+            placeholder={'OTP'}
+            validateInput="otp"
+            onChangeText={setOtp}
+          />
 
-            <View
-              style={{
-                marginTop: getSize(11),
-                marginBottom: getSize(130),
-                marginHorizontal: getSize(20),
-              }}>
-              <GradientButton
-                disable={loading}
-                buttonText={'Verify'}
-                onPress={onPressSendOTP}
-              />
-            </View>
+          <View
+            style={{
+              marginTop: getSize(11),
+              marginBottom: getSize(130),
+              marginHorizontal: getSize(20),
+            }}>
+            <GradientButton
+              disable={loading}
+              buttonText={'Verify'}
+              onPress={onPressSendOTP}
+            />
           </View>
-        )}
+        </View>
       </Animated.View>
+      <AlertDialog
+        message={'Something Went Wrong. Please send OTP again.'}
+        isVisible={alert}
+        onClose={closeAlert}
+      />
     </AuthScreensSafeArea>
   );
 };

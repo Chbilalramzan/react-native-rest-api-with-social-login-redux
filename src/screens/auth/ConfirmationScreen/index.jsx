@@ -8,6 +8,9 @@ import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafe
 import {SendIcon} from '../../../styles/SvgIcons';
 import {useDispatch} from 'react-redux';
 import {isAuthenticated} from '../../../redux/slices/authSlice';
+import GradientSafeArea from '../../../components/backgrounds/GradienSafeArea';
+import Colors from '../../../styles/Colors';
+import Button from '../../../components/buttons/Button';
 
 const ConfirmationScreen = () => {
   const dispatch = useDispatch();
@@ -17,28 +20,26 @@ const ConfirmationScreen = () => {
   };
 
   return (
-    <AuthScreensSafeArea hasShadow top>
+    <GradientSafeArea hasShadow top>
       <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
         <View style={styles.center}>
           <Send icon={<SendIcon />} />
           <Headings
             h1={'You are ready to go.'}
-            h2={
-              'A Password reset link has been sent to your email, open your email and follow the instructions.'
-            }
-            extraStylesh1={styles.extraStylesh1h2}
-            extraStylesh2={styles.extraStylesh1h2}
+            h2={"You're in! Your financial journey starts now."}
+            textColorh1="white"
+            textColorh2="white"
+            extraStyles={{marginTop: getSize(40)}}
+            extraStylesh1={[styles.extraStylesh1h2, {letterSpacing: -0.5}]}
+            extraStylesh2={[styles.extraStylesh1h2, {letterSpacing: 0.2}]}
           />
         </View>
 
         <View style={styles.bottomButton}>
-          <GradientButton
-            buttonText={"That's Great!"}
-            onPress={gotoHomeScreen}
-          />
+          <Button buttonText={"That's Great!"} onPress={gotoHomeScreen} />
         </View>
       </View>
-    </AuthScreensSafeArea>
+    </GradientSafeArea>
   );
 };
 

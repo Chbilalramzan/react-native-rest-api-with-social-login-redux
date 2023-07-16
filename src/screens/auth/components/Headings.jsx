@@ -11,6 +11,8 @@ const Headings = ({
   extraStyles,
   extraStylesh1,
   extraStylesh2,
+  textColorh1 = Colors.headingText,
+  textColorh2 = Colors.headingText,
   fontSizeh1,
   fontSizeh2,
   ...props
@@ -19,13 +21,13 @@ const Headings = ({
     <View style={[styles.container, extraStyles]}>
       <TextBold
         text={h1}
-        color={Colors.headingText}
+        color={textColorh1}
         fontSize={fontSizeh1 ? fontSizeh1 : 32}
         extraStyles={[extraStylesh1, styles.letterSpace]}
       />
       <TextMedium
         text={h2}
-        color={Colors.heading2Text}
+        color={textColorh2}
         fontSize={fontSizeh2 ? fontSizeh2 : 15}
         extraStyles={[
           extraStylesh2,
