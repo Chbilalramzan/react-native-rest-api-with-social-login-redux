@@ -8,8 +8,8 @@ const First = () => {
   return (
     <View>
       <Headings
-        h1={'Save money by sharing, connecting & groups information.'}
-        fontSizeh1={24}
+        h1={'Save money by sharing, connecting \n& groups information.'}
+        fontSizeh1={22}
         h2={
           'Welcome to B.UP! Start your financial journey and connect with mentors to achieve your goals.'
         }

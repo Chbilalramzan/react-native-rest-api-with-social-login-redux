@@ -9,9 +9,9 @@ const Second = () => {
     <View>
       <Headings
         h1={'Mentors, Advisors, and Investors: Guiding You on Your Journey'}
-        fontSizeh1={24}
+        fontSizeh1={22}
         h2={
-          'Discover the power of financial community. Join B.UP, connect, learn, and rise through the ranks'
+          'Discover the power of financial community. Join \nB.UP, connect, learn, and rise through the ranks'
         }
         extraStyles={styles.extraStyles}
         extraStylesh1={styles.extraStylesh1h2}

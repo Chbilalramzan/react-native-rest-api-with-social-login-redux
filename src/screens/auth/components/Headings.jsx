@@ -21,7 +21,7 @@ const Headings = ({
         text={h1}
         color={Colors.headingText}
         fontSize={fontSizeh1 ? fontSizeh1 : 32}
-        extraStyles={[extraStylesh1, {lineHeight: getSize(41.6)}]}
+        extraStyles={[extraStylesh1, {lineHeight: getSize(31.6)}]}
       />
       <TextMedium
         text={h2}

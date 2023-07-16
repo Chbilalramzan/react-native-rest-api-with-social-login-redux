@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   extraStyles: {
     marginTop: getSize(100),
-    marginHorizontal: 38,
+    marginHorizontal: 32,
   },
   image: {
     width: '100%',
