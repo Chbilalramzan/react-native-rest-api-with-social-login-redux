@@ -61,8 +61,24 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>This app does not access or use Bluetooth data.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This app does not access or use Bluetooth data.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>This app does not access or use Apple Music data.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>This app does not access or use speech recognition data.</string>
+	<key>NSSiriUsageDescription</key>
+	<string>This app does not access or use Siri data.</string>	
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Take photos to share with other users</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to access your contacts</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Unlock the app with FaceID</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>This permission stems from a library we use and will never be called anyway. If you see this, deny access</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -77,6 +93,8 @@
 	<string>Give $(PRODUCT_NAME) permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Upload photos to share with other users or to change your avatar</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to access your reminders</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -103,10 +121,10 @@
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIRequiredDeviceCapabilities</key>
+	<!-- <key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
-	</array>
+	</array> -->
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -118,6 +136,8 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>  
 	<false/>
 </dict>
 </plist>

@@ -541,6 +541,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bup/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "B.Up Finance";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -574,6 +575,7 @@
 				DEVELOPMENT_TEAM = F5475DUH83;
 				INFOPLIST_FILE = bup/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "B.Up Finance";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
