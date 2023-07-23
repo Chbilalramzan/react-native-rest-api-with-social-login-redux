@@ -2,19 +2,30 @@ import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
+import getRFSize from '../../../utils/Helper';
 
 const Second = () => {
   return (
     <View>
       <Headings
         h1={'Level Up, Mentor: Stand Out, Make a Difference'}
-        fontSizeh1={26}
+        fontSizeh1={getRFSize(26)}
         h2={
           'Get ready to elevate your finances! B.UP connects you with mentors and rewards your progress with rankings and titles'
         }
         extraStyles={styles.extraStyles}
-        extraStylesh1={[styles.extraStylesh1h2, {lineHeight: getSize(31.6)}]}
-        extraStylesh2={styles.extraStylesh1h2}
+        extraStylesh1={[
+          styles.extraStylesh1h2,
+          {
+            lineHeight: getRFSize(39),
+            letterSpacing: -0.5,
+            marginHorizontal: 32,
+          },
+        ]}
+        extraStylesh2={[
+          styles.extraStylesh1h2,
+          {marginHorizontal: getRFSize(28)},
+        ]}
       />
 
       <Image
@@ -33,12 +44,11 @@ const styles = StyleSheet.create({
   },
   extraStyles: {
     marginTop: getSize(100),
-    marginHorizontal: 32,
   },
   image: {
     width: '100%',
-    height: getSize(490),
-    resizeMode: 'contain',
+    height: getRFSize(480),
+    resizeMode: 'cover',
     // borderRadius: getSize(20),
   },
 });

@@ -1,21 +1,28 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
-import getSize from '../../../utils/helpers';
 import Headings from '../components/Headings';
 import Colors from '../../../styles/Colors.jsx';
+import getRFSize from '../../../utils/Helper';
+import getSize from '../../../utils/helpers';
 
 const First = () => {
   return (
     <View>
       <Headings
         h1={'Save money by sharing, connecting \n& groups information.'}
-        fontSizeh1={22}
+        fontSizeh1={getRFSize(24)}
         h2={
           'Welcome to B.UP! Start your financial journey and connect with mentors to achieve your goals.'
         }
         extraStyles={styles.extraStyles}
-        extraStylesh1={[styles.extraStylesh1h2, {lineHeight: getSize(31.6)}]}
-        extraStylesh2={styles.extraStylesh1h2}
+        extraStylesh1={[
+          styles.extraStylesh1h2,
+          {lineHeight: getRFSize(31.2), letterSpacing: -1},
+        ]}
+        extraStylesh2={[
+          styles.extraStylesh1h2,
+          {marginHorizontal: getRFSize(16)},
+        ]}
       />
       <Image
         source={require('../../../../assets/images/onboard1.png')}
@@ -32,9 +39,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   image: {
-    height: getSize(500),
+    height: getRFSize(500),
     width: '100%',
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     borderRadius: getSize(20),
   },
   extraStylesh1h2: {

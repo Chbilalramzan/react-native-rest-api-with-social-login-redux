@@ -4,6 +4,7 @@ import getSize from '../../../utils/helpers';
 import TextBold from '../../../components/Text/TextBold';
 import Colors from '../../../styles/Colors.jsx';
 import TextMedium from '../../../components/Text/TextMedium';
+import getRFSize from '../../../utils/Helper';
 
 const Headings = ({
   h1,
@@ -28,7 +29,7 @@ const Headings = ({
       <TextMedium
         text={h2}
         color={textColorh2}
-        fontSize={fontSizeh2 ? fontSizeh2 : 15}
+        fontSize={fontSizeh2 ? fontSizeh2 : getRFSize(16)}
         extraStyles={[
           extraStylesh2,
           {

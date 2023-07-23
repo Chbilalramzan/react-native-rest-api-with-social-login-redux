@@ -3,25 +3,31 @@ import React from 'react';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
 import Colors from '../../../styles/Colors.jsx';
+import getRFSize from '../../../utils/Helper';
 
 const Second = () => {
   return (
     <View>
       <Headings
         h1={'Mentors, Advisors, and Investors: Guiding You on Your Journey'}
-        fontSizeh1={22}
+        fontSizeh1={getRFSize(24)}
         h2={
           'Discover the power of financial community. Join \nB.UP, connect, learn, and rise through the ranks'
         }
         extraStyles={styles.extraStyles}
-        extraStylesh1={[styles.extraStylesh1h2, {lineHeight: getSize(31.6)}]}
-        extraStylesh2={styles.extraStylesh1h2}
+        extraStylesh1={[
+          styles.extraStylesh1h2,
+          {lineHeight: getRFSize(31.2), letterSpacing: -0.5},
+        ]}
+        extraStylesh2={[
+          styles.extraStylesh1h2,
+          {marginHorizontal: getRFSize(16)},
+        ]}
       />
 
       <Image
         source={require('../../../../assets/images/onboard2.png')}
         style={styles.image}
-        resizeMode="contain"
       />
     </View>
   );
@@ -55,8 +61,8 @@ const styles = StyleSheet.create({
   card: {alignItems: 'center', justifyContent: 'center'},
   image: {
     width: '100%',
-    height: getSize(500),
-    resizeMode: 'contain',
+    height: getRFSize(568),
+    resizeMode: 'cover',
     borderRadius: getSize(20),
   },
 });
