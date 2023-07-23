@@ -8,6 +8,16 @@ import TopicItem from './TopicItem';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 import {optionsRequest} from '../../../services/Requests';
 import {EndPoint} from '../../../constants/APIEndpoints';
+import {
+  CMarket,
+  Crypto,
+  II,
+  Investment,
+  New,
+  RE,
+  Shares,
+} from '../../../styles/SvgIcons';
+import getRFSize from '../../../utils/Helper';
 
 const TopicSelectionScreen = ({navigation}) => {
   // const [data, setData] = useState([]);
@@ -27,34 +37,37 @@ const TopicSelectionScreen = ({navigation}) => {
     {
       id: 0,
       name: 'Investments',
+      icon: <Investment />,
     },
     {
       id: 1,
-      name: 'Digital Market',
+      name: 'Capital Market',
+      icon: <CMarket />,
     },
     {
       id: 2,
-      name: 'Capital Market',
+      name: 'Shares',
+      icon: <Shares />,
     },
     {
       id: 3,
-      name: 'Shares',
+      name: 'Real Estate',
+      icon: <RE />,
     },
     {
       id: 4,
-      name: 'Real Estates',
+      name: 'Intial Investments',
+      icon: <II />,
     },
     {
       id: 5,
-      name: 'Intial Investments',
+      name: 'Crypto and NFT',
+      icon: <Crypto />,
     },
     {
       id: 6,
-      name: 'Crypto and NFT',
-    },
-    {
-      id: 7,
       name: 'I am new to this field',
+      icon: <New />,
     },
   ];
 
@@ -102,8 +115,12 @@ const TopicSelectionScreen = ({navigation}) => {
           ListHeaderComponent={
             <Headings
               extraStyles={{marginTop: getSize(90)}}
-              h1={'Which of these topics are you interested in!'}
+              h1={'Which of these topics \nare you interested in!'}
               h2={'Select how you wants to proceed'}
+              textColorh1="#E6E6E6"
+              fontSizeh1={getRFSize(32)}
+              extraStylesh1={styles.extraStylesh1}
+              extraStylesh2={styles.extraStylesh2}
             />
           }
           renderItem={renderItem}

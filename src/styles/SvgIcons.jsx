@@ -43,6 +43,15 @@ export {default as User3} from '../../assets/images/onboard/ellipse2.svg';
 export {default as Note} from '../../assets/icons/note.svg';
 // onboarding screen images ** *//
 
+// interests
+export {default as Investment} from '../../assets/icons/interests/investment.svg';
+export {default as CMarket} from '../../assets/icons/interests/cmarket.svg';
+export {default as RE} from '../../assets/icons/interests/re.svg';
+export {default as Shares} from '../../assets/icons/interests/share.svg';
+export {default as II} from '../../assets/icons/interests/ii.svg';
+export {default as Crypto} from '../../assets/icons/interests/crypto.svg';
+export {default as New} from '../../assets/icons/interests/new.svg';
+
 // Tab bar Icons ** *//
 export {default as Home} from '../../assets/icons/home.svg';
 export {default as Discover} from '../../assets/icons/search.svg';

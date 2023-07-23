@@ -12,6 +12,7 @@ const Headings = ({
   extraStyles,
   extraStylesh1,
   extraStylesh2,
+  marginTop = getRFSize(72),
   textColorh1 = Colors.headingText,
   textColorh2 = Colors.headingText,
   fontSizeh1,
@@ -19,7 +20,7 @@ const Headings = ({
   ...props
 }) => {
   return (
-    <View style={[styles.container, extraStyles]}>
+    <View style={[styles.container, {marginTop: marginTop}, extraStyles]}>
       <TextBold
         text={h1}
         color={textColorh1}
@@ -45,5 +46,5 @@ const Headings = ({
 export default Headings;
 
 const styles = StyleSheet.create({
-  container: {marginTop: getSize(100)},
+  container: {},
 });

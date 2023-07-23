@@ -16,6 +16,7 @@ import ProfileItem from '../../CreatePostScreen/ProfileItem';
 import PostTextInput from '../../../../components/TextField/PostTextInput';
 import AnimatedViewItem from './AnimatedViewItem';
 import * as Navigation from '../../../../stacks/Navigation';
+import getRFSize from '../../../../utils/Helper';
 
 const CreatePostButton = ({onPress}) => {
   const [containerHeight] = useState(new Animated.Value(0));
@@ -70,7 +71,7 @@ const CreatePostButton = ({onPress}) => {
             </View>
             <TextBold
               text={'CREATE A NEW POST'}
-              fontSize={16}
+              fontSize={getRFSize(16)}
               // extraStyles={styles.extraTextStyle}
             />
           </View>

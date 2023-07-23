@@ -11,6 +11,7 @@ import {EndPoint} from '../../../constants/APIEndpoints';
 import {isEmpty} from '../../../utils/PermissionsAndValidations';
 import OtpField from '../../../components/TextField/OtpField';
 import AlertDialog from '../components/AlertDialog';
+import getRFSize from '../../../utils/Helper';
 
 const OtpVerificationScreen = ({navigation}) => {
   const [confirmationMessage, setConfirmationMessage] = React.useState(false);
@@ -75,19 +76,23 @@ const OtpVerificationScreen = ({navigation}) => {
         ]}>
         <View>
           <Headings
-            h1={'Enter your OTP from your email.'}
+            marginTop={getRFSize(195)}
+            h1={'Enter your OTP from \nyour email.'}
             h2={'Enter your 6 digit code from your email.'}
+            fontSizeh1={getRFSize(30)}
+            extraStylesh1={styles.extraStylesh1}
+            extraStylesh2={styles.extraStylesh2}
           />
-
-          <OtpField
-            placeholder={'OTP'}
-            validateInput="otp"
-            onChangeText={setOtp}
-          />
+          <View style={{marginTop: 10, marginBottom: 8}}>
+            <OtpField
+              placeholder={'OTP'}
+              validateInput="otp"
+              onChangeText={setOtp}
+            />
+          </View>
 
           <View
             style={{
-              marginTop: getSize(11),
               marginBottom: getSize(130),
               marginHorizontal: getSize(20),
             }}>
@@ -114,4 +119,9 @@ const styles = StyleSheet.create({
   container: {paddingHorizontal: getSize(24), flex: 1},
   forgetPassword: {alignSelf: 'flex-end'},
   extraTextStyle: {textDecorationLine: 'underline'},
+  extraStylesh1: {
+    lineHeight: getRFSize(42),
+    letterSpacing: -0.5,
+  },
+  extraStylesh2: {},
 });

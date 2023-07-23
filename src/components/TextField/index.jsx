@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.focusedInputBackground,
   },
   invalidContainer: {
-    borderColor: 'red',
+    borderColor: '#FF4667',
   },
   input: {
     flex: 1,

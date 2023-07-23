@@ -12,7 +12,16 @@ import getSize from '../../../utils/helpers';
 import SocialAuth from '../components/SocialAuth';
 import BottomTextButton from '../AuthOptionScreen/BottomTextButton';
 import TextField from '../../../components/TextField';
-import {EmailPurple, Eye, EyeCross, Key, User} from '../../../styles/SvgIcons';
+import {
+  Apple,
+  EmailPurple,
+  Eye,
+  EyeCross,
+  Facebook,
+  Google,
+  Key,
+  User,
+} from '../../../styles/SvgIcons';
 import Colors from '../../../styles/Colors.jsx';
 import GradientButton from '../../../components/buttons/GradientButton';
 import TextStyles from '../../../styles/TextStyles';
@@ -21,6 +30,13 @@ import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafe
 import {useDispatch, useSelector} from 'react-redux';
 import {isEmpty} from '../../../utils/PermissionsAndValidations';
 import {registerThunk, resetError} from '../../../redux/slices/authSlice';
+import getRFSize from '../../../utils/Helper';
+import OptionItem from '../AuthOptionScreen/OptionItem';
+import {
+  handleAppleSignIn,
+  handleFacebookSignin,
+  handleGoogleSignIn,
+} from '../../../utils/SocialAuth';
 
 const AccountSetupScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -66,8 +82,11 @@ const AccountSetupScreen = ({navigation}) => {
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
           <View style={styles.innerContainer}>
             <Headings
-              h1={'Sign up, Start Investing, and Begin Earning'}
+              h1={'Create account, Start \nInvesting, and Begin Earning'}
               h2={'Get Started and enjoy the savings'}
+              fontSizeh1={getRFSize(28)}
+              extraStylesh1={styles.extraStylesh1}
+              extraStylesh2={styles.extraStylesh2}
             />
 
             <TextField
@@ -120,7 +139,33 @@ const AccountSetupScreen = ({navigation}) => {
               </Text>
             </View>
 
-            <SocialAuth />
+            {/* <SocialAuth /> */}
+
+            <View>
+              <OptionItem
+                height={getRFSize(55)}
+                paddingStart={getRFSize(86)}
+                title={'Continue with Google'}
+                prefix={<Google />}
+                onPress={handleGoogleSignIn}
+              />
+              <OptionItem
+                height={getRFSize(55)}
+                paddingStart={getRFSize(86)}
+                title={'Continue with Facebook'}
+                prefix={<Facebook />}
+                onPress={handleFacebookSignin}
+              />
+              {Platform.OS === 'ios' && (
+                <OptionItem
+                  height={getRFSize(55)}
+                  paddingStart={getRFSize(86)}
+                  title={'Continue with Apple'}
+                  prefix={<Apple />}
+                  onPress={handleAppleSignIn}
+                />
+              )}
+            </View>
 
             <BottomTextButton
               text1={'Already have an account? '}
@@ -164,4 +209,9 @@ const styles = StyleSheet.create({
     lineHeight: getSize(24),
     textAlign: 'center',
   },
+  extraStylesh1: {
+    lineHeight: getRFSize(36.4),
+    letterSpacing: -0.5,
+  },
+  extraStylesh2: {},
 });

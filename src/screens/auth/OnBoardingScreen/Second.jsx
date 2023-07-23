@@ -9,6 +9,7 @@ const Second = () => {
   return (
     <View>
       <Headings
+        marginTop={getRFSize(100)}
         h1={'Mentors, Advisors, and Investors: Guiding You on Your Journey'}
         fontSizeh1={getRFSize(24)}
         h2={

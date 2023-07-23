@@ -26,7 +26,7 @@ const OtpField = ({
 
   const borderColor =
     text.length < 6 && isFocused
-      ? 'red'
+      ? '#FF4667'
       : !isFocused
       ? Colors.unfocusedInputBackground
       : Colors.borderPurple;

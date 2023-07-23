@@ -4,12 +4,22 @@ import TextSemiBold from '../../../components/Text/TextSemiBold';
 import getSize from '../../../utils/helpers';
 import Colors from '../../../styles/Colors.jsx';
 
-const OptionItem = ({title, height, width, prefix, onPress}) => {
+const OptionItem = ({
+  title,
+  height = 60,
+  width,
+  prefix,
+  onPress,
+  paddingStart = getSize(21),
+}) => {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
       onPress={onPress}
-      style={[styles.button, {height: height, width: width}]}>
+      style={[
+        styles.button,
+        {height: height, width: width, paddingStart: paddingStart},
+      ]}>
       {prefix && prefix}
       <TextSemiBold
         text={title}
@@ -24,12 +34,10 @@ const OptionItem = ({title, height, width, prefix, onPress}) => {
 const styles = StyleSheet.create({
   button: {
     borderRadius: getSize(15),
-    paddingVertical: getSize(14),
-    paddingHorizontal: getSize(21),
+
     marginVertical: getSize(10),
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
     backgroundColor: Colors.authButton,
   },
 });

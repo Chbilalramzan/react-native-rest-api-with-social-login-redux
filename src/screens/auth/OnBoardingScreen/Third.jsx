@@ -8,6 +8,7 @@ const Second = () => {
   return (
     <View>
       <Headings
+        marginTop={getRFSize(100)}
         h1={'Level Up, Mentor: Stand Out, Make a Difference'}
         fontSizeh1={getRFSize(26)}
         h2={

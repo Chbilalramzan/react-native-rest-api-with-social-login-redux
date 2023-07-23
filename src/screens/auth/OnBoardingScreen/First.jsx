@@ -9,6 +9,7 @@ const First = () => {
   return (
     <View>
       <Headings
+        marginTop={getRFSize(100)}
         h1={'Save money by sharing, connecting \n& groups information.'}
         fontSizeh1={getRFSize(24)}
         h2={

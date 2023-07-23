@@ -11,6 +11,7 @@ import {isAuthenticated} from '../../../redux/slices/authSlice';
 import GradientSafeArea from '../../../components/backgrounds/GradienSafeArea';
 import Colors from '../../../styles/Colors';
 import Button from '../../../components/buttons/Button';
+import getRFSize from '../../../utils/Helper';
 
 const ConfirmationScreen = () => {
   const dispatch = useDispatch();
@@ -23,10 +24,13 @@ const ConfirmationScreen = () => {
     <GradientSafeArea hasShadow top>
       <View style={[styles.container, {paddingHorizontal: getSize(24)}]}>
         <View style={styles.center}>
-          <Send icon={<SendIcon />} />
+          <Send
+            icon={<SendIcon height={getRFSize(133)} width={getRFSize(131)} />}
+          />
           <Headings
             h1={'You are ready to go.'}
             h2={"You're in! Your financial journey starts now."}
+            fontSizeh1={getRFSize(32)}
             textColorh1="white"
             textColorh2="white"
             extraStyles={{marginTop: getSize(40)}}

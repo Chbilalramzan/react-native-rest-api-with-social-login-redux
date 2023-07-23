@@ -12,6 +12,7 @@ import {isEmpty} from '../../../utils/PermissionsAndValidations';
 import {postRequest} from '../../../services/Requests';
 import {EndPoint} from '../../../constants/APIEndpoints';
 import AlertDialog from '../components/AlertDialog';
+import getRFSize from '../../../utils/Helper';
 
 const PasswordResetScreen = ({navigation, route}) => {
   const {otp} = route.params;
@@ -90,7 +91,7 @@ const PasswordResetScreen = ({navigation, route}) => {
 
   return confirmationMessage ? (
     <ConfirmationMessage
-      h1={'Your password has been changed.'}
+      h1={'Your password has \nbeen changed.'}
       h2={
         'Your password has been changed successfully, you can use new password to sign in.'
       }
@@ -106,42 +107,45 @@ const PasswordResetScreen = ({navigation, route}) => {
         ]}>
         <View>
           <Headings
-            h1={'Create your New password.'}
+            marginTop={getRFSize(195)}
+            h1={'Create your New \npassword.'}
             h2={'Get Started and enter your password.'}
+            fontSizeh1={getRFSize(30)}
+            extraStylesh1={styles.extraStylesh1}
+            extraStylesh2={styles.extraStylesh2}
           />
-
-          <TextField
-            placeholder={'New Password'}
-            prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
-            onChangeText={setNewPassword}
-            suffixIcon={
-              isNewPasswordVisible ? (
-                <Eye width={getSize(20)} height={getSize(20)} />
-              ) : (
-                <EyeCross width={getSize(20)} height={getSize(20)} />
-              )
-            }
-            isSecure={isNewPasswordVisible}
-            onSuffixPress={clickNewPasswordVisibility}
-          />
-          <TextField
-            placeholder={'Confirm New Password'}
-            prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
-            onChangeText={setConfirmPassword}
-            suffixIcon={
-              isConfirmNewPasswordVisible ? (
-                <Eye width={getSize(20)} height={getSize(20)} />
-              ) : (
-                <EyeCross width={getSize(20)} height={getSize(20)} />
-              )
-            }
-            isSecure={isConfirmNewPasswordVisible}
-            onSuffixPress={clickConfirmPasswordVisibility}
-          />
-
+          <View style={{marginTop: 10, marginBottom: 8}}>
+            <TextField
+              placeholder={'New Password'}
+              prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+              onChangeText={setNewPassword}
+              suffixIcon={
+                isNewPasswordVisible ? (
+                  <Eye width={getSize(20)} height={getSize(20)} />
+                ) : (
+                  <EyeCross width={getSize(20)} height={getSize(20)} />
+                )
+              }
+              isSecure={isNewPasswordVisible}
+              onSuffixPress={clickNewPasswordVisibility}
+            />
+            <TextField
+              placeholder={'Confirm New Password'}
+              prefixIcon={<Key width={getSize(20)} height={getSize(20)} />}
+              onChangeText={setConfirmPassword}
+              suffixIcon={
+                isConfirmNewPasswordVisible ? (
+                  <Eye width={getSize(20)} height={getSize(20)} />
+                ) : (
+                  <EyeCross width={getSize(20)} height={getSize(20)} />
+                )
+              }
+              isSecure={isConfirmNewPasswordVisible}
+              onSuffixPress={clickConfirmPasswordVisibility}
+            />
+          </View>
           <View
             style={{
-              marginTop: getSize(11),
               marginBottom: getSize(130),
               marginHorizontal: getSize(20),
             }}>
@@ -164,4 +168,9 @@ const styles = StyleSheet.create({
   container: {paddingHorizontal: getSize(24), flex: 1},
   forgetPassword: {alignSelf: 'flex-end'},
   extraTextStyle: {textDecorationLine: 'underline'},
+  extraStylesh1: {
+    lineHeight: getRFSize(42),
+    letterSpacing: -0.5,
+  },
+  extraStylesh2: {},
 });

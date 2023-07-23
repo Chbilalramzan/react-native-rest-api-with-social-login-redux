@@ -4,6 +4,7 @@ import {TouchableOpacity} from '@gorhom/bottom-sheet';
 import getSize from '../../../../utils/helpers';
 import TextMedium from '../../../../components/Text/TextMedium';
 import Colors from '../../../../styles/Colors';
+import getRFSize from '../../../../utils/Helper';
 
 const AnimatedViewItem = ({itemTitle, itemIcon, onPress, ...props}) => {
   return (
@@ -14,7 +15,7 @@ const AnimatedViewItem = ({itemTitle, itemIcon, onPress, ...props}) => {
       {itemIcon}
       <TextMedium
         text={itemTitle}
-        fontSize={13}
+        fontSize={getRFSize(13)}
         color={Colors.heading3Text}
         extraStyles={{marginStart: getSize(6)}}
       />

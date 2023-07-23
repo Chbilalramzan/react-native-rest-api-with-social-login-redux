@@ -3,6 +3,7 @@ import React from 'react';
 import getSize from '../../../utils/helpers';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../../styles/Colors.jsx';
+import getRFSize from '../../../utils/Helper';
 
 const Send = ({icon, ...props}) => {
   const outerShadow = Platform.select({
@@ -17,17 +18,17 @@ const Send = ({icon, ...props}) => {
     },
   });
   return (
-    <View style={styles.OuterContainer}>
-      <View style={styles.middleContainer}>
-        <LinearGradient
-          colors={[Colors.white, Colors.white]}
-          start={{x: 0, y: 0}}
-          end={{x: 0, y: 1}}
-          style={styles.innerContainer}>
-          {icon}
-        </LinearGradient>
-      </View>
-    </View>
+    // <View style={styles.OuterContainer}>
+    //  <View style={styles.middleContainer}>
+    <LinearGradient
+      colors={[Colors.white, Colors.white]}
+      start={{x: 0, y: 0}}
+      end={{x: 0, y: 1}}
+      style={styles.innerContainer}>
+      {icon}
+    </LinearGradient>
+    // </View>
+    // </View>
   );
 };
 
@@ -51,8 +52,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   innerContainer: {
-    height: getSize(164),
-    width: getSize(164),
+    height: getRFSize(184),
+    width: getRFSize(184),
     borderRadius: getSize(164),
     alignItems: 'center',
     justifyContent: 'center',

@@ -11,6 +11,7 @@ import {
   handleGoogleSignIn,
   initializeSocialAuthHelpers,
 } from '../../../utils/SocialAuth';
+import getRFSize from '../../../utils/Helper';
 
 const AuthOptionScreen = ({navigation}) => {
   React.useEffect(() => {
@@ -23,10 +24,13 @@ const AuthOptionScreen = ({navigation}) => {
 
   return (
     <AuthScreensSafeArea hasShadow top>
-      <View style={{paddingHorizontal: getSize(29)}}>
+      <View style={{paddingHorizontal: getSize(24)}}>
         <Headings
-          h1={'Sign in, Start Investing, and Begin Earning'}
+          h1={'Sign in, Start Investing, \nand Begin Earning'}
           h2={'Select how you want to procees'}
+          fontSizeh1={getRFSize(28)}
+          extraStylesh1={styles.extraStylesh1}
+          extraStylesh2={styles.extraStylesh2}
         />
         <OptionItem
           title={'Continue with Email'}
@@ -58,5 +62,9 @@ const AuthOptionScreen = ({navigation}) => {
 export default AuthOptionScreen;
 
 const styles = StyleSheet.create({
-  extraStylesh1: {lineHeight: 41.6},
+  extraStylesh1: {
+    lineHeight: getRFSize(36.4),
+    letterSpacing: -0.5,
+  },
+  extraStylesh2: {},
 });

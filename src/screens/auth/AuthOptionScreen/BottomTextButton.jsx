@@ -3,6 +3,7 @@ import React from 'react';
 import TextBold from '../../../components/Text/TextBold';
 import TextRegular from '../../../components/Text/TextRegular';
 import getSize from '../../../utils/helpers';
+import getRFSize from '../../../utils/Helper';
 
 const BottomTextButton = ({text1, text2, onPress, extraStyle, ...props}) => {
   return (
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    bottom: getSize(28),
+    bottom: getRFSize(32),
     left: 0,
     right: 0,
   },

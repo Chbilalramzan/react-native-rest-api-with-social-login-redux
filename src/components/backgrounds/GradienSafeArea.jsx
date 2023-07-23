@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, StatusBar, View, Image} from 'react-native';
 import Colors from '../../styles/Colors.jsx';
 import LinearGradient from 'react-native-linear-gradient';
+import getRFSize from '../../utils/Helper.js';
 
 const GradientSafeArea = ({
   style,
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     width: '100%',
-    height: 76,
+    height: getRFSize(76),
   },
   imageBottom: {
     position: 'absolute',
