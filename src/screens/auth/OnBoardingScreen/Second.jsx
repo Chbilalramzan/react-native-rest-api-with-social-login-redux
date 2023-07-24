@@ -11,7 +11,7 @@ const Second = () => {
       <Headings
         marginTop={getRFSize(100)}
         h1={'Mentors, Advisors, and Investors: Guiding You on Your Journey'}
-        fontSizeh1={getRFSize(24)}
+        fontSizeh1={24}
         h2={
           'Discover the power of financial community. Join \nB.UP, connect, learn, and rise through the ranks'
         }

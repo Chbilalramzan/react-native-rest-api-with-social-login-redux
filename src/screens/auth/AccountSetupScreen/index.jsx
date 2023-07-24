@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
-import SocialAuth from '../components/SocialAuth';
 import BottomTextButton from '../AuthOptionScreen/BottomTextButton';
 import TextField from '../../../components/TextField';
 import {
@@ -84,7 +83,7 @@ const AccountSetupScreen = ({navigation}) => {
             <Headings
               h1={'Create account, Start \nInvesting, and Begin Earning'}
               h2={'Get Started and enjoy the savings'}
-              fontSizeh1={getRFSize(28)}
+              fontSizeh1={28}
               extraStylesh1={styles.extraStylesh1}
               extraStylesh2={styles.extraStylesh2}
             />

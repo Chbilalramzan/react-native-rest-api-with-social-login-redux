@@ -16,7 +16,7 @@ const ConfirmationMessage = ({h1, h2, buttonText, onPress, ...props}) => {
         <Headings
           marginTop={0}
           h1={h1}
-          fontSizeh1={getRFSize(34)}
+          fontSizeh1={34}
           textColorh1="white"
           h2={h2}
           extraStyles={styles.extraStyles}

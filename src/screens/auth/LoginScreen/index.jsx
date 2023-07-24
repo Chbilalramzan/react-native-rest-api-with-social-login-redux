@@ -85,7 +85,7 @@ const LoginScreen = ({navigation}) => {
             <Headings
               h1={'Sign in, Start Investing, \nand Begin Earning'}
               h2={'Get Started and enjoy the savings'}
-              fontSizeh1={getRFSize(28)}
+              fontSizeh1={28}
               extraStylesh1={styles.extraStylesh1}
               extraStylesh2={styles.extraStylesh2}
             />

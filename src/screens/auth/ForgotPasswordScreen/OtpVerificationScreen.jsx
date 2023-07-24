@@ -79,7 +79,7 @@ const OtpVerificationScreen = ({navigation}) => {
             marginTop={getRFSize(195)}
             h1={'Enter your OTP from \nyour email.'}
             h2={'Enter your 6 digit code from your email.'}
-            fontSizeh1={getRFSize(30)}
+            fontSizeh1={30}
             extraStylesh1={styles.extraStylesh1}
             extraStylesh2={styles.extraStylesh2}
           />

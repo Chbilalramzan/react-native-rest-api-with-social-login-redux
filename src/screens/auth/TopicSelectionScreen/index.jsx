@@ -6,8 +6,6 @@ import GradientButton from '../../../components/buttons/GradientButton';
 import TextMedium from '../../../components/Text/TextMedium';
 import TopicItem from './TopicItem';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
-import {optionsRequest} from '../../../services/Requests';
-import {EndPoint} from '../../../constants/APIEndpoints';
 import {
   CMarket,
   Crypto,
@@ -118,7 +116,7 @@ const TopicSelectionScreen = ({navigation}) => {
               h1={'Which of these topics \nare you interested in!'}
               h2={'Select how you wants to proceed'}
               textColorh1="#E6E6E6"
-              fontSizeh1={getRFSize(32)}
+              fontSizeh1={32}
               extraStylesh1={styles.extraStylesh1}
               extraStylesh2={styles.extraStylesh2}
             />

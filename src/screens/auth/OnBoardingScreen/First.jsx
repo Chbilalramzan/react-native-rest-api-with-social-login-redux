@@ -11,7 +11,7 @@ const First = () => {
       <Headings
         marginTop={getRFSize(100)}
         h1={'Save money by sharing, connecting \n& groups information.'}
-        fontSizeh1={getRFSize(24)}
+        fontSizeh1={24}
         h2={
           'Welcome to B.UP! Start your financial journey and connect with mentors to achieve your goals.'
         }

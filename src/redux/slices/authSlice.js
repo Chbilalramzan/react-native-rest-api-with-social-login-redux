@@ -20,7 +20,8 @@ export const loginThunk = createAsyncThunk(
       }).then(response => response.json());
       if (res.success) {
         AsyncStorage.setItem('userToken', res.data.Token);
-        Navigation.navigate('Confirmation');
+        // Navigation.navigate('Confirmation');
+        //  isAuthenticated(true);
       }
       return res;
     } catch (error) {
@@ -76,6 +77,7 @@ const initialState = {
   isAuthenticated: false,
   error: null,
   isFailed: false,
+  isOnBoardFinished: false,
 };
 
 // Async function to fetch the token from AsyncStorage
@@ -109,6 +111,9 @@ const authSlice = createSlice({
     isAuthenticated: (state, {payload}) => {
       state.isAuthenticated = payload;
     },
+    isFinishOnBorad: (state, {payload}) => {
+      state.isOnBoardFinished = payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -121,7 +126,7 @@ const authSlice = createSlice({
         // Update state based on the specific API call
         if (payload.success) {
           state.token = payload.data.Token;
-          // state.isAuthenticated = true;
+          state.isAuthenticated = true;
         } else {
           state.error = payload.non_field_errors;
           state.token = null;
@@ -165,6 +170,7 @@ const authSlice = createSlice({
   },
 });
 
-export const {isAuthenticated, logout, resetError} = authSlice.actions;
+export const {isAuthenticated, logout, resetError, isFinishOnBorad} =
+  authSlice.actions;
 
 export default authSlice.reducer;

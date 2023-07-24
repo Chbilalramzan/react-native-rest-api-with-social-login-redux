@@ -7,15 +7,18 @@ import Second from './Second';
 import Third from './Third';
 import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 import Colors from '../../../styles/Colors.jsx';
+import {useDispatch} from 'react-redux';
+import {isFinishOnBorad} from '../../../redux/slices/authSlice';
 
 const OnBoardingScreen = ({navigation}) => {
   const [index, setIndex] = useState(0);
   const opacityValue = useRef(new Animated.Value(1)).current;
+  const dispatch = useDispatch();
 
   const updatePage = () => {
-    console.log('click');
     if (index >= 2) {
-      navigation.navigate('AuthOptions');
+      // navigation.navigate('Login');
+      dispatch(isFinishOnBorad(true));
     } else {
       Animated.timing(opacityValue, {
         toValue: 0,

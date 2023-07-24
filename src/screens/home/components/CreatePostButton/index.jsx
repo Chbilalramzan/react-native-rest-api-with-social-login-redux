@@ -71,7 +71,7 @@ const CreatePostButton = ({onPress}) => {
             </View>
             <TextBold
               text={'CREATE A NEW POST'}
-              fontSize={getRFSize(16)}
+              fontSize={16}
               // extraStyles={styles.extraTextStyle}
             />
           </View>

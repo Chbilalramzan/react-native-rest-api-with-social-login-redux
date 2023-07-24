@@ -2,14 +2,11 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import Headings from '../components/Headings';
 import getSize from '../../../utils/helpers';
-import GradientButton from '../../../components/buttons/GradientButton';
 import Send from '../components/Send';
-import AuthScreensSafeArea from '../../../components/backgrounds/AuthScreensSafeArea';
 import {SendIcon} from '../../../styles/SvgIcons';
 import {useDispatch} from 'react-redux';
 import {isAuthenticated} from '../../../redux/slices/authSlice';
 import GradientSafeArea from '../../../components/backgrounds/GradienSafeArea';
-import Colors from '../../../styles/Colors';
 import Button from '../../../components/buttons/Button';
 import getRFSize from '../../../utils/Helper';
 
@@ -30,7 +27,7 @@ const ConfirmationScreen = () => {
           <Headings
             h1={'You are ready to go.'}
             h2={"You're in! Your financial journey starts now."}
-            fontSizeh1={getRFSize(32)}
+            fontSizeh1={32}
             textColorh1="white"
             textColorh2="white"
             extraStyles={{marginTop: getSize(40)}}

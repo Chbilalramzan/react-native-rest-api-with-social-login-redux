@@ -28,7 +28,7 @@ const AuthOptionScreen = ({navigation}) => {
         <Headings
           h1={'Sign in, Start Investing, \nand Begin Earning'}
           h2={'Select how you want to procees'}
-          fontSizeh1={getRFSize(28)}
+          fontSizeh1={28}
           extraStylesh1={styles.extraStylesh1}
           extraStylesh2={styles.extraStylesh2}
         />

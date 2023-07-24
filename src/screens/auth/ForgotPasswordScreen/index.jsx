@@ -83,7 +83,7 @@ const ForgotPasswordScreen = ({navigation}) => {
             marginTop={getRFSize(195)}
             h1={"Forgotten your password? \nWe're here to help!"}
             h2={'Enter your Email to get the password reset link'}
-            fontSizeh1={getRFSize(30)}
+            fontSizeh1={30}
             extraStylesh1={styles.extraStylesh1}
             extraStylesh2={styles.extraStylesh2}
           />

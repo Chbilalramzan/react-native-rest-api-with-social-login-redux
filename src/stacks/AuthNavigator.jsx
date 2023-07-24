@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
-  const {initialRoute} = useSelector(state => state.auth);
+  const {initialRoute, isOnBoardFinished} = useSelector(state => state.auth);
 
   React.useEffect(() => {
     const startAnimation = () => {
@@ -35,10 +35,13 @@ const AuthNavigator = () => {
       <Stack.Navigator
         screenOptions={{headerShown: false}}
         initialRouteName={initialRoute}>
-        <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
-        <Stack.Screen name="AuthOptions" component={AuthOptionScreen} />
+        {/*<Stack.Screen name="AuthOptions" component={AuthOptionScreen} /> */}
+        {isOnBoardFinished ? (
+          <Stack.Screen name="Login" component={LoginScreen} />
+        ) : (
+          <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
+        )}
         <Stack.Screen name="Register" component={AccountSetupScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="OtpVerify" component={OtpVerificationScreen} />

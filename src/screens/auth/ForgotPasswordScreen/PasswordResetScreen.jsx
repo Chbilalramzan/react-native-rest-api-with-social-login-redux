@@ -110,7 +110,7 @@ const PasswordResetScreen = ({navigation, route}) => {
             marginTop={getRFSize(195)}
             h1={'Create your New \npassword.'}
             h2={'Get Started and enter your password.'}
-            fontSizeh1={getRFSize(30)}
+            fontSizeh1={30}
             extraStylesh1={styles.extraStylesh1}
             extraStylesh2={styles.extraStylesh2}
           />
