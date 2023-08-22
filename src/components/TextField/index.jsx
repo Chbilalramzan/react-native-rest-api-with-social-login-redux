@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   focusedContainer: {
     borderWidth: getSize(2),
-    borderColor: Colors.borderPurple,
+    // borderColor: Colors.borderPurple,
     backgroundColor: Colors.focusedInputBackground,
   },
   invalidContainer: {

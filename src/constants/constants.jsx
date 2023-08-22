@@ -1,7 +1,8 @@
 import {Dimensions, Platform, StatusBar} from 'react-native';
 import getSize from '../utils/helpers';
 
-export const BASE_URL = 'http://54.165.173.158/accounts/';
+// export const BASE_URL = 'http://54.165.173.158/accounts/';
+export const BASE_URL = 'https://www.b-up.online/api/';
 
 export const IMAGE_CONFIG_HEADER = {
   'Content-Type': 'multipart/form-data',

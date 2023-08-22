@@ -3,6 +3,7 @@ import {TouchableOpacity, StyleSheet} from 'react-native';
 import TextSemiBold from '../../../components/Text/TextSemiBold';
 import getSize from '../../../utils/helpers';
 import Colors from '../../../styles/Colors.jsx';
+import NativeActivityIndicator from '../../../components/ActivityIndicator';
 
 const OptionItem = ({
   title,
@@ -10,6 +11,7 @@ const OptionItem = ({
   width,
   prefix,
   onPress,
+  disable = false,
   paddingStart = getSize(21),
 }) => {
   return (
@@ -18,15 +20,25 @@ const OptionItem = ({
       onPress={onPress}
       style={[
         styles.button,
-        {height: height, width: width, paddingStart: paddingStart},
+        {
+          height: height,
+          width: width,
+          paddingStart: disable ? 0 : paddingStart,
+        },
       ]}>
-      {prefix && prefix}
-      <TextSemiBold
-        text={title}
-        color={'#FFFFFF'}
-        fontSize={14}
-        extraStyles={{lineHeight: getSize(32), marginLeft: getSize(11)}}
-      />
+      {disable ? (
+        <NativeActivityIndicator />
+      ) : (
+        <>
+          {prefix && prefix}
+          <TextSemiBold
+            text={title}
+            color={'#FFFFFF'}
+            fontSize={14}
+            extraStyles={{lineHeight: getSize(32), marginLeft: getSize(11)}}
+          />
+        </>
+      )}
     </TouchableOpacity>
   );
 };

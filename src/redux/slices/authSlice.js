@@ -5,7 +5,7 @@ import {apiConfig} from '../../api/apiConfig';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Navigation from '../../stacks/Navigation';
 
-const {login, register} = apiConfig;
+const {login, register, social} = apiConfig;
 
 export const loginThunk = createAsyncThunk(
   `auth/${login.name}`,
@@ -69,9 +69,48 @@ export const registerThunk = createAsyncThunk(
   },
 );
 
+export const socialThunk = createAsyncThunk(
+  `auth/${social.name}`,
+  async (payload, {rejectWithValue}) => {
+    try {
+      console.log(payload.access_token);
+      const res = await fetch(social.url, {
+        method: social.method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      }).then(response => response.json());
+
+      console.log(res);
+      if (res.success) {
+        if (res.data.user.new_login) {
+          Navigation.navigate('TopicSelection');
+        } else {
+          AsyncStorage.setItem('userToken', res.data.Token);
+        }
+      }
+
+      // if (data.stausCode === 200) {
+      //   AsyncStorage.setItem('userToken', data.key);
+      // }
+      return res;
+    } catch (error) {
+      // throw new Error(`${name} failed`);
+      // return custom error message from API if any
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  },
+);
+
 const initialState = {
   initialRoute: 'Onboarding',
   loading: false,
+  googleLoading: false,
   userModal: null,
   token: null,
   isAuthenticated: false,
@@ -163,6 +202,28 @@ const authSlice = createSlice({
       })
       .addCase(registerThunk.rejected, (state, {payload}) => {
         state.loading = false;
+        state.error = payload;
+        state.token = null;
+        state.isAuthenticated = false;
+      })
+      .addCase(socialThunk.pending, state => {
+        state.googleLoading = true;
+        state.error = null;
+      })
+      .addCase(socialThunk.fulfilled, (state, {payload}) => {
+        state.googleLoading = false;
+        state.error = null;
+        if (payload.success && !payload.data.user.new_login) {
+          state.token = payload.data.Token;
+          state.isAuthenticated = true;
+        } else {
+          state.error = payload.non_field_errors;
+          state.token = null;
+          state.isFailed = true;
+        }
+      })
+      .addCase(socialThunk.rejected, (state, {payload}) => {
+        state.googleLoading = false;
         state.error = payload;
         state.token = null;
         state.isAuthenticated = false;

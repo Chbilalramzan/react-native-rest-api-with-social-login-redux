@@ -12,5 +12,10 @@ export const apiConfig = {
     url: `${BASE_URL + EndPoint.register}`,
     method: 'POST',
   },
+  social: {
+    name: 'social',
+    url: EndPoint.google_login,
+    method: 'POST',
+  },
   // Add other API endpoints here
 };

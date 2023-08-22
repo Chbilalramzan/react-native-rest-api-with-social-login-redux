@@ -39,7 +39,9 @@ import {
 
 const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const {loading, isFailed, error} = useSelector(state => state.auth);
+  const {loading, isFailed, error, googleLoading} = useSelector(
+    state => state.auth,
+  );
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
   const [emailEmpty, setEmailEmpty] = useState(true);
@@ -138,6 +140,7 @@ const LoginScreen = ({navigation}) => {
             {/* <SocialAuth /> */}
             <View>
               <OptionItem
+                disable={googleLoading}
                 height={getRFSize(55)}
                 paddingStart={getRFSize(86)}
                 title={'Continue with Google'}

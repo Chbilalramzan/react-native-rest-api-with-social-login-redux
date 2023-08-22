@@ -5,6 +5,9 @@ import {
 import {LoginManager, AccessToken, Settings} from 'react-native-fbsdk-next';
 import {appleAuth} from '@invertase/react-native-apple-authentication';
 import * as Navigation from '../stacks/Navigation';
+import {getGoogleAccessToken} from '../api/authentication';
+import store from '../redux/store';
+import {socialThunk} from '../redux/slices/authSlice';
 
 export const initializeSocialAuthHelpers = () => {
   // Setting the Facebook app id
@@ -32,15 +35,23 @@ export const handleGoogleSignIn = async () => {
   await GoogleSignin.hasPlayServices()
     .then(hasPlayService => {
       if (hasPlayService) {
-        GoogleSignin.signIn().then(userInfo => {
+        GoogleSignin.signIn().then(async userInfo => {
           // Obtain the user's information
+          // console.log(userInfo);
           const {idToken, user} = userInfo;
           const {email, givenName, familyName} = user;
 
           console.log(idToken, email, givenName, familyName);
           if (userInfo) {
-            Navigation.navigate('TopicSelection');
-            return {success: true, data: userInfo};
+            const accessToken = await getGoogleAccessToken(
+              userInfo.serverAuthCode,
+            );
+            if (accessToken) {
+              store.dispatch(socialThunk({access_token: accessToken}));
+            }
+            console.log(accessToken);
+            // Navigation.navigate('TopicSelection');
+            // return {success: true, data: userInfo};
           }
         });
       }

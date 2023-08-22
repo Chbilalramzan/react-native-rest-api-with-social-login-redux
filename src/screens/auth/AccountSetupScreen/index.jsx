@@ -87,7 +87,6 @@ const AccountSetupScreen = ({navigation}) => {
               extraStylesh1={styles.extraStylesh1}
               extraStylesh2={styles.extraStylesh2}
             />
-
             <TextField
               placeholder={'Username'}
               onChangeText={setUsername}
