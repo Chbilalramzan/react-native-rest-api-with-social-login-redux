@@ -8,5 +8,7 @@ export const EndPoint = {
   new_password: 'password/reset/confirm/',
   interests: 'interests/',
   google_login: 'https://www.b-up.online/auth/google/',
+  facebook_login: 'https://www.b-up.online/auth/facebook/',
+  apple_login: 'https://www.b-up.online/auth/apple/',
   google_accesstoken: 'https://oauth2.googleapis.com/token',
 };

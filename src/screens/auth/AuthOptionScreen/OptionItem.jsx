@@ -17,28 +17,23 @@ const OptionItem = ({
   return (
     <TouchableOpacity
       activeOpacity={0.6}
+      disabled={disable}
       onPress={onPress}
       style={[
         styles.button,
         {
           height: height,
           width: width,
-          paddingStart: disable ? 0 : paddingStart,
+          paddingStart: paddingStart,
         },
       ]}>
-      {disable ? (
-        <NativeActivityIndicator />
-      ) : (
-        <>
-          {prefix && prefix}
-          <TextSemiBold
-            text={title}
-            color={'#FFFFFF'}
-            fontSize={14}
-            extraStyles={{lineHeight: getSize(32), marginLeft: getSize(11)}}
-          />
-        </>
-      )}
+      {prefix && prefix}
+      <TextSemiBold
+        text={title}
+        color={'#FFFFFF'}
+        fontSize={14}
+        extraStyles={{lineHeight: getSize(32), marginLeft: getSize(11)}}
+      />
     </TouchableOpacity>
   );
 };

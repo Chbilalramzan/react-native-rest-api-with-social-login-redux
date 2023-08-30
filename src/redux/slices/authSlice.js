@@ -73,13 +73,13 @@ export const socialThunk = createAsyncThunk(
   `auth/${social.name}`,
   async (payload, {rejectWithValue}) => {
     try {
-      console.log(payload.access_token);
-      const res = await fetch(social.url, {
+      const {access_token, id_token, apiUrl} = payload;
+      const res = await fetch(apiUrl, {
         method: social.method,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({access_token, id_token}),
       }).then(response => response.json());
 
       console.log(res);
@@ -110,7 +110,7 @@ export const socialThunk = createAsyncThunk(
 const initialState = {
   initialRoute: 'Onboarding',
   loading: false,
-  googleLoading: false,
+  socialLoading: false,
   userModal: null,
   token: null,
   isAuthenticated: false,
@@ -207,15 +207,16 @@ const authSlice = createSlice({
         state.isAuthenticated = false;
       })
       .addCase(socialThunk.pending, state => {
-        state.googleLoading = true;
+        state.socialLoading = true;
         state.error = null;
       })
       .addCase(socialThunk.fulfilled, (state, {payload}) => {
-        state.googleLoading = false;
+        state.socialLoading = false;
         state.error = null;
         if (payload.success && !payload.data.user.new_login) {
           state.token = payload.data.Token;
           state.isAuthenticated = true;
+          state.isFailed = false;
         } else {
           state.error = payload.non_field_errors;
           state.token = null;
@@ -223,7 +224,7 @@ const authSlice = createSlice({
         }
       })
       .addCase(socialThunk.rejected, (state, {payload}) => {
-        state.googleLoading = false;
+        state.socialLoading = false;
         state.error = payload;
         state.token = null;
         state.isAuthenticated = false;

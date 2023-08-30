@@ -5,9 +5,10 @@ import {
 import {LoginManager, AccessToken, Settings} from 'react-native-fbsdk-next';
 import {appleAuth} from '@invertase/react-native-apple-authentication';
 import * as Navigation from '../stacks/Navigation';
-import {getGoogleAccessToken} from '../api/authentication';
+import {getAppleAccessToken, getGoogleAccessToken} from '../api/authentication';
 import store from '../redux/store';
 import {socialThunk} from '../redux/slices/authSlice';
+import {EndPoint} from '../constants/APIEndpoints';
 
 export const initializeSocialAuthHelpers = () => {
   // Setting the Facebook app id
@@ -47,7 +48,12 @@ export const handleGoogleSignIn = async () => {
               userInfo.serverAuthCode,
             );
             if (accessToken) {
-              store.dispatch(socialThunk({access_token: accessToken}));
+              store.dispatch(
+                socialThunk({
+                  access_token: accessToken,
+                  apiUrl: EndPoint.google_login,
+                }),
+              );
             }
             console.log(accessToken);
             // Navigation.navigate('TopicSelection');
@@ -99,6 +105,7 @@ export const handleFacebookSignin = async () => {
       return {success: false, error: 'Facebook login cancelled'};
     } else {
       const accessToken = await AccessToken.getCurrentAccessToken();
+      console.log(accessToken);
       if (accessToken) {
         console.log('Facebook access token:', accessToken.accessToken);
         Navigation.navigate('TopicSelection');
@@ -133,15 +140,21 @@ export const handleAppleSignIn = async () => {
         // Obtain the user's information
         const {identityToken, email, fullName} = appleAuthRequestResponse;
 
-        console.log(
-          identityToken,
-          email,
-          fullName.givenName,
-          fullName.familyName,
+        console.log(appleAuthRequestResponse);
+        const {accessToken, idToken} = await getAppleAccessToken(
+          appleAuthRequestResponse.authorizationCode,
         );
-        Navigation.navigate('TopicSelection');
-        // Make a POST request to your REST login API and include the user information
-        return {success: true, data: appleAuthRequestResponse};
+        if (accessToken && idToken) {
+          store.dispatch(
+            socialThunk({
+              access_token: accessToken,
+              id_token: idToken,
+              apiUrl: EndPoint.apple_login,
+            }),
+          );
+        }
+        // Make a POST request to your REST login API and include the user information authorizationCode
+        // return {success: true, data: appleAuthRequestResponse};
       }
     } catch (error) {
       // Handle the error

@@ -40,14 +40,16 @@
 		</dict>
 		<dict/>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAppID</key>
 	<string>227203443502512</string>
 	<key>FacebookClientToken</key>
 	<string>e5549492b6b2b7077589af4f06a74eef</string>
 	<key>FacebookDisplayName</key>
 	<string>B.Up Finance</string>
-	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -61,16 +63,12 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>This app does not access or use Bluetooth data.</string>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>This app does not access or use Bluetooth data.</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>This app does not access or use Apple Music data.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>This app does not access or use speech recognition data.</string>
-	<key>NSSiriUsageDescription</key>
-	<string>This app does not access or use Siri data.</string>	
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This app does not access or use Bluetooth data.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>This app does not access or use Bluetooth data.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
@@ -95,6 +93,10 @@
 	<string>Upload photos to share with other users or to change your avatar</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your reminders</string>
+	<key>NSSiriUsageDescription</key>
+	<string>This app does not access or use Siri data.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>This app does not access or use speech recognition data.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -121,10 +123,6 @@
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<!-- <key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array> -->
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -136,8 +134,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>ITSAppUsesNonExemptEncryption</key>  
 	<false/>
 </dict>
 </plist>

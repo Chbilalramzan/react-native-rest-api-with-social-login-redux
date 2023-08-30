@@ -36,10 +36,11 @@ import {
   handleFacebookSignin,
   handleGoogleSignIn,
 } from '../../../utils/SocialAuth';
+import LoadingOverlay from '../../../components/LoadingOverlay';
 
 const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const {loading, isFailed, error, googleLoading} = useSelector(
+  const {loading, isFailed, error, socialLoading} = useSelector(
     state => state.auth,
   );
 
@@ -140,7 +141,7 @@ const LoginScreen = ({navigation}) => {
             {/* <SocialAuth /> */}
             <View>
               <OptionItem
-                disable={googleLoading}
+                disable={socialLoading}
                 height={getRFSize(55)}
                 paddingStart={getRFSize(86)}
                 title={'Continue with Google'}
@@ -148,6 +149,7 @@ const LoginScreen = ({navigation}) => {
                 onPress={handleGoogleSignIn}
               />
               <OptionItem
+                disable={socialLoading}
                 height={getRFSize(55)}
                 paddingStart={getRFSize(86)}
                 title={'Continue with Facebook'}
@@ -156,6 +158,7 @@ const LoginScreen = ({navigation}) => {
               />
               {Platform.OS === 'ios' && (
                 <OptionItem
+                  disable={socialLoading}
                   height={getRFSize(55)}
                   paddingStart={getRFSize(86)}
                   title={'Continue with Apple'}
@@ -174,6 +177,7 @@ const LoginScreen = ({navigation}) => {
       </KeyboardAvoidingView>
 
       <AlertDialog isVisible={isFailed} onClose={closeAlert} message={error} />
+      <LoadingOverlay isVisible={socialLoading} />
     </AuthScreensSafeArea>
   );
 };
