@@ -14,12 +14,12 @@
 		4013329CDC6CE5AFF02BEE42 /* libPods-bup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D59F8D005AB8092499C769 /* libPods-bup.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9BDD5F589FC44E6EEC6BE950 /* libPods-bup-bupTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7596DA3FB29427DA5692E4 /* libPods-bup-bupTests.a */; };
+		F343C4FB2AA127740043813B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F343C4FA2AA127740043813B /* GoogleService-Info.plist */; };
 		F3C005962A61CF33008D3372 /* GeneralSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3C005912A61CF33008D3372 /* GeneralSans-Regular.otf */; };
 		F3C005972A61CF33008D3372 /* GeneralSans-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3C005922A61CF33008D3372 /* GeneralSans-Semibold.otf */; };
 		F3C005982A61CF33008D3372 /* GeneralSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3C005932A61CF33008D3372 /* GeneralSans-Bold.otf */; };
 		F3C005992A61CF33008D3372 /* GeneralSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3C005942A61CF33008D3372 /* GeneralSans-Light.otf */; };
 		F3C0059A2A61CF33008D3372 /* GeneralSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3C005952A61CF33008D3372 /* GeneralSans-Medium.otf */; };
-		F3E7367D2A576E510099114E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3E7367C2A576E510099114E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,13 +50,13 @@
 		B5D59F8D005AB8092499C769 /* libPods-bup.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bup.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F0BBBFCA1E1D9BE0A65FE042 /* Pods-bup-bupTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bup-bupTests.release.xcconfig"; path = "Target Support Files/Pods-bup-bupTests/Pods-bup-bupTests.release.xcconfig"; sourceTree = "<group>"; };
+		F343C4FA2AA127740043813B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3C005912A61CF33008D3372 /* GeneralSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GeneralSans-Regular.otf"; path = "../assets/fonts/GeneralSans-Regular.otf"; sourceTree = "<group>"; };
 		F3C005922A61CF33008D3372 /* GeneralSans-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GeneralSans-Semibold.otf"; path = "../assets/fonts/GeneralSans-Semibold.otf"; sourceTree = "<group>"; };
 		F3C005932A61CF33008D3372 /* GeneralSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GeneralSans-Bold.otf"; path = "../assets/fonts/GeneralSans-Bold.otf"; sourceTree = "<group>"; };
 		F3C005942A61CF33008D3372 /* GeneralSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GeneralSans-Light.otf"; path = "../assets/fonts/GeneralSans-Light.otf"; sourceTree = "<group>"; };
 		F3C005952A61CF33008D3372 /* GeneralSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GeneralSans-Medium.otf"; path = "../assets/fonts/GeneralSans-Medium.otf"; sourceTree = "<group>"; };
 		F3E736782A5756DD0099114E /* bup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = bup.entitlements; path = bup/bup.entitlements; sourceTree = "<group>"; };
-		F3E7367C2A576E510099114E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3E7367E2A5770630099114E /* libGoogleSignIn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGoogleSignIn.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -139,12 +139,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F343C4FA2AA127740043813B /* GoogleService-Info.plist */,
 				F3C005932A61CF33008D3372 /* GeneralSans-Bold.otf */,
 				F3C005942A61CF33008D3372 /* GeneralSans-Light.otf */,
 				F3C005952A61CF33008D3372 /* GeneralSans-Medium.otf */,
 				F3C005912A61CF33008D3372 /* GeneralSans-Regular.otf */,
 				F3C005922A61CF33008D3372 /* GeneralSans-Semibold.otf */,
-				F3E7367C2A576E510099114E /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* bup */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* bupTests */,
@@ -274,11 +274,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C005992A61CF33008D3372 /* GeneralSans-Light.otf in Resources */,
+				F343C4FB2AA127740043813B /* GoogleService-Info.plist in Resources */,
 				F3C005962A61CF33008D3372 /* GeneralSans-Regular.otf in Resources */,
 				F3C005972A61CF33008D3372 /* GeneralSans-Semibold.otf in Resources */,
 				F3C005982A61CF33008D3372 /* GeneralSans-Bold.otf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				F3E7367D2A576E510099114E /* GoogleService-Info.plist in Resources */,
 				F3C0059A2A61CF33008D3372 /* GeneralSans-Medium.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -538,7 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = bup/bup.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F5475DUH83;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = bup/Info.plist;
@@ -573,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = bup/bup.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F5475DUH83;
 				INFOPLIST_FILE = bup/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "B.Up Finance";

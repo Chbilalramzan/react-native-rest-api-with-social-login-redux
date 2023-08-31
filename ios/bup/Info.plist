@@ -45,9 +45,9 @@
 	<key>FacebookAppID</key>
 	<string>227203443502512</string>
 	<key>FacebookClientToken</key>
-	<string>e5549492b6b2b7077589af4f06a74eef</string>
+	<string>3a1ef92b43c7438551c0c7418860db0c</string>
 	<key>FacebookDisplayName</key>
-	<string>B.Up Finance</string>
+	<string>com.bup.finance</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -86,7 +86,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Use your microphone to record audio messages</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to access your device's accelerometer</string>
+	<string>Allow $(PRODUCT_NAME) to access your device&apos;s accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Give $(PRODUCT_NAME) permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>

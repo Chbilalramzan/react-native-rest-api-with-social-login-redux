@@ -21,6 +21,9 @@
       NSLog(@" %@", name);
     }
   }
+  
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                         didFinishLaunchingWithOptions:launchOptions];
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }

@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>294334576451-mmh005ghvpst48t4som6e6bapu2s6bq6.apps.googleusercontent.com</string>
+	<string>294334576451-0pia0ce0sf6rh7j0s0s0aq8itl56re5l.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.294334576451-mmh005ghvpst48t4som6e6bapu2s6bq6</string>
+	<string>com.googleusercontent.apps.294334576451-0pia0ce0sf6rh7j0s0s0aq8itl56re5l</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>294334576451-0rqmduamhc4jjtsou5q0t6a9ibtavo9o.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDHOaPs2RtpjGUrUSyF1-rI414DMKQaHuE</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>b.up.finance</string>
+	<string>com.bup.finance</string>
 	<key>PROJECT_ID</key>
 	<string>b-up-finance</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:294334576451:ios:f3e1942b9db4d3d660e1f6</string>
+	<string>1:294334576451:ios:7bbf736f23d29d0460e1f6</string>
 </dict>
 </plist>

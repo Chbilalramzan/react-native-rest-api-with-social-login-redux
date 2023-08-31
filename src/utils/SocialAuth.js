@@ -4,7 +4,6 @@ import {
 } from '@react-native-google-signin/google-signin';
 import {LoginManager, AccessToken, Settings} from 'react-native-fbsdk-next';
 import {appleAuth} from '@invertase/react-native-apple-authentication';
-import * as Navigation from '../stacks/Navigation';
 import {getAppleAccessToken, getGoogleAccessToken} from '../api/authentication';
 import store from '../redux/store';
 import {socialThunk} from '../redux/slices/authSlice';
@@ -38,15 +37,9 @@ export const handleGoogleSignIn = async () => {
       if (hasPlayService) {
         GoogleSignin.signIn().then(async userInfo => {
           // Obtain the user's information
-          // console.log(userInfo);
-          const {idToken, user} = userInfo;
-          const {email, givenName, familyName} = user;
-
-          console.log(idToken, email, givenName, familyName);
+          const {serverAuthCode} = userInfo;
           if (userInfo) {
-            const accessToken = await getGoogleAccessToken(
-              userInfo.serverAuthCode,
-            );
+            const accessToken = await getGoogleAccessToken(serverAuthCode);
             if (accessToken) {
               store.dispatch(
                 socialThunk({
@@ -55,9 +48,6 @@ export const handleGoogleSignIn = async () => {
                 }),
               );
             }
-            console.log(accessToken);
-            // Navigation.navigate('TopicSelection');
-            // return {success: true, data: userInfo};
           }
         });
       }
@@ -78,17 +68,6 @@ export const handleGoogleSignIn = async () => {
       }
       return {success: false, error};
     });
-  // const userInfo = await GoogleSignin.signIn();
-
-  // // Obtain the user's information
-  // const {idToken, user} = userInfo;
-  // const {email, givenName, familyName} = user;
-
-  // console.log(idToken, email, givenName, familyName);
-  // if (userInfo) {
-  //   Navigation.navigate('TopicSelection');
-  //   return {success: true, data: userInfo};
-  // }
 
   // Make a POST request to your REST login API and include the user information
 };
@@ -105,12 +84,15 @@ export const handleFacebookSignin = async () => {
       return {success: false, error: 'Facebook login cancelled'};
     } else {
       const accessToken = await AccessToken.getCurrentAccessToken();
-      console.log(accessToken);
       if (accessToken) {
         console.log('Facebook access token:', accessToken.accessToken);
-        Navigation.navigate('TopicSelection');
         // Use the obtained access token to make API calls or authenticate the user on your server
-        return {success: true, data: accessToken};
+        store.dispatch(
+          socialThunk({
+            access_token: accessToken.accessToken,
+            apiUrl: EndPoint.facebook_login,
+          }),
+        );
       }
     }
   } catch (error) {
@@ -138,11 +120,10 @@ export const handleAppleSignIn = async () => {
       if (credentialState === appleAuth.State.AUTHORIZED) {
         // user is authenticated
         // Obtain the user's information
-        const {identityToken, email, fullName} = appleAuthRequestResponse;
-
-        console.log(appleAuthRequestResponse);
+        const {authorizationCode} = appleAuthRequestResponse;
+        // Make a POST request to your REST login API and include the user information authorizationCode
         const {accessToken, idToken} = await getAppleAccessToken(
-          appleAuthRequestResponse.authorizationCode,
+          authorizationCode,
         );
         if (accessToken && idToken) {
           store.dispatch(
@@ -153,8 +134,6 @@ export const handleAppleSignIn = async () => {
             }),
           );
         }
-        // Make a POST request to your REST login API and include the user information authorizationCode
-        // return {success: true, data: appleAuthRequestResponse};
       }
     } catch (error) {
       // Handle the error
