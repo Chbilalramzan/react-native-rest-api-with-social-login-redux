@@ -84,7 +84,7 @@ export const socialThunk = createAsyncThunk(
 
       console.log(res);
       if (res.success) {
-        if (res.data.user.new_login) {
+        if (res.new_login) {
           Navigation.navigate('TopicSelection');
         } else {
           AsyncStorage.setItem('userToken', res.data.Token);
@@ -153,6 +153,9 @@ const authSlice = createSlice({
     isFinishOnBorad: (state, {payload}) => {
       state.isOnBoardFinished = payload;
     },
+    isSocialLoading: (state, {payload}) => {
+      state.socialLoading = payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -213,7 +216,7 @@ const authSlice = createSlice({
       .addCase(socialThunk.fulfilled, (state, {payload}) => {
         state.socialLoading = false;
         state.error = null;
-        if (payload.success && !payload.data.user.new_login) {
+        if (payload.success && !payload.new_login) {
           state.token = payload.data.Token;
           state.isAuthenticated = true;
           state.isFailed = false;
@@ -232,7 +235,12 @@ const authSlice = createSlice({
   },
 });
 
-export const {isAuthenticated, logout, resetError, isFinishOnBorad} =
-  authSlice.actions;
+export const {
+  isAuthenticated,
+  logout,
+  resetError,
+  isFinishOnBorad,
+  isSocialLoading,
+} = authSlice.actions;
 
 export default authSlice.reducer;

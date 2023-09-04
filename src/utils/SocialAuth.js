@@ -6,7 +6,7 @@ import {LoginManager, AccessToken, Settings} from 'react-native-fbsdk-next';
 import {appleAuth} from '@invertase/react-native-apple-authentication';
 import {getAppleAccessToken, getGoogleAccessToken} from '../api/authentication';
 import store from '../redux/store';
-import {socialThunk} from '../redux/slices/authSlice';
+import {isSocialLoading, socialThunk} from '../redux/slices/authSlice';
 import {EndPoint} from '../constants/APIEndpoints';
 
 export const initializeSocialAuthHelpers = () => {
@@ -122,6 +122,7 @@ export const handleAppleSignIn = async () => {
         // Obtain the user's information
         const {authorizationCode} = appleAuthRequestResponse;
         // Make a POST request to your REST login API and include the user information authorizationCode
+        store.dispatch(isSocialLoading(true));
         const {accessToken, idToken} = await getAppleAccessToken(
           authorizationCode,
         );
