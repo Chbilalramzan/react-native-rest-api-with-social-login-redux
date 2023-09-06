@@ -216,10 +216,14 @@ const authSlice = createSlice({
       .addCase(socialThunk.fulfilled, (state, {payload}) => {
         state.socialLoading = false;
         state.error = null;
-        if (payload.success && !payload.new_login) {
-          state.token = payload.data.Token;
-          state.isAuthenticated = true;
-          state.isFailed = false;
+        if (payload.success) {
+          if (payload.new_login) {
+            state.isFailed = false;
+          } else {
+            state.token = payload.data.Token;
+            state.isAuthenticated = true;
+            state.isFailed = false;
+          }
         } else {
           state.error = payload.non_field_errors;
           state.token = null;
