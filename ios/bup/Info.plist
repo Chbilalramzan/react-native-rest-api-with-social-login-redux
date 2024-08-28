@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb227203443502512</string>
+				<string>your_facebook_app_id</string>
 			</array>
 		</dict>
 		<dict>
@@ -35,7 +35,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.294334576451-mmh005ghvpst48t4som6e6bapu2s6bq6</string>
+				<string>your_google_client_id_for_apple(find it inside google services file)</string>
 			</array>
 		</dict>
 		<dict/>
@@ -43,9 +43,9 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAppID</key>
-	<string>227203443502512</string>
+	<string>facebook_id</string>
 	<key>FacebookClientToken</key>
-	<string>3a1ef92b43c7438551c0c7418860db0c</string>
+	<string>facebook_client_token</string>
 	<key>FacebookDisplayName</key>
 	<string>com.bup.finance</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

@@ -11,18 +11,18 @@ import {EndPoint} from '../constants/APIEndpoints';
 
 export const initializeSocialAuthHelpers = () => {
   // Setting the Facebook app id
-  Settings.setAppID('227203443502512');
+  Settings.setAppID('your facebook id');
   Settings.initializeSDK();
 
   // Configure Google Sign-In
   GoogleSignin.configure({
     scopes: ['email'],
     androidClientId:
-      '294334576451-oejnn9qtn35ajup95pg8mj7pupsd9qp2.apps.googleusercontent.com',
+      '',
     iosClientId:
-      '294334576451-mmh005ghvpst48t4som6e6bapu2s6bq6.apps.googleusercontent.com',
+      '',
     webClientId:
-      '294334576451-tduamj75cvd3r8pbv5p023vmg23o3lnt.apps.googleusercontent.com',
+      '',
     offlineAccess: true,
     forceCodeForRefreshToken: true,
   });

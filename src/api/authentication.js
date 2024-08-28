@@ -6,9 +6,9 @@ export const getGoogleAccessToken = async serverAuthCode => {
     data.append('code', serverAuthCode);
     data.append(
       'client_id',
-      '294334576451-tduamj75cvd3r8pbv5p023vmg23o3lnt.apps.googleusercontent.com',
+      'web client id',
     );
-    data.append('client_secret', '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');
+    data.append('client_secret', '');
     data.append('redirect_uri', 'urn:ietf:wg:oauth:2.0:oob');
     data.append('grant_type', 'authorization_code');
 
@@ -39,9 +39,7 @@ export const getAppleAccessToken = async serverAuthCode => {
   After that developer has to create a new key from folder
   "apple-client-secret-generator" */
 
-  const privateKeyString =
-    'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ijg2TDI4OFQ2RkMifQ.eyJpc3MiOiJGNTQ3NURVSDgzIiwiaWF0IjoxNjkzNDI1NzM4LCJleHAiOjE3MDkyMDI3MzgsImF1ZCI6Imh0dHBzOi8vYXBwbGVpZC5hcHBsZS5jb20iLCJzdWIiOiJjb20uYnVwLmZpbmFuY2UifQ.Dx3SLXzM3X-8GHoIb8I2StwZHW2V76cvCSH8yBNQqEEcO4cDGfDyArfHZTq7bjFS2vK1aW1TcJqPodPBo5ISXQ';
-
+  const privateKeyString ='jwt token generated from apple_client_secret_generator folder'
   const tokenEndpoint = 'https://appleid.apple.com/auth/token';
   const clientId = 'com.bup.finance'; // Replace with the actual client ID
 
