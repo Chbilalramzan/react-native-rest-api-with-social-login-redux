@@ -41,7 +41,7 @@ This application is built to streamline user authentication through various soci
 Clone the project
 
 ```bash
-  git clone https://github.com/silenteyesoncode/openMind.git
+  git clone https://github.com/Chbilalramzan/react-native-rest-api-with-social-login-redux.git
 ```
 
 Go to the project directory
