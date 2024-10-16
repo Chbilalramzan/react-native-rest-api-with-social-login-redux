@@ -19,12 +19,13 @@ This application is built to streamline user authentication through various soci
   <img src="./assets/screens/1.png" width="200" >
   <img src="./assets/screens/2.png" width="200" >
   <img src="./assets/screens/3.png" width="200" >
-  <img src="./assets/screens/4.png" width="200" >
+  <img src="./assets/screens/7.png" width="200" >
 </p>
 <p>
+  <img src="./assets/screens/4.png" width="200" >
   <img src="./assets/screens/5.png" width="200" >
   <img src="./assets/screens/6.png" width="200" >
-  <img src="./assets/screens/7.png" width="200" >
+  
 </p>
 
 
