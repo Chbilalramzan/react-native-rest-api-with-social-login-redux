@@ -15,13 +15,13 @@ This application is built to streamline user authentication through various soci
 ## ScreenShot
 <!-- <img src="https://user-images.githubusercontent.com/46851135/232449785-1c9789b2-f99e-4c3f-86e2-f53697bc8b28.jpg"  width="300" >
  -->
- <img src="./assets/1.png" width="300" >
- <img src="./assets/2.png" width="300" >
- <img src="./assets/3.png" width="300" >
- <img src="./assets/4.png" width="300" >
- <img src="./assets/5.png" width="300" >
- <img src="./assets/6.png" width="300" >
- <img src="./assets/7.png" width="300" >
+ <img src="./assets/screens/1.png" width="300" >
+ <img src="./assets/screens/2.png" width="300" >
+ <img src="./assets/screens/3.png" width="300" >
+ <img src="./assets/screens/4.png" width="300" >
+ <img src="./assets/screens/5.png" width="300" >
+ <img src="./assets/screens/6.png" width="300" >
+ <img src="./assets/screens/7.png" width="300" >
 
 
 ## How I built it
